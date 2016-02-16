@@ -53,6 +53,7 @@ final class SearchViewController: UIViewController {
         view.backgroundColor = .whiteColor()
         view.addSubview(tableView)
         navigationItem.titleView = searchBar
+        tableView.registerClass(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.cellIdentifier)
 
         let margins = view.layoutMarginsGuide
         tableView.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true

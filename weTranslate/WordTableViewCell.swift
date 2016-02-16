@@ -21,14 +21,14 @@ final class WordTableViewCell: UITableViewCell {
         }
     }
 
-    let wordLabel: UILabel = {
+    private let wordLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
     }()
 
-    let senseLabel: UILabel = {
+    private let senseLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -50,7 +50,6 @@ final class WordTableViewCell: UITableViewCell {
         stackView.spacing = 4
         return stackView
     }()
-
 
 
     // MARK: - Init

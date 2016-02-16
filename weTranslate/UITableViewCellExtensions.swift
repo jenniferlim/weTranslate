@@ -7,3 +7,10 @@
 //
 
 import Foundation
+import UIKit
+
+extension UITableViewCell {
+    static var cellIdentifier: String {
+        return NSStringFromClass(self)
+    }
+}

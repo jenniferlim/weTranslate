@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SearchViewControllerDelegate: class {
+    func searchViewController(searchViewController: SearchViewController, didSearchWord word: String)
+}
+
 final class SearchCoordinator: CoordinatorType {
 
     let navigationController: UINavigationController
@@ -19,9 +23,16 @@ final class SearchCoordinator: CoordinatorType {
         self.navigationController = navigationController
     }
 
-    // MARK: -
+    // MARK: - Start
 
     func start() {
-        navigationController.pushViewController(SearchViewController(), animated: false)
+        navigationController.pushViewController(SearchViewController(delegate: self), animated: false)
+    }
+}
+
+extension SearchCoordinator: SearchViewControllerDelegate {
+    func searchViewController(searchViewController: SearchViewController, didSearchWord word: String) {
+        // FIXME: Get the translations and slang definitions using TranslateKit
+
     }
 }

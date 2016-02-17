@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D70A60161C72668B00A35A30 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70A60151C72668B00A35A30 /* CloudKit.framework */; };
 		D70D72BE1C6FD7FA005A722E /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D72BD1C6FD7FA005A722E /* WindowController.swift */; };
 		D70D72C51C6FD7FA005A722E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70D72C41C6FD7FA005A722E /* Assets.xcassets */; };
 		D70D72C81C6FD7FA005A722E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70D72C61C6FD7FA005A722E /* LaunchScreen.storyboard */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D70A60141C72663D00A35A30 /* weTranslate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = weTranslate.entitlements; sourceTree = "<group>"; };
+		D70A60151C72668B00A35A30 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D70D72BA1C6FD7FA005A722E /* weTranslate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weTranslate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70D72BD1C6FD7FA005A722E /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		D70D72C41C6FD7FA005A722E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D70A60161C72668B00A35A30 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,12 +84,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D70A60171C726C7500A35A30 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D70A60151C72668B00A35A30 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D70D72B11C6FD7FA005A722E = {
 			isa = PBXGroup;
 			children = (
 				D70D72BC1C6FD7FA005A722E /* weTranslate */,
 				D70D72D11C6FD7FA005A722E /* weTranslateTests */,
 				D70D72DC1C6FD7FA005A722E /* weTranslateUITests */,
+				D70A60171C726C7500A35A30 /* Frameworks */,
 				D70D72BB1C6FD7FA005A722E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -162,6 +175,7 @@
 				D70D72C41C6FD7FA005A722E /* Assets.xcassets */,
 				D70D72C61C6FD7FA005A722E /* LaunchScreen.storyboard */,
 				D70D72C91C6FD7FA005A722E /* Info.plist */,
+				D70A60141C72663D00A35A30 /* weTranslate.entitlements */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -234,6 +248,12 @@
 				TargetAttributes = {
 					D70D72B91C6FD7FA005A722E = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 55M9M2TX7A;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					D70D72CD1C6FD7FA005A722E = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -433,10 +453,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = weTranslate/weTranslate.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = weTranslate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wetranslate.weTranslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -444,10 +468,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = weTranslate/weTranslate.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = weTranslate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wetranslate.weTranslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

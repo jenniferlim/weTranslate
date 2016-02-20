@@ -1,0 +1,10 @@
+language: objective-c
+osx_image: xcode7.1
+
+before_install:
+  - brew update
+  - brew install carthage
+  - carthage bootstrap --verbose
+
+xcode_project: weTranslate.xcodeproj
+xcode_scheme: weTranslate

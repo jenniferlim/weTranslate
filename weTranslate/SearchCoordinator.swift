@@ -8,6 +8,12 @@
 
 import UIKit
 
+import TranslateKit
+
+protocol SearchViewControllerDelegate: class {
+    func searchViewController(searchViewController: SearchViewController, didSearchWord word: String)
+}
+
 final class SearchCoordinator: CoordinatorType {
 
     // MARK: - Properties
@@ -21,9 +27,22 @@ final class SearchCoordinator: CoordinatorType {
         self.navigationController = navigationController
     }
 
-    // MARK: -
+    // MARK: - Start
 
     func start() {
-        navigationController.pushViewController(SearchViewController(), animated: false)
+        navigationController.pushViewController(SearchViewController(delegate: self), animated: false)
+    }
+}
+
+extension SearchCoordinator: SearchViewControllerDelegate {
+    func searchViewController(searchViewController: SearchViewController, didSearchWord word: String) {
+        let client = Client(wordReferenceApiKey: "API_KEY")
+        
+        client.translate(word: word, from: .English, to: .French) { translation in
+            if let translation = translation {
+                let searchViewModel = SearchViewModel(translation: translation)
+                searchViewController.viewModel = searchViewModel
+            }
+        }
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 final class AppCoordinator: CoordinatorType {
 
+    // MARK: - Properties
+
     let rootViewController: TabBarController
     var childCoordinators: [CoordinatorType] = []
 
@@ -19,7 +21,7 @@ final class AppCoordinator: CoordinatorType {
         self.rootViewController = rootViewController
     }
 
-    // MARK: -
+    // MARK: - Methods
 
     func start() {
         let searchNavigationController = UINavigationController()

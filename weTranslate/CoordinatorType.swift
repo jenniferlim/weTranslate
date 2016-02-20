@@ -7,6 +7,7 @@
 //
 
 protocol CoordinatorType {
+
     var childCoordinators: [CoordinatorType] { get }
     func start()
 }

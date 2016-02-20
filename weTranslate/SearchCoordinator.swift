@@ -10,6 +10,8 @@ import UIKit
 
 final class SearchCoordinator: CoordinatorType {
 
+    // MARK: - Properties
+
     let navigationController: UINavigationController
     var childCoordinators: [CoordinatorType] = []
 

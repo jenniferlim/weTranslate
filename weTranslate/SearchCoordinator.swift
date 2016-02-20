@@ -8,6 +8,8 @@
 
 import UIKit
 
+import TranslateKit
+
 protocol SearchViewControllerDelegate: class {
     func searchViewController(searchViewController: SearchViewController, didSearchWord word: String)
 }
@@ -32,7 +34,13 @@ final class SearchCoordinator: CoordinatorType {
 
 extension SearchCoordinator: SearchViewControllerDelegate {
     func searchViewController(searchViewController: SearchViewController, didSearchWord word: String) {
-        // FIXME: Get the translations and slang definitions using TranslateKit
-
+        let client = Client(wordReferenceApiKey: "API_KEY")
+        
+        client.translate(word: word, from: .English, to: .French) { translation in
+            if let translation = translation {
+                let searchViewModel = SearchViewModel(translation: translation)
+                searchViewController.viewModel = searchViewModel
+            }
+        }
     }
 }

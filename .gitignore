@@ -1,0 +1,14 @@
+*.DS_Store
+*~
+.bundle
+*xcuserdata/
+*build/
+*.mode1v3
+*.pbxuser
+*.xcworkspace
+*.moved-aside/
+*.app.dSYM.zip
+Carthage
+Carthage/Manifest.resolved
+.carthage_cache.yml
+*.xcbkptlist

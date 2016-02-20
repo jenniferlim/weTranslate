@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D70A60161C72668B00A35A30 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70A60151C72668B00A35A30 /* CloudKit.framework */; };
+		382BA5221C743101002CF118 /* TranslateKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382BA5211C743101002CF118 /* TranslateKit.framework */; };
 		D70A601A1C728CC700A35A30 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70A60191C728CC700A35A30 /* SearchViewModel.swift */; };
 		D70A601D1C72AC1100A35A30 /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70A601C1C72AC1100A35A30 /* WordTableViewCell.swift */; };
 		D70A601F1C72B0F000A35A30 /* WordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70A601E1C72B0F000A35A30 /* WordViewModel.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		D70A60141C72663D00A35A30 /* weTranslate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = weTranslate.entitlements; sourceTree = "<group>"; };
 		D70A60151C72668B00A35A30 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		382BA5211C743101002CF118 /* TranslateKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TranslateKit.framework; path = Carthage/Build/iOS/TranslateKit.framework; sourceTree = "<group>"; };
 		D70A60191C728CC700A35A30 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		D70A601C1C72AC1100A35A30 /* WordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
 		D70A601E1C72B0F000A35A30 /* WordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordViewModel.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D70A60161C72668B00A35A30 /* CloudKit.framework in Frameworks */,
+				382BA5221C743101002CF118 /* TranslateKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				D70A60151C72668B00A35A30 /* CloudKit.framework */,
+				382BA5211C743101002CF118 /* TranslateKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -226,6 +230,7 @@
 				D70D72B61C6FD7FA005A722E /* Sources */,
 				D70D72B71C6FD7FA005A722E /* Frameworks */,
 				D70D72B81C6FD7FA005A722E /* Resources */,
+				382BA5241C74322D002CF118 /* Embedded Carthage Framework */,
 			);
 			buildRules = (
 			);
@@ -346,6 +351,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		382BA5241C74322D002CF118 /* Embedded Carthage Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/TranslateKit.framework",
+			);
+			name = "Embedded Carthage Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D70D72B61C6FD7FA005A722E /* Sources */ = {
@@ -496,6 +519,10 @@
 				CODE_SIGN_ENTITLEMENTS = weTranslate/weTranslate.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = weTranslate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wetranslate.weTranslate;
@@ -511,6 +538,10 @@
 				CODE_SIGN_ENTITLEMENTS = weTranslate/weTranslate.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = weTranslate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wetranslate.weTranslate;

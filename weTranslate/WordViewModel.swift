@@ -7,15 +7,16 @@
 //
 
 import Foundation
-//import TranslateKit
+import TranslateKit
 
 struct WordViewModel {
 
-    // FIXME:
-    //    init(word: Word) {
-    //
-    //    }
+    let word: String
+    let sense: String
 
-    let word: String = "bras nm"
-    let sense: String = "corps"
+    init(word: TranslateKit.Word) {
+        self.word = word.term
+        self.sense = word.sense
+    }
+
 }

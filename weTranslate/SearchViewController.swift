@@ -8,13 +8,17 @@
 
 import UIKit
 
+import TranslateKit
+
 final class SearchViewController: UIViewController {
 
     // MARK: - Properties
 
-    var viewModel: SearchViewModel = SearchViewModel() {
+    var viewModel: SearchViewModel? {
         didSet {
-            // FIXME: The view model just got updated, update the view
+            dispatch_async(dispatch_get_main_queue()) { [weak self] () -> Void in
+                self?.tableView.reloadData()
+            }
         }
     }
 
@@ -53,6 +57,10 @@ final class SearchViewController: UIViewController {
         view.backgroundColor = .whiteColor()
         view.addSubview(tableView)
         navigationItem.titleView = searchBar
+        searchBar.delegate = self
+
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.registerClass(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.cellIdentifier)
 
         let margins = view.layoutMarginsGuide
@@ -63,16 +71,46 @@ final class SearchViewController: UIViewController {
     }
 }
 
-// FIXME: implement UITableViewDataSource and UITableViewDelegate
-//extension SearchViewController: UITableViewDataSource {
-//
-//}
-//
-//extension SearchViewController: UITableViewDelegate {
-//
-//}
+extension SearchViewController: UITableViewDataSource {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        guard let searchViewModel = self.viewModel else { return 0 }
+        
+        return searchViewModel.translation.meanings.count
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let searchViewModel = self.viewModel else { return 0 }
+        
+        return searchViewModel.translation.meanings[section].translatedWords.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        guard let searchViewModel = self.viewModel,
+            cell = tableView.dequeueReusableCellWithIdentifier(WordTableViewCell.cellIdentifier, forIndexPath: indexPath) as? WordTableViewCell
+            else { return UITableViewCell() }
+        
+        let wordViewModel = WordViewModel(word: searchViewModel.translation.meanings[indexPath.section].translatedWords[indexPath.row])
+        
+        cell.viewModel = wordViewModel
+        
+        return cell
+    }
+}
 
-// FIXME: implement UISearchDelegate
-//extension SearchViewController: UISearchDelegate {
-//
-//}
+extension SearchViewController: UITableViewDelegate {
+    
+    internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // FIX ME: Push to detail
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    
+    internal func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        if let searchTerm = searchBar.text {
+            self.delegate?.searchViewController(self, didSearchWord: searchTerm)
+        }
+    }
+}

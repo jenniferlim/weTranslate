@@ -68,6 +68,9 @@ final class SearchViewController: UIViewController {
         tableView.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
         tableView.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
         tableView.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
+        
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 }
 

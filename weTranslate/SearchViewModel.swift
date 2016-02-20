@@ -7,8 +7,6 @@
 //
 
 import Foundation
-// FIXME: add TranslateKit dependancy using Carthage
-//import TranslateKit
 import TranslateKit
 
 struct SearchViewModel {

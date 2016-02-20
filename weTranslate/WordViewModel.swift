@@ -18,5 +18,4 @@ struct WordViewModel {
         self.word = word.term
         self.sense = word.sense
     }
-
 }

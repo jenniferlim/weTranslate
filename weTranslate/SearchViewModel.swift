@@ -9,13 +9,15 @@
 import Foundation
 // FIXME: add TranslateKit dependancy using Carthage
 //import TranslateKit
+import TranslateKit
 
 struct SearchViewModel {
-
+    
+    let translation: Translation
+    
     // MARK: - Init
-
-    // FIXME: implement SearchViewModel
-    //    init(translation: Translation, slangDefinitions: [SlangDefinition]) {
-    //
-    //    }
+    
+    init(translation: Translation) {
+        self.translation = translation
+    }
 }

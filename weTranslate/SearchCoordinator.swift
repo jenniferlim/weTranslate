@@ -7,12 +7,7 @@
 //
 
 import UIKit
-
 import TranslateKit
-
-protocol SearchViewControllerDelegate: class {
-    func searchViewController(searchViewController: SearchViewController, didSearchWord word: String)
-}
 
 final class SearchCoordinator: CoordinatorType {
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SearchView: UIView {
+final class SearchHeaderView: UIView {
 
     // MARK: - Properties
 
@@ -22,27 +22,37 @@ final class SearchView: UIView {
         return textField
     }()
 
-    private let fromLanguageButton: UIButton = {
+    private lazy var fromLanguageButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("English", forState: .Normal)
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        button.addTarget(self, action: "selectFromLanguage:", forControlEvents: .TouchUpInside)
         return button
     }()
 
-    private let toLanguageButton: UIButton = {
+    private lazy var toLanguageButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("French", forState: .Normal)
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        button.addTarget(self, action: "selectToLanguage:", forControlEvents: .TouchUpInside)
         return button
     }()
 
-    private let swapButton: UIButton = {
+    private lazy var swapButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "Swap"), forState: .Normal)
+        button.addTarget(self, action: "swap:", forControlEvents: .TouchUpInside)
         return button
+    }()
+
+    private let languagesPickerView: UIPickerView = {
+        let pickerView = UIPickerView()
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        pickerView.hidden = true
+        return pickerView
     }()
 
     private let languageView: UIStackView = {
@@ -75,7 +85,7 @@ final class SearchView: UIView {
 
         bodyView.addArrangedSubview(searchTextField)
         bodyView.addArrangedSubview(languageView)
-
+        bodyView.addArrangedSubview(languagesPickerView)
         addSubview(bodyView)
 
         let margins = layoutMarginsGuide
@@ -91,5 +101,24 @@ final class SearchView: UIView {
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+
+    // MARK: - Methods
+
+    func selectFromLanguage(sender: UIButton?) {
+        UIView.animateWithDuration(0.3) {
+            self.languagesPickerView.hidden = false
+        }
+    }
+
+    func selectToLanguage(sender: UIButton?) {
+        UIView.animateWithDuration(0.3) {
+            self.languagesPickerView.hidden = true
+        }
+    }
+
+    func swap(sender: UIButton?) {
+
     }
 }

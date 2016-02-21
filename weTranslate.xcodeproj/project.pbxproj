@@ -18,9 +18,10 @@
 		D70D72D31C6FD7FA005A722E /* weTranslateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D72D21C6FD7FA005A722E /* weTranslateTests.swift */; };
 		D70D72DE1C6FD7FA005A722E /* weTranslateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D72DD1C6FD7FA005A722E /* weTranslateUITests.swift */; };
 		D7652CAB1C72D30600D7E709 /* UITableViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652CAA1C72D30600D7E709 /* UITableViewCellExtensions.swift */; };
-		D77C65551C79033500622275 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C65541C79033500622275 /* SearchView.swift */; };
+		D77C65551C79033500622275 /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C65541C79033500622275 /* SearchHeaderView.swift */; };
 		D77C65581C79805600622275 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C65571C79805600622275 /* Color.swift */; };
 		D77C655A1C7987D900622275 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C65591C7987D900622275 /* Font.swift */; };
+		D77C655C1C7A118400622275 /* SearchHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C655B1C7A118400622275 /* SearchHeaderViewController.swift */; };
 		D7AC76ED1C6FF0D200AF540A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC76EC1C6FF0D200AF540A /* AppCoordinator.swift */; };
 		D7AC76F11C70EDF400AF540A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC76F01C70EDF400AF540A /* TabBarController.swift */; };
 		D7AC76F31C710C1600AF540A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC76F21C710C1600AF540A /* SearchViewController.swift */; };
@@ -64,9 +65,10 @@
 		D70D72DD1C6FD7FA005A722E /* weTranslateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weTranslateUITests.swift; sourceTree = "<group>"; };
 		D70D72DF1C6FD7FA005A722E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7652CAA1C72D30600D7E709 /* UITableViewCellExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtensions.swift; sourceTree = "<group>"; };
-		D77C65541C79033500622275 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		D77C65541C79033500622275 /* SearchHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		D77C65571C79805600622275 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D77C65591C7987D900622275 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		D77C655B1C7A118400622275 /* SearchHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHeaderViewController.swift; sourceTree = "<group>"; };
 		D7AC76EC1C6FF0D200AF540A /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D7AC76F01C70EDF400AF540A /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7AC76F21C710C1600AF540A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -123,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				D70A601C1C72AC1100A35A30 /* WordTableViewCell.swift */,
-				D77C65541C79033500622275 /* SearchView.swift */,
+				D77C65541C79033500622275 /* SearchHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -214,6 +216,7 @@
 			children = (
 				D7AC76F01C70EDF400AF540A /* TabBarController.swift */,
 				D7AC76F21C710C1600AF540A /* SearchViewController.swift */,
+				D77C655B1C7A118400622275 /* SearchHeaderViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			files = (
 				D70A601F1C72B0F000A35A30 /* WordViewModel.swift in Sources */,
 				D7AC76F31C710C1600AF540A /* SearchViewController.swift in Sources */,
+				D77C655C1C7A118400622275 /* SearchHeaderViewController.swift in Sources */,
 				D70A601A1C728CC700A35A30 /* SearchViewModel.swift in Sources */,
 				D7AC76F51C7113A700AF540A /* SearchCoordinator.swift in Sources */,
 				D70A601D1C72AC1100A35A30 /* WordTableViewCell.swift in Sources */,
@@ -404,7 +408,7 @@
 				D7AC76F11C70EDF400AF540A /* TabBarController.swift in Sources */,
 				D70D72BE1C6FD7FA005A722E /* WindowController.swift in Sources */,
 				D7652CAB1C72D30600D7E709 /* UITableViewCellExtensions.swift in Sources */,
-				D77C65551C79033500622275 /* SearchView.swift in Sources */,
+				D77C65551C79033500622275 /* SearchHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

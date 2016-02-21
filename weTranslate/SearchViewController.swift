@@ -9,6 +9,10 @@
 import UIKit
 import TranslateKit
 
+protocol SearchViewControllerDelegate: class {
+    func searchViewController(searchViewController: SearchViewController, didSearchWord word: String)
+}
+
 final class SearchViewController: UIViewController {
 
     // MARK: - Properties
@@ -23,10 +27,9 @@ final class SearchViewController: UIViewController {
 
     private weak var delegate: SearchViewControllerDelegate?
 
-    private let searchView: SearchView = {
-        let view = SearchView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    private let searchHeaderViewController: SearchHeaderViewController = {
+        let searchHeaderViewController = SearchHeaderViewController()
+        return searchHeaderViewController
     }()
 
     private let tableView: UITableView = {
@@ -69,12 +72,16 @@ final class SearchViewController: UIViewController {
 
         view.backgroundColor = Color.brand
 
-        bodyView.addArrangedSubview(searchView)
-        bodyView.addArrangedSubview(tableView)
-        view.addSubview(bodyView)
+        addChildViewController(searchHeaderViewController)
+        searchHeaderViewController.didMoveToParentViewController(self)
+        searchHeaderViewController.delegate = self
 
         tableView.delegate = self
         tableView.dataSource = self
+
+        bodyView.addArrangedSubview(searchHeaderViewController.view)
+        bodyView.addArrangedSubview(tableView)
+        view.addSubview(bodyView)
 
         bodyView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
         bodyView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
@@ -128,11 +135,8 @@ extension SearchViewController: UITableViewDelegate {
     }
 }
 
-extension SearchViewController: UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        if let searchTerm = searchBar.text {
-            self.delegate?.searchViewController(self, didSearchWord: searchTerm)
-        }
+extension SearchViewController: SearchHeaderViewControllerDelegate {
+    func searchHeaderViewController(searchHeaderViewController: SearchHeaderViewController, didSearchWord word: String) {
+        delegate?.searchViewController(self, didSearchWord: word)
     }
 }

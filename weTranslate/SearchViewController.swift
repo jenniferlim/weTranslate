@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 import TranslateKit
 
 final class SearchViewController: UIViewController {
@@ -24,15 +23,30 @@ final class SearchViewController: UIViewController {
 
     private weak var delegate: SearchViewControllerDelegate?
 
-    private let searchBar: UISearchBar = {
-        let searchBar = UISearchBar(frame: .zero)
-        return searchBar
+    private let searchView: SearchView = {
+        let view = SearchView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.registerClass(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.cellIdentifier)
         return tableView
+    }()
+
+    private let bodyView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .Vertical
+        stackView.spacing = 5
+        stackView.opaque = true
+        stackView.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        stackView.layoutMarginsRelativeArrangement = true
+        return stackView
     }()
 
 
@@ -52,25 +66,30 @@ final class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
 
-        view.backgroundColor = .whiteColor()
-        view.addSubview(tableView)
-        navigationItem.titleView = searchBar
-        searchBar.delegate = self
+        view.backgroundColor = Color.brand
+
+        bodyView.addArrangedSubview(searchView)
+        bodyView.addArrangedSubview(tableView)
+        view.addSubview(bodyView)
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerClass(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.cellIdentifier)
 
-        let margins = view.layoutMarginsGuide
-        tableView.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true
-        tableView.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
-        tableView.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
-        tableView.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
-        
-        tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableViewAutomaticDimension
+        bodyView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
+        bodyView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        bodyView.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
+        bodyView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = true
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBarHidden = false
     }
 }
 
@@ -104,14 +123,14 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UITableViewDelegate {
     
-    internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // FIX ME: Push to detail
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // FIXME: Push to detail
     }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     
-    internal func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         if let searchTerm = searchBar.text {
             self.delegate?.searchViewController(self, didSearchWord: searchTerm)
         }

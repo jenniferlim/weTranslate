@@ -107,13 +107,13 @@ final class SearchHeaderView: UIView {
     // MARK: - Methods
 
     func selectFromLanguage(sender: UIButton?) {
-        UIView.animateWithDuration(0.3) {
+        animate {
             self.languagesPickerView.hidden = false
         }
     }
 
     func selectToLanguage(sender: UIButton?) {
-        UIView.animateWithDuration(0.3) {
+        animate {
             self.languagesPickerView.hidden = true
         }
     }

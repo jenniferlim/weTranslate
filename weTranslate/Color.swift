@@ -10,5 +10,5 @@ import UIKit
 
 final class Color {
 
-    static let brand = UIColor(red: 0.961, green: 0.314, blue: 0.235, alpha: 1)
+    static let brand = UIColor(red: 245/255, green: 255/80, blue: 255/60, alpha: 1)
 }

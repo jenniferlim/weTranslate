@@ -12,46 +12,44 @@ final class SearchHeaderView: UIView {
 
     // MARK: - Properties
 
-    private let searchTextField: UITextField = {
+    let searchTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Type here..."
         textField.textAlignment = .Center
-        textField.backgroundColor = UIColor.whiteColor()
+        textField.backgroundColor = .whiteColor()
         textField.borderStyle = UITextBorderStyle.RoundedRect
         return textField
     }()
 
-    private lazy var fromLanguageButton: UIButton = {
+    let fromLanguageButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("English", forState: .Normal)
-        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        button.addTarget(self, action: "selectFromLanguage:", forControlEvents: .TouchUpInside)
+        button.setTitleColor(.whiteColor(), forState: .Normal)
         return button
     }()
 
-    private lazy var toLanguageButton: UIButton = {
+    let toLanguageButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("French", forState: .Normal)
-        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        button.addTarget(self, action: "selectToLanguage:", forControlEvents: .TouchUpInside)
+        button.setTitleColor(.whiteColor(), forState: .Normal)
         return button
     }()
 
-    private lazy var swapButton: UIButton = {
+    let swapButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "Swap"), forState: .Normal)
-        button.addTarget(self, action: "swap:", forControlEvents: .TouchUpInside)
         return button
     }()
 
-    private let languagesPickerView: UIPickerView = {
+    let languagesPickerView: UIPickerView = {
         let pickerView = UIPickerView()
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         pickerView.hidden = true
+        pickerView.alpha = 0
         return pickerView
     }()
 
@@ -101,24 +99,5 @@ final class SearchHeaderView: UIView {
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-
-    // MARK: - Methods
-
-    func selectFromLanguage(sender: UIButton?) {
-        animate {
-            self.languagesPickerView.hidden = false
-        }
-    }
-
-    func selectToLanguage(sender: UIButton?) {
-        animate {
-            self.languagesPickerView.hidden = true
-        }
-    }
-
-    func swap(sender: UIButton?) {
-
     }
 }

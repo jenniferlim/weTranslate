@@ -46,6 +46,8 @@ final class TranslationView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .Vertical
         stackView.spacing = 10
+        stackView.layoutMargins = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
+        stackView.layoutMarginsRelativeArrangement = true
         return stackView
     }()
     
@@ -56,11 +58,10 @@ final class TranslationView: UIView {
         
         super.init(frame: frame)
         
-        backgroundColor = .whiteColor()
+        backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
         opaque = true
-        
-        wordLabel.text = "Test"//viewModel.word.capitalizedString
-        senseLabel.text = "subtitle"//"(\(viewModel.sense))"
+        layer.borderColor = UIColor(red: 245/255, green: 80/255, blue: 60/255, alpha: 1).CGColor
+        layer.borderWidth = 1
         
         bodyView.addArrangedSubview(wordLabel)
         bodyView.addArrangedSubview(senseLabel)

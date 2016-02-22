@@ -81,10 +81,10 @@ final class SearchViewController: UIViewController {
         searchHeaderViewController.didMoveToParentViewController(self)
         searchHeaderViewController.delegate = self
 
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.registerClass(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.cellIdentifier)
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellIdentifier)
+        tableView.delegate = self
+        tableView.dataSource = self
 
         bodyView.addArrangedSubview(searchHeaderViewController.view)
         bodyView.addArrangedSubview(tableView)
@@ -130,7 +130,6 @@ extension SearchViewController: UITableViewDataSource {
         let wordViewModel = WordViewModel(word: searchViewModel.translation.meanings[indexPath.section].translatedWords[indexPath.row])
         
         if indexPath.row == 0  && indexPath.section == 0 {
-            // Header cell
             translationView.viewModel = wordViewModel
             return TableViewCell(reuseIdentifier: "TranslationTableViewCell", view: translationView)
             

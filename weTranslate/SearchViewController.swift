@@ -99,8 +99,6 @@ final class SearchViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = true
-        
-        delegate?.searchViewController(self, didSearchWord: "Arm")
     }
 
     override func viewWillDisappear(animated: Bool) {

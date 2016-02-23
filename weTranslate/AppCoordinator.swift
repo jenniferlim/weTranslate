@@ -15,6 +15,27 @@ final class AppCoordinator: CoordinatorType {
     let rootViewController: TabBarController
     var childCoordinators: [CoordinatorType] = []
 
+    private let searchNavigationController: UINavigationController = {
+        let searchNavigationController = UINavigationController()
+        searchNavigationController.tabBarItem.image = UIImage(named: "search")
+        searchNavigationController.tabBarItem.title = "Search"
+        return searchNavigationController
+    }()
+
+    private let favoriteNavigationController: UINavigationController = {
+        let favoriteNavigationController = UINavigationController()
+        favoriteNavigationController.tabBarItem.image = UIImage(named: "star")
+        favoriteNavigationController.tabBarItem.title = "Favorite"
+        return favoriteNavigationController
+    }()
+    
+    private let settingsNavigationController: UINavigationController = {
+        let settingsNavigationController = UINavigationController()
+        settingsNavigationController.tabBarItem.image = UIImage(named: "settings")
+        settingsNavigationController.tabBarItem.title = "Settings"
+        return settingsNavigationController
+    }()
+
     // MARK: - Initialization
 
     init(rootViewController: TabBarController) {
@@ -24,18 +45,30 @@ final class AppCoordinator: CoordinatorType {
     // MARK: - Methods
 
     func start() {
-        let searchNavigationController = UINavigationController()
         rootViewController.viewControllers = [
-            searchNavigationController
+            searchNavigationController,
+            favoriteNavigationController,
+            settingsNavigationController
         ]
 
-        showSearch(searchNavigationController)
+        startSearch(searchNavigationController)
+        startFavorite(favoriteNavigationController)
+        startSettings(settingsNavigationController)
+        
+        rootViewController.selectedIndex = 0
     }
 
-    func showSearch(navigationController: UINavigationController) {
+    func startSearch(navigationController: UINavigationController) {
         let searchCoordinator = SearchCoordinator(navigationController: navigationController)
         searchCoordinator.start()
-        rootViewController.selectedIndex = 0
         childCoordinators.append(searchCoordinator)
+    }
+    
+    func startFavorite(navigationController: UINavigationController) {
+        // FIXME
+    }
+    
+    func startSettings(navigationController: UINavigationController) {
+        // FIXME
     }
 }

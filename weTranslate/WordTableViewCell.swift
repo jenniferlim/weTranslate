@@ -15,8 +15,8 @@ final class WordTableViewCell: UITableViewCell {
     var viewModel: WordViewModel? {
         didSet {
             if let viewModel = viewModel {
-                wordLabel.text = viewModel.word
-                senseLabel.text = viewModel.sense
+                wordLabel.text = viewModel.word.capitalizedString
+                senseLabel.text = "(\(viewModel.sense))"
             }
         }
     }
@@ -25,6 +25,8 @@ final class WordTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
+        label.textColor = UIColor(red: 247/255, green: 80/255, blue: 50/255, alpha: 1)
+        label.font = UIFont(name: "HelveticaNeue", size: 15.0)
         return label
     }()
 
@@ -32,6 +34,8 @@ final class WordTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
+        label.textColor = UIColor(red: 146/255, green: 146/255, blue: 146/255, alpha: 1)
+        label.font = UIFont(name: "HelveticaNeue", size: 12.0)
         return label
     }()
 
@@ -47,7 +51,7 @@ final class WordTableViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .Vertical
-        stackView.spacing = 4
+        stackView.spacing = 5
         return stackView
     }()
 
@@ -65,6 +69,12 @@ final class WordTableViewCell: UITableViewCell {
         bodyView.addArrangedSubview(senseLabel)
         columnView.addArrangedSubview(bodyView)
         contentView.addSubview(columnView)
+        
+        let margins = contentView.layoutMarginsGuide
+        columnView.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true
+        columnView.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
+        columnView.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
+        columnView.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
     }
 
     required init?(coder aDecoder: NSCoder) {

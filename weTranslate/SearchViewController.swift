@@ -35,10 +35,15 @@ final class SearchViewController: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.estimatedRowHeight = 44
+        tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.registerClass(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.cellIdentifier)
         return tableView
+    }()
+
+    private let translationView: TranslationView = {
+        let translationView = TranslationView(frame: .zero)
+        translationView.translatesAutoresizingMaskIntoConstraints = false
+        return translationView
     }()
 
     private let bodyView: UIStackView = {
@@ -76,6 +81,8 @@ final class SearchViewController: UIViewController {
         searchHeaderViewController.didMoveToParentViewController(self)
         searchHeaderViewController.delegate = self
 
+        tableView.registerClass(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.cellIdentifier)
+        tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
 
@@ -92,6 +99,8 @@ final class SearchViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = true
+        
+        delegate?.searchViewController(self, didSearchWord: "Arm")
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -116,15 +125,20 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        guard let searchViewModel = self.viewModel,
-            cell = tableView.dequeueReusableCellWithIdentifier(WordTableViewCell.cellIdentifier, forIndexPath: indexPath) as? WordTableViewCell
-            else { return UITableViewCell() }
+        guard let searchViewModel = self.viewModel else { return UITableViewCell() }
         
         let wordViewModel = WordViewModel(word: searchViewModel.translation.meanings[indexPath.section].translatedWords[indexPath.row])
         
-        cell.viewModel = wordViewModel
+        if indexPath.row == 0  && indexPath.section == 0 {
+            translationView.viewModel = wordViewModel
+            return TableViewCell(reuseIdentifier: "TranslationTableViewCell", view: translationView)
+            
+        } else if let cell = tableView.dequeueReusableCellWithIdentifier(WordTableViewCell.cellIdentifier, forIndexPath: indexPath) as? WordTableViewCell {
+            cell.viewModel = wordViewModel
+            return cell
+        }
         
-        return cell
+        return UITableViewCell()
     }
 }
 

@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3828F0751C7A6F9B0023E904 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828F0741C7A6F9B0023E904 /* TableViewCell.swift */; };
 		382BA5221C743101002CF118 /* TranslateKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382BA5211C743101002CF118 /* TranslateKit.framework */; };
+		383F423B1C7A211C00B7C35A /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F423A1C7A211C00B7C35A /* TranslationView.swift */; };
 		D70A60161C72668B00A35A30 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70A60151C72668B00A35A30 /* CloudKit.framework */; };
 		D70A601A1C728CC700A35A30 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70A60191C728CC700A35A30 /* SearchViewModel.swift */; };
 		D70A601D1C72AC1100A35A30 /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70A601C1C72AC1100A35A30 /* WordTableViewCell.swift */; };
@@ -48,7 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3828F0741C7A6F9B0023E904 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		382BA5211C743101002CF118 /* TranslateKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TranslateKit.framework; path = Carthage/Build/iOS/TranslateKit.framework; sourceTree = "<group>"; };
+		383F423A1C7A211C00B7C35A /* TranslationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
 		D70A60141C72663D00A35A30 /* weTranslate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = weTranslate.entitlements; sourceTree = "<group>"; };
 		D70A60151C72668B00A35A30 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D70A60191C728CC700A35A30 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -105,6 +109,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3828F0721C7A6F730023E904 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				D77C65571C79805600622275 /* Color.swift */,
+				D77C65591C7987D900622275 /* Font.swift */,
+			);
+			name = Styles;
+			sourceTree = "<group>";
+		};
+		3828F0731C7A6F840023E904 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3828F0741C7A6F9B0023E904 /* TableViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		D70A60171C726C7500A35A30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +149,7 @@
 			children = (
 				D70A601C1C72AC1100A35A30 /* WordTableViewCell.swift */,
 				D77C65541C79033500622275 /* SearchHeaderView.swift */,
+				383F423A1C7A211C00B7C35A /* TranslationView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -161,7 +183,7 @@
 				D7AC76F81C71704C00AF540A /* ViewControllers */,
 				D70A60181C728CB200A35A30 /* ViewModels */,
 				D70A601B1C72AB8E00A35A30 /* Views */,
-				D77C65561C79803E00622275 /* Shared UI */,
+				D77C65561C79803E00622275 /* Shared */,
 				D7652CA91C72D22000D7E709 /* Extensions */,
 				D7AC76FA1C71709C00AF540A /* Resources */,
 			);
@@ -194,14 +216,14 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		D77C65561C79803E00622275 /* Shared UI */ = {
+		D77C65561C79803E00622275 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				D77C65571C79805600622275 /* Color.swift */,
-				D77C65591C7987D900622275 /* Font.swift */,
+				3828F0721C7A6F730023E904 /* Styles */,
+				3828F0731C7A6F840023E904 /* Views */,
 				D77C655F1C7A5BE400622275 /* Animation.swift */,
 			);
-			name = "Shared UI";
+			name = Shared;
 			sourceTree = "<group>";
 		};
 		D7AC76EB1C6FF0B500AF540A /* Coordinators */ = {
@@ -409,8 +431,10 @@
 				D77C655A1C7987D900622275 /* Font.swift in Sources */,
 				D7AC76ED1C6FF0D200AF540A /* AppCoordinator.swift in Sources */,
 				D7AC76F11C70EDF400AF540A /* TabBarController.swift in Sources */,
+				383F423B1C7A211C00B7C35A /* TranslationView.swift in Sources */,
 				D70D72BE1C6FD7FA005A722E /* WindowController.swift in Sources */,
 				D7652CAB1C72D30600D7E709 /* UITableViewCellExtensions.swift in Sources */,
+				3828F0751C7A6F9B0023E904 /* TableViewCell.swift in Sources */,
 				D77C65601C7A5BE400622275 /* Animation.swift in Sources */,
 				D77C65551C79033500622275 /* SearchHeaderView.swift in Sources */,
 			);

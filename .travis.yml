@@ -5,7 +5,8 @@ before_install:
   - brew update
   - brew upgrade xctool
   - brew install carthage
-  - carthage bootstrap --platform iOS --verbose
+  - rm -rf Carthage/
+  - carthage update --platform iOS --verbose
 
 xcode_project: weTranslate.xcodeproj
 xcode_scheme: weTranslate

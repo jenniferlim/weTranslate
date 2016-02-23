@@ -24,7 +24,9 @@
 		D77C65581C79805600622275 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C65571C79805600622275 /* Color.swift */; };
 		D77C655A1C7987D900622275 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C65591C7987D900622275 /* Font.swift */; };
 		D77C655C1C7A118400622275 /* SearchHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C655B1C7A118400622275 /* SearchHeaderViewController.swift */; };
+		D77C655E1C7A576000622275 /* SearchHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C655D1C7A576000622275 /* SearchHeaderViewModel.swift */; };
 		D77C65601C7A5BE400622275 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C655F1C7A5BE400622275 /* Animation.swift */; };
+		D77C65621C7AC3A800622275 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D77C65611C7AC3A800622275 /* Localizable.strings */; };
 		D7AC76ED1C6FF0D200AF540A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC76EC1C6FF0D200AF540A /* AppCoordinator.swift */; };
 		D7AC76F11C70EDF400AF540A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC76F01C70EDF400AF540A /* TabBarController.swift */; };
 		D7AC76F31C710C1600AF540A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC76F21C710C1600AF540A /* SearchViewController.swift */; };
@@ -74,7 +76,9 @@
 		D77C65571C79805600622275 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D77C65591C7987D900622275 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		D77C655B1C7A118400622275 /* SearchHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHeaderViewController.swift; sourceTree = "<group>"; };
+		D77C655D1C7A576000622275 /* SearchHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHeaderViewModel.swift; sourceTree = "<group>"; };
 		D77C655F1C7A5BE400622275 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		D77C65611C7AC3A800622275 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		D7AC76EC1C6FF0D200AF540A /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D7AC76F01C70EDF400AF540A /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7AC76F21C710C1600AF540A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 			children = (
 				D70A60191C728CC700A35A30 /* SearchViewModel.swift */,
 				D70A601E1C72B0F000A35A30 /* WordViewModel.swift */,
+				D77C655D1C7A576000622275 /* SearchHeaderViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 				D70D72C61C6FD7FA005A722E /* LaunchScreen.storyboard */,
 				D70D72C91C6FD7FA005A722E /* Info.plist */,
 				D70A60141C72663D00A35A30 /* weTranslate.entitlements */,
+				D77C65611C7AC3A800622275 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -377,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D70D72C81C6FD7FA005A722E /* LaunchScreen.storyboard in Resources */,
+				D77C65621C7AC3A800622275 /* Localizable.strings in Resources */,
 				D70D72C51C6FD7FA005A722E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D70A601F1C72B0F000A35A30 /* WordViewModel.swift in Sources */,
+				D77C655E1C7A576000622275 /* SearchHeaderViewModel.swift in Sources */,
 				D7AC76F31C710C1600AF540A /* SearchViewController.swift in Sources */,
 				D77C655C1C7A118400622275 /* SearchHeaderViewController.swift in Sources */,
 				D70A601A1C728CC700A35A30 /* SearchViewModel.swift in Sources */,

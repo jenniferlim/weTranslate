@@ -97,6 +97,7 @@ extension SearchHeaderViewController: UITextFieldDelegate {
         if let word = textField.text {
             delegate?.searchHeaderViewController(self, didSearchWord: word)
         }
+        textField.resignFirstResponder()
         return true
     }
 }

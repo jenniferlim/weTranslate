@@ -10,6 +10,8 @@
 		3828F0751C7A6F9B0023E904 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828F0741C7A6F9B0023E904 /* TableViewCell.swift */; };
 		382BA5221C743101002CF118 /* TranslateKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382BA5211C743101002CF118 /* TranslateKit.framework */; };
 		383F423B1C7A211C00B7C35A /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F423A1C7A211C00B7C35A /* TranslationView.swift */; };
+		3873D27C1C7D5FE100918AA7 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873D27B1C7D5FE100918AA7 /* Button.swift */; };
+		3873D27E1C7D633100918AA7 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873D27D1C7D633100918AA7 /* Label.swift */; };
 		D70A60161C72668B00A35A30 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70A60151C72668B00A35A30 /* CloudKit.framework */; };
 		D70A601A1C728CC700A35A30 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70A60191C728CC700A35A30 /* SearchViewModel.swift */; };
 		D70A601D1C72AC1100A35A30 /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70A601C1C72AC1100A35A30 /* WordTableViewCell.swift */; };
@@ -57,6 +59,9 @@
 		3828F0741C7A6F9B0023E904 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		382BA5211C743101002CF118 /* TranslateKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TranslateKit.framework; path = Carthage/Build/iOS/TranslateKit.framework; sourceTree = "<group>"; };
 		383F423A1C7A211C00B7C35A /* TranslationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
+		3873D27B1C7D5FE100918AA7 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		3873D27D1C7D633100918AA7 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		D70A60141C72663D00A35A30 /* weTranslate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = weTranslate.entitlements; sourceTree = "<group>"; };
 		D70A60151C72668B00A35A30 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D70A60191C728CC700A35A30 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		D70A601C1C72AC1100A35A30 /* WordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				3828F0741C7A6F9B0023E904 /* TableViewCell.swift */,
+				3873D27B1C7D5FE100918AA7 /* Button.swift */,
+				3873D27D1C7D633100918AA7 /* Label.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -452,6 +459,7 @@
 				D7AC76F31C710C1600AF540A /* SearchViewController.swift in Sources */,
 				D77C655C1C7A118400622275 /* SearchHeaderViewController.swift in Sources */,
 				D70A601A1C728CC700A35A30 /* SearchViewModel.swift in Sources */,
+				3873D27C1C7D5FE100918AA7 /* Button.swift in Sources */,
 				D7AC76F51C7113A700AF540A /* SearchCoordinator.swift in Sources */,
 				D70A601D1C72AC1100A35A30 /* WordTableViewCell.swift in Sources */,
 				D7DFF5511C828545001BFAAC /* Localize.swift in Sources */,
@@ -465,6 +473,7 @@
 				D7652CAB1C72D30600D7E709 /* UITableViewCellExtensions.swift in Sources */,
 				3828F0751C7A6F9B0023E904 /* TableViewCell.swift in Sources */,
 				D77C65601C7A5BE400622275 /* Animation.swift in Sources */,
+				3873D27E1C7D633100918AA7 /* Label.swift in Sources */,
 				D77C65551C79033500622275 /* SearchHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

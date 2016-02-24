@@ -26,19 +26,13 @@ final class SearchHeaderView: UIView {
         return textField
     }()
 
-    let fromLanguageButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("English", forState: .Normal)
-        button.setTitleColor(.whiteColor(), forState: .Normal)
+    let fromLanguageButton: Button = {
+        let button = Button(title: "English", color: .whiteColor())
         return button
     }()
 
-    let toLanguageButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("French", forState: .Normal)
-        button.setTitleColor(.whiteColor(), forState: .Normal)
+    let toLanguageButton: Button = {
+        let button = Button(title: "French", color: .whiteColor())
         return button
     }()
 

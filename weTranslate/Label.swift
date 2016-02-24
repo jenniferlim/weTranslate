@@ -11,9 +11,9 @@ import UIKit
 final class Label: UILabel {
 
     // MARK: - Init
-    
+
     init(textColor: UIColor, font: UIFont?) {
-        super.init(frame: CGRectZero)
+        super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         self.textColor = textColor
         self.font = font
@@ -22,5 +22,4 @@ final class Label: UILabel {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

@@ -9,18 +9,16 @@
 import UIKit
 
 final class Button: UIButton {
-    
+
     // MARK: - Init
-    
+
     init(title: String, color: UIColor) {
-        
-        super.init(frame: CGRectZero)
-        
+        super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         setTitle(title, forState: .Normal)
         setTitleColor(color, forState: .Normal)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

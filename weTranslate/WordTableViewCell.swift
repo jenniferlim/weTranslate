@@ -21,18 +21,16 @@ final class WordTableViewCell: UITableViewCell {
         }
     }
 
-    private let wordLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private let wordLabel: Label = {
+        let label = Label(textColor: UIColor(red: 247/255, green: 80/255, blue: 50/255, alpha: 1), font: UIFont(name: "HelveticaNeue", size: 15.0))
         label.numberOfLines = 0
         label.textColor = Color.brand
         label.font = Font.font()
         return label
     }()
 
-    private let senseLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private let senseLabel: Label = {
+        let label = Label(textColor: UIColor(red: 146/255, green: 146/255, blue: 146/255, alpha: 1), font: UIFont(name: "HelveticaNeue", size: 12.0))
         label.numberOfLines = 0
         label.textColor = Color.standardText
         label.font = Font.font(style: .Caption1)

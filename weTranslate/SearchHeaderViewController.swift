@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import TranslateKit
 
 protocol SearchHeaderViewControllerDelegate: class {
-    func searchHeaderViewController(searchHeaderViewController: SearchHeaderViewController, didSearchWord word: String)
+    func searchHeaderViewController(searchHeaderViewController: SearchHeaderViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language)
 }
 
 final class SearchHeaderViewController: UIViewController {
+
+    // MARK: - Type
+
+    private enum State {
+        case Default
+        case Keyboard
+        case Picker
+    }
+
 
     // MARK: - Properties
 
@@ -32,7 +42,20 @@ final class SearchHeaderViewController: UIViewController {
         return view
     }()
 
-    private var isExpended: Bool = false
+    private var state: State = .Default {
+        didSet {
+            switch state {
+            case .Default:
+                searchHeaderView.searchTextField.resignFirstResponder()
+                toggle(expended: false)
+            case .Keyboard:
+                toggle(expended: false)
+            case .Picker:
+                searchHeaderView.searchTextField.resignFirstResponder()
+                toggle(expended: true)
+            }
+        }
+    }
 
 
     // MARK: - Init
@@ -67,24 +90,40 @@ final class SearchHeaderViewController: UIViewController {
         viewModel = SearchHeaderViewModel()
     }
 
+
+    // MARK: - UIResponder
+
+    override func resignFirstResponder() -> Bool {
+        state = .Default
+        return true
+    }
+
+
     // MARK: - Methods
 
     func swap(sender: UIButton?) {
         viewModel.swap()
+        search()
     }
 
     func selectLanguage(sender: UIButton?) {
-        toggle()
+        state = state == .Picker ? .Default : .Picker
     }
 
 
     // MARK: - Private
 
-    private func toggle() {
-        isExpended = !isExpended
-        self.searchHeaderView.languagesPickerView.alpha = self.isExpended ? 1 : 0
+    private func toggle(expended expended: Bool) {
+        self.searchHeaderView.languagesPickerView.alpha = expended ? 1 : 0
         animate {
-            self.searchHeaderView.languagesPickerView.hidden = !self.isExpended
+            self.searchHeaderView.languagesPickerView.hidden = !expended
+        }
+    }
+
+    private func search() {
+        if let word = searchHeaderView.searchTextField.text {
+            delegate?.searchHeaderViewController(self, didSearchWord: word, fromLanguage: viewModel.fromLanguage, toLanguage: viewModel.toLanguage)
+            state = .Default
         }
     }
 }
@@ -93,12 +132,12 @@ final class SearchHeaderViewController: UIViewController {
 extension SearchHeaderViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-
-        if let word = textField.text {
-            delegate?.searchHeaderViewController(self, didSearchWord: word)
-        }
-        textField.resignFirstResponder()
+        search()
         return true
+    }
+
+    func textFieldDidBeginEditing(textField: UITextField) {
+        state = .Keyboard
     }
 }
 
@@ -124,5 +163,6 @@ extension SearchHeaderViewController: UIPickerViewDelegate {
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         viewModel.selectedLanguage = viewModel.languages[row]
+        search()
     }
 }

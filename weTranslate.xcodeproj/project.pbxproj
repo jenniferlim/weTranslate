@@ -12,6 +12,7 @@
 		383F423B1C7A211C00B7C35A /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F423A1C7A211C00B7C35A /* TranslationView.swift */; };
 		3873D27C1C7D5FE100918AA7 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873D27B1C7D5FE100918AA7 /* Button.swift */; };
 		3873D27E1C7D633100918AA7 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873D27D1C7D633100918AA7 /* Label.swift */; };
+		38D0A1711C7D849B00AFEC33 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D0A1701C7D849B00AFEC33 /* Store.swift */; };
 		D70A60161C72668B00A35A30 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70A60151C72668B00A35A30 /* CloudKit.framework */; };
 		D70A601A1C728CC700A35A30 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70A60191C728CC700A35A30 /* SearchViewModel.swift */; };
 		D70A601D1C72AC1100A35A30 /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70A601C1C72AC1100A35A30 /* WordTableViewCell.swift */; };
@@ -63,6 +64,7 @@
 		383F423A1C7A211C00B7C35A /* TranslationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
 		3873D27B1C7D5FE100918AA7 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		3873D27D1C7D633100918AA7 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		38D0A1701C7D849B00AFEC33 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		D70A60141C72663D00A35A30 /* weTranslate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = weTranslate.entitlements; sourceTree = "<group>"; };
 		D70A60151C72668B00A35A30 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D70A60191C728CC700A35A30 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -144,6 +146,14 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		38D0A16F1C7D847900AFEC33 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				38D0A1701C7D849B00AFEC33 /* Store.swift */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
 		D70A60171C726C7500A35A30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +207,7 @@
 		D70D72BC1C6FD7FA005A722E /* weTranslate */ = {
 			isa = PBXGroup;
 			children = (
+				38D0A16F1C7D847900AFEC33 /* Store */,
 				D7AC76F91C71707B00AF540A /* Application */,
 				D7AC76EB1C6FF0B500AF540A /* Coordinators */,
 				D7AC76F81C71704C00AF540A /* ViewControllers */,
@@ -477,6 +488,7 @@
 				D7AC76F11C70EDF400AF540A /* TabBarController.swift in Sources */,
 				383F423B1C7A211C00B7C35A /* TranslationView.swift in Sources */,
 				D70D72BE1C6FD7FA005A722E /* WindowController.swift in Sources */,
+				38D0A1711C7D849B00AFEC33 /* Store.swift in Sources */,
 				D7652CAB1C72D30600D7E709 /* UITableViewCellExtensions.swift in Sources */,
 				3828F0751C7A6F9B0023E904 /* TableViewCell.swift in Sources */,
 				D77C65601C7A5BE400622275 /* Animation.swift in Sources */,

@@ -25,7 +25,7 @@ final class WordTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = UIColor(red: 247/255, green: 80/255, blue: 50/255, alpha: 1)
+        label.textColor = Color.brand
         label.font = UIFont(name: "HelveticaNeue", size: 15.0)
         return label
     }()
@@ -34,7 +34,7 @@ final class WordTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = UIColor(red: 146/255, green: 146/255, blue: 146/255, alpha: 1)
+        label.textColor = Color.standardText
         label.font = UIFont(name: "HelveticaNeue", size: 12.0)
         return label
     }()

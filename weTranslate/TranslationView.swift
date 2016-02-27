@@ -25,7 +25,7 @@ final class TranslationView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = UIColor(red: 247/255, green: 80/255, blue: 50/255, alpha: 1)
+        label.textColor = Color.brand
         label.font = UIFont(name: "HelveticaNeue", size: 36.0)
         label.textAlignment = NSTextAlignment.Center
         return label
@@ -35,7 +35,7 @@ final class TranslationView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = UIColor(red: 247/255, green: 80/255, blue: 50/255, alpha: 1)
+        label.textColor = Color.brand
         label.font = UIFont(name: "HelveticaNeue", size: 10.0)
         label.textAlignment = NSTextAlignment.Center
         return label
@@ -58,9 +58,9 @@ final class TranslationView: UIView {
         
         super.init(frame: frame)
         
-        backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+        backgroundColor = Color.background
         opaque = true
-        layer.borderColor = UIColor(red: 245/255, green: 80/255, blue: 60/255, alpha: 1).CGColor
+        layer.borderColor = Color.brand.CGColor
         layer.borderWidth = 1
         
         bodyView.addArrangedSubview(wordLabel)

@@ -69,6 +69,8 @@ final class AppCoordinator: CoordinatorType {
     }
     
     func startSettings(navigationController: UINavigationController) {
-        // FIXME
+        let settingsCoordinator = SettingsCoordinator(navigationController: navigationController)
+        settingsCoordinator.start()
+        childCoordinators.append(settingsCoordinator)
     }
 }

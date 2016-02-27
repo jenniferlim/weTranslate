@@ -1,0 +1,9 @@
+git_url "https://lionel-alves@bitbucket.org/lionel-alves/certificates.git"
+
+type "development" # The default type, can be: appstore, adhoc or development
+
+app_identifier "com.fluen.fluenapp" 
+username "alves.lionel5@gmail.com" # Your Apple Developer Portal username
+
+# For all available options run `match --help`
+# Remove the # in the beginning of the line to enable the other options

@@ -47,12 +47,12 @@ final class SearchHeaderViewController: UIViewController {
             switch state {
             case .Default:
                 searchHeaderView.searchTextField.resignFirstResponder()
-                toggle(expended: false)
+                toggle(expanded: false)
             case .Keyboard:
-                toggle(expended: false)
+                toggle(expanded: false)
             case .Picker:
                 searchHeaderView.searchTextField.resignFirstResponder()
-                toggle(expended: true)
+                toggle(expanded: true)
             }
         }
     }
@@ -113,10 +113,10 @@ final class SearchHeaderViewController: UIViewController {
 
     // MARK: - Private
 
-    private func toggle(expended expended: Bool) {
-        self.searchHeaderView.languagesPickerView.alpha = expended ? 1 : 0
+    private func toggle(expanded expanded: Bool) {
+        self.searchHeaderView.languagesPickerView.alpha = expanded ? 1 : 0
         animate {
-            self.searchHeaderView.languagesPickerView.hidden = !expended
+            self.searchHeaderView.languagesPickerView.hidden = !expanded
         }
     }
 

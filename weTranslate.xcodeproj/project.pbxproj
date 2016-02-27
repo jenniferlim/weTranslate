@@ -34,6 +34,7 @@
 		D7AC76F51C7113A700AF540A /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC76F41C7113A700AF540A /* SearchCoordinator.swift */; };
 		D7AC76F71C71267A00AF540A /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC76F61C71267A00AF540A /* CoordinatorType.swift */; };
 		D7DFF5511C828545001BFAAC /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFF5501C828545001BFAAC /* Localize.swift */; };
+		D7DFF54D1C8256E5001BFAAC /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7DFF54C1C8256E5001BFAAC /* Configuration.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		D7AC76F41C7113A700AF540A /* SearchCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		D7AC76F61C71267A00AF540A /* CoordinatorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
 		D7DFF5501C828545001BFAAC /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
+		D7DFF54C1C8256E5001BFAAC /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 				D753A3DF1C81835C0077ED64 /* Info.plist */,
 				D753A3E01C81835C0077ED64 /* Localizable.strings */,
 				D753A3E11C81835C0077ED64 /* weTranslate.entitlements */,
+				D7DFF54C1C8256E5001BFAAC /* Configuration.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -354,7 +357,6 @@
 					};
 					D70D72CD1C6FD7FA005A722E = {
 						CreatedOnToolsVersion = 7.1.1;
-						TestTargetID = D70D72B91C6FD7FA005A722E;
 					};
 					D70D72D81C6FD7FA005A722E = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -391,6 +393,7 @@
 				D753A3E51C81835C0077ED64 /* Localizable.strings in Resources */,
 				D753A3E31C81835C0077ED64 /* LaunchScreen.storyboard in Resources */,
 				D753A3E61C81835C0077ED64 /* weTranslate.entitlements in Resources */,
+				D7DFF54D1C8256E5001BFAAC /* Configuration.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,24 +639,20 @@
 		D70D72E61C6FD7FA005A722E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = weTranslateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wetranslate.weTranslateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/weTranslate.app/weTranslate";
 			};
 			name = Debug;
 		};
 		D70D72E71C6FD7FA005A722E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = weTranslateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wetranslate.weTranslateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/weTranslate.app/weTranslate";
 			};
 			name = Release;
 		};

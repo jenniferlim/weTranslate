@@ -108,41 +108,41 @@ final class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UITableViewDataSource {
-    
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         guard let searchViewModel = self.viewModel else { return 0 }
-        
+
         return searchViewModel.translation.meanings.count
     }
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let searchViewModel = self.viewModel else { return 0 }
-        
+
         return searchViewModel.translation.meanings[section].translatedWords.count
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+
         guard let searchViewModel = self.viewModel else { return UITableViewCell() }
-        
+
         let wordViewModel = WordViewModel(word: searchViewModel.translation.meanings[indexPath.section].translatedWords[indexPath.row])
-        
+
         if indexPath.row == 0  && indexPath.section == 0 {
             translationView.viewModel = wordViewModel
             return TableViewCell(reuseIdentifier: "TranslationTableViewCell", view: translationView)
-            
+
         } else if let cell = tableView.dequeueReusableCellWithIdentifier(WordTableViewCell.cellIdentifier, forIndexPath: indexPath) as? WordTableViewCell {
             cell.viewModel = wordViewModel
             return cell
         }
-        
+
         return UITableViewCell()
     }
 }
 
 
 extension SearchViewController: UITableViewDelegate {
-    
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // FIXME: Push to detail
     }

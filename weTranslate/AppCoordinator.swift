@@ -28,7 +28,7 @@ final class AppCoordinator: CoordinatorType {
         favoriteNavigationController.tabBarItem.title = localize("FAVORITES")
         return favoriteNavigationController
     }()
-    
+
     private let settingsNavigationController: UINavigationController = {
         let settingsNavigationController = UINavigationController()
         settingsNavigationController.tabBarItem.image = UIImage(named: "settings")
@@ -54,7 +54,7 @@ final class AppCoordinator: CoordinatorType {
         startSearch(searchNavigationController)
         startFavorite(favoriteNavigationController)
         startSettings(settingsNavigationController)
-        
+
         rootViewController.selectedIndex = 0
     }
 
@@ -63,11 +63,11 @@ final class AppCoordinator: CoordinatorType {
         searchCoordinator.start()
         childCoordinators.append(searchCoordinator)
     }
-    
+
     func startFavorite(navigationController: UINavigationController) {
         // FIXME
     }
-    
+
     func startSettings(navigationController: UINavigationController) {
         // FIXME
     }

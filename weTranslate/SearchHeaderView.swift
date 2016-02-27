@@ -22,7 +22,7 @@ final class SearchHeaderView: UIView {
         textField.enablesReturnKeyAutomatically = true
         textField.autocorrectionType = .No
         textField.spellCheckingType = .No
-        textField.returnKeyType = .Search;
+        textField.returnKeyType = .Search
         return textField
     }()
 

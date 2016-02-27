@@ -69,7 +69,7 @@ final class WordTableViewCell: UITableViewCell {
         bodyView.addArrangedSubview(senseLabel)
         columnView.addArrangedSubview(bodyView)
         contentView.addSubview(columnView)
-        
+
         let margins = contentView.layoutMarginsGuide
         columnView.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true
         columnView.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true

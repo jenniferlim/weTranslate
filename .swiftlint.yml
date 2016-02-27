@@ -1,0 +1,15 @@
+included:
+  - weTranslate
+excluded:
+  - weTranslate/Resources
+disabled_rules:
+  - statement_position
+  - variable_name
+  - nesting
+  - line_length
+  - function_body_length
+  - todo
+  - type_body_length
+  - valid_docs
+  - legacy_constructor
+

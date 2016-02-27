@@ -10,11 +10,11 @@ import Foundation
 import TranslateKit
 
 struct SearchViewModel {
-    
+
     let translation: Translation
-    
+
     // MARK: - Init
-    
+
     init(translation: Translation) {
         self.translation = translation
     }

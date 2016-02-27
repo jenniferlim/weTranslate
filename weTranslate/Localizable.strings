@@ -8,5 +8,16 @@
 
 /* ----- General ----- */
 
+// Tab bar
+
+"SEARCH" = "Search";
+"FAVORITES" = "Favorites";
+"SETTINGS" = "Settings";
+
+// Search
+
+"SEARCH_TYPE_HERE" = "Type here...";
+
 // Languages
+
 "French" = "French";

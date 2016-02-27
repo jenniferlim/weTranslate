@@ -15,7 +15,7 @@ final class SearchHeaderView: UIView {
     let searchTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Type here..."
+        textField.placeholder = localize("SEARCH_TYPE_HERE")
         textField.textAlignment = .Center
         textField.backgroundColor = .whiteColor()
         textField.borderStyle = UITextBorderStyle.RoundedRect

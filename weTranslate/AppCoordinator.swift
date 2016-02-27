@@ -18,21 +18,21 @@ final class AppCoordinator: CoordinatorType {
     private let searchNavigationController: UINavigationController = {
         let searchNavigationController = UINavigationController()
         searchNavigationController.tabBarItem.image = UIImage(named: "search")
-        searchNavigationController.tabBarItem.title = "Search"
+        searchNavigationController.tabBarItem.title = localize("SETTINGS")
         return searchNavigationController
     }()
 
     private let favoriteNavigationController: UINavigationController = {
         let favoriteNavigationController = UINavigationController()
         favoriteNavigationController.tabBarItem.image = UIImage(named: "star")
-        favoriteNavigationController.tabBarItem.title = "Favorite"
+        favoriteNavigationController.tabBarItem.title = localize("FAVORITES")
         return favoriteNavigationController
     }()
     
     private let settingsNavigationController: UINavigationController = {
         let settingsNavigationController = UINavigationController()
         settingsNavigationController.tabBarItem.image = UIImage(named: "settings")
-        settingsNavigationController.tabBarItem.title = "Settings"
+        settingsNavigationController.tabBarItem.title = localize("SETTINGS")
         return settingsNavigationController
     }()
 

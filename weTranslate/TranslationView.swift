@@ -26,7 +26,7 @@ final class TranslationView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = Color.brand
-        label.font = UIFont(name: "HelveticaNeue", size: 36.0)
+        label.font = Font.font(style: .Title1)
         label.textAlignment = NSTextAlignment.Center
         return label
     }()
@@ -36,7 +36,7 @@ final class TranslationView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = Color.brand
-        label.font = UIFont(name: "HelveticaNeue", size: 10.0)
+        label.font = Font.font(style: .Caption2)
         label.textAlignment = NSTextAlignment.Center
         return label
     }()

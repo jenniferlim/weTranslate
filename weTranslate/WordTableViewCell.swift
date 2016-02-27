@@ -26,7 +26,7 @@ final class WordTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = Color.brand
-        label.font = UIFont(name: "HelveticaNeue", size: 15.0)
+        label.font = Font.font()
         return label
     }()
 
@@ -35,7 +35,7 @@ final class WordTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = Color.standardText
-        label.font = UIFont(name: "HelveticaNeue", size: 12.0)
+        label.font = Font.font(style: .Caption1)
         return label
     }()
 

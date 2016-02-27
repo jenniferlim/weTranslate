@@ -10,7 +10,7 @@ import UIKit
 import TranslateKit
 
 protocol SearchViewControllerDelegate: class {
-    func searchViewController(searchViewController: SearchViewController, didSearchWord word: String)
+    func searchViewController(searchViewController: SearchViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language)
 }
 
 final class SearchViewController: UIViewController {
@@ -140,6 +140,7 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
+
 extension SearchViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -147,8 +148,17 @@ extension SearchViewController: UITableViewDelegate {
     }
 }
 
+
+extension SearchViewController: UIScrollViewDelegate {
+
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        searchHeaderViewController.resignFirstResponder()
+    }
+}
+
+
 extension SearchViewController: SearchHeaderViewControllerDelegate {
-    func searchHeaderViewController(searchHeaderViewController: SearchHeaderViewController, didSearchWord word: String) {
-        delegate?.searchViewController(self, didSearchWord: word)
+    func searchHeaderViewController(searchHeaderViewController: SearchHeaderViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language) {
+        delegate?.searchViewController(self, didSearchWord: word, fromLanguage: fromLanguage, toLanguage: toLanguage)
     }
 }

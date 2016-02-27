@@ -19,6 +19,7 @@ final class SearchHeaderView: UIView {
         textField.textAlignment = .Center
         textField.backgroundColor = .whiteColor()
         textField.borderStyle = UITextBorderStyle.RoundedRect
+        textField.enablesReturnKeyAutomatically = true
         textField.autocorrectionType = .No
         textField.spellCheckingType = .No
         textField.returnKeyType = .Search;

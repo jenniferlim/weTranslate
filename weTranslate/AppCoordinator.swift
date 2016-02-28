@@ -37,10 +37,13 @@ final class AppCoordinator: CoordinatorType {
         return settingsNavigationController
     }()
 
-    private let client: Client = {
+    static let configuration: NSDictionary = {
         let path = NSBundle.mainBundle().pathForResource("Configuration", ofType: "plist")!
-        let dictionary = NSDictionary(contentsOfFile: path)!
-        let APIKey = dictionary["API_KEY"] as! String
+        return NSDictionary(contentsOfFile: path)!
+    }()
+
+    private lazy var client: Client = {
+        let APIKey = AppCoordinator.configuration["API_KEY"] as? String ?? "API_KEY"
         return Client(wordReferenceApiKey: APIKey)
     }()
 

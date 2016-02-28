@@ -11,6 +11,7 @@ import TranslateKit
 
 protocol SearchHeaderViewControllerDelegate: class {
     func searchHeaderViewController(searchHeaderViewController: SearchHeaderViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language)
+    func searchHeaderViewControllerDidResetSearch(searchHeaderViewController: SearchHeaderViewController)
 }
 
 final class SearchHeaderViewController: UIViewController {
@@ -32,7 +33,9 @@ final class SearchHeaderViewController: UIViewController {
         didSet {
             searchHeaderView.fromLanguageButton.setTitle(viewModel.fromLanguage.name(), forState: .Normal)
             searchHeaderView.toLanguageButton.setTitle(viewModel.toLanguage.name(), forState: .Normal)
-            searchHeaderView.languagesPickerView.selectRow(viewModel.selectedRow, inComponent: 0, animated: false)
+            searchHeaderView.languagesPickerView.reloadAllComponents()
+            searchHeaderView.languagesPickerView.selectRow(viewModel.selectedRow, inComponent: viewModel.translateFromEnglish ? 1 : 0, animated: false)
+            delegate?.searchHeaderViewControllerDidResetSearch(self)
         }
     }
 
@@ -45,14 +48,19 @@ final class SearchHeaderViewController: UIViewController {
     private var state: State = .Default {
         didSet {
             switch state {
-            case .Default:
-                searchHeaderView.searchTextField.resignFirstResponder()
+            case .Default where oldValue == .Keyboard:
+                    searchHeaderView.searchTextField.resignFirstResponder()
+            case .Default where oldValue == .Picker:
+                    toggle(expanded: false)
+            case .Keyboard where oldValue == .Picker:
                 toggle(expanded: false)
-            case .Keyboard:
-                toggle(expanded: false)
-            case .Picker:
-                searchHeaderView.searchTextField.resignFirstResponder()
+            case .Picker where oldValue != .Picker:
+                if oldValue == .Keyboard {
+                    searchHeaderView.searchTextField.resignFirstResponder()
+                }
                 toggle(expanded: true)
+            default:
+                break
             }
         }
     }
@@ -95,6 +103,7 @@ final class SearchHeaderViewController: UIViewController {
 
     override func resignFirstResponder() -> Bool {
         state = .Default
+        search()
         return true
     }
 
@@ -108,6 +117,9 @@ final class SearchHeaderViewController: UIViewController {
 
     func selectLanguage(sender: UIButton?) {
         state = state == .Picker ? .Default : .Picker
+        if state == .Default {
+            search()
+        }
     }
 
 
@@ -121,7 +133,7 @@ final class SearchHeaderViewController: UIViewController {
     }
 
     private func search() {
-        if let word = searchHeaderView.searchTextField.text {
+        if let word = searchHeaderView.searchTextField.text where word != "" {
             delegate?.searchHeaderViewController(self, didSearchWord: word, fromLanguage: viewModel.fromLanguage, toLanguage: viewModel.toLanguage)
             state = .Default
         }
@@ -145,11 +157,16 @@ extension SearchHeaderViewController: UITextFieldDelegate {
 extension SearchHeaderViewController: UIPickerViewDataSource {
 
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
 
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return viewModel.languages.count
+        switch (component, viewModel.translateFromEnglish) {
+        case (0, false), (1, true):
+            return viewModel.languages.count
+        default:
+            return 1
+        }
     }
 }
 
@@ -158,11 +175,15 @@ extension SearchHeaderViewController: UIPickerViewDelegate {
 
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let attributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        return NSAttributedString(string: viewModel.languages[row].name(), attributes: attributes)
+        switch (component, viewModel.translateFromEnglish) {
+        case (0, false), (1, true):
+            return NSAttributedString(string: viewModel.languages[row].name(), attributes: attributes)
+        default:
+            return NSAttributedString(string: Language.English.name(), attributes: attributes)
+        }
     }
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         viewModel.selectedLanguage = viewModel.languages[row]
-        search()
     }
 }

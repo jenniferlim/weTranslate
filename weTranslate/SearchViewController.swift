@@ -108,6 +108,7 @@ final class SearchViewController: UIViewController {
 
         tableView.registerClass(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.cellIdentifier)
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellIdentifier)
+        tableView.registerClass(LoadingTableViewCell.self, forCellReuseIdentifier: LoadingTableViewCell.cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
 
@@ -135,20 +136,37 @@ final class SearchViewController: UIViewController {
 extension SearchViewController: UITableViewDataSource {
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        guard let searchViewModel = self.viewModel else { return 0 }
+        guard case .Result(let searchViewModel) = state else { return 1 }
 
         return searchViewModel.translation.meanings.count
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let searchViewModel = self.viewModel else { return 0 }
+        guard case .Result(let searchViewModel) = state else { return 1 }
 
         return searchViewModel.translation.meanings[section].translatedWords.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        guard let searchViewModel = self.viewModel else { return UITableViewCell() }
+        switch state {
+        case .Default:
+            break
+        case .Loading:
+            if let cell = tableView.dequeueReusableCellWithIdentifier(LoadingTableViewCell.cellIdentifier, forIndexPath: indexPath) as? LoadingTableViewCell {
+                cell.activityIndicator.startAnimating()
+                return cell
+            }
+        case .Result(_):
+            break
+        case .NoResult:
+            break
+        case .Error:
+            break
+        }
+
+        guard case .Result(let searchViewModel) = state else { return UITableViewCell() }
+
 
         let wordViewModel = WordViewModel(word: searchViewModel.translation.meanings[indexPath.section].translatedWords[indexPath.row])
 

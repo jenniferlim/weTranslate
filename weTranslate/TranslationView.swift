@@ -21,22 +21,16 @@ final class TranslationView: UIView {
         }
     }
 
-    private let wordLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private let wordLabel: Label = {
+        let label = Label(textColor: Color.brand, font: Font.font(style: .Title1))
         label.numberOfLines = 0
-        label.textColor = Color.brand
-        label.font = Font.font(style: .Title1)
         label.textAlignment = NSTextAlignment.Center
         return label
     }()
 
-    private let senseLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private let senseLabel: Label = {
+        let label = Label(textColor: Color.brand, font: Font.font(style: .Caption2))
         label.numberOfLines = 0
-        label.textColor = Color.brand
-        label.font = Font.font(style: .Caption2)
         label.textAlignment = NSTextAlignment.Center
         return label
     }()

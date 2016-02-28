@@ -15,15 +15,39 @@ protocol SearchViewControllerDelegate: class {
 
 final class SearchViewController: UIViewController {
 
+    // MARK: - Type
+
+    enum State {
+        case Default
+        case Loading
+        case Result(SearchViewModel)
+        case NoResult
+        case Error
+    }
+
+
     // MARK: - Properties
 
-    var viewModel: SearchViewModel? {
+    var state: State = .Default {
         didSet {
-            dispatch_async(dispatch_get_main_queue()) { [weak self] () -> Void in
-                self?.tableView.reloadData()
+            switch state {
+            case .Default:
+                viewModel = nil
+            case .Loading:
+                break
+            case .Result(let searchViewModel):
+                viewModel = searchViewModel
+                break
+            case .NoResult:
+                break
+            case .Error:
+                break
             }
+            tableView.reloadData()
         }
     }
+
+    private var viewModel: SearchViewModel?
 
     private weak var delegate: SearchViewControllerDelegate?
 
@@ -37,6 +61,7 @@ final class SearchViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.separatorStyle = .None
         return tableView
     }()
 
@@ -159,6 +184,11 @@ extension SearchViewController: UIScrollViewDelegate {
 
 extension SearchViewController: SearchHeaderViewControllerDelegate {
     func searchHeaderViewController(searchHeaderViewController: SearchHeaderViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language) {
-        delegate?.searchViewController(self, didSearchWord: word, fromLanguage: fromLanguage, toLanguage: toLanguage)
+        state = .Loading
     }
+
+    func searchHeaderViewControllerDidResetSearch(searchHeaderViewController: SearchHeaderViewController) {
+        state = .Default
+    }
+
 }

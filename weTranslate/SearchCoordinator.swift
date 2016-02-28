@@ -34,13 +34,14 @@ final class SearchCoordinator: CoordinatorType {
 extension SearchCoordinator: SearchViewControllerDelegate {
     func searchViewController(searchViewController: SearchViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language) {
 
-        client.translate(word: word, from: .English, to: .French) { result in
+        client.translate(word: word, from: fromLanguage, to: toLanguage) { translation in
             guard case .Success(let t) = result, let translation = t else {
+                searchViewController.state = .NoResult
                 return
             }
-
+            
             let searchViewModel = SearchViewModel(translation: translation)
-            searchViewController.viewModel = searchViewModel
+            searchViewController.state = .Result(searchViewModel)
 
             // FIX ME: Get rid of it
             // Display translation only if in favorite or last 20 researches

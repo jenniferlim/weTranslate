@@ -11,3 +11,6 @@ before_install:
 xcode_project: weTranslate.xcodeproj
 xcode_scheme: weTranslate
 xcode_sdk: iphonesimulator9.2
+
+notifications:
+  slack: wetranslateteam:FaCCuM3G8pNFJzfCsGOLcvBy#ios-annonce

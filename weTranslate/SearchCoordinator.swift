@@ -37,6 +37,11 @@ extension SearchCoordinator: SearchViewControllerDelegate {
             if let translation = translation {
                 let searchViewModel = SearchViewModel(translation: translation)
                 searchViewController.viewModel = searchViewModel
+
+                // FIX ME: Get rid of it
+                // Display translation only if in favorite or last 20 researches
+                let favoriteCategoryStore = FavoriteCategoryStore()
+                favoriteCategoryStore.insert(translation: translation, fromLanguage: fromLanguage, toLanguage: toLanguage)
             }
         }
     }

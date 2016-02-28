@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TranslateKit
 
 final class AppCoordinator: CoordinatorType {
 
@@ -36,6 +37,16 @@ final class AppCoordinator: CoordinatorType {
         return settingsNavigationController
     }()
 
+    static let configuration: NSDictionary = {
+        let path = NSBundle.mainBundle().pathForResource("Configuration", ofType: "plist")!
+        return NSDictionary(contentsOfFile: path)!
+    }()
+
+    private lazy var client: Client = {
+        let APIKey = AppCoordinator.configuration["API_KEY"] as? String ?? "API_KEY"
+        return Client(wordReferenceApiKey: APIKey)
+    }()
+
     // MARK: - Initialization
 
     init(rootViewController: TabBarController) {
@@ -59,7 +70,7 @@ final class AppCoordinator: CoordinatorType {
     }
 
     func startSearch(navigationController: UINavigationController) {
-        let searchCoordinator = SearchCoordinator(navigationController: navigationController)
+        let searchCoordinator = SearchCoordinator(navigationController: navigationController, client: client)
         searchCoordinator.start()
         childCoordinators.append(searchCoordinator)
     }

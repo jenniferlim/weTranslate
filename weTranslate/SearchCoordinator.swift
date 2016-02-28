@@ -32,7 +32,7 @@ final class SearchCoordinator: CoordinatorType {
 extension SearchCoordinator: SearchViewControllerDelegate {
     func searchViewController(searchViewController: SearchViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language) {
         let client = Client(wordReferenceApiKey: "API_KEY")
-        
+
         client.translate(word: word, from: fromLanguage, to: toLanguage) { translation in
             if let translation = translation {
                 let searchViewModel = SearchViewModel(translation: translation)

@@ -9,9 +9,9 @@
 import UIKit
 
 final class TranslationView: UIView {
-    
+
     // MARK: - Properties
-    
+
     var viewModel: WordViewModel? {
         didSet {
             if let viewModel = viewModel {
@@ -20,7 +20,7 @@ final class TranslationView: UIView {
             }
         }
     }
-    
+
     private let wordLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,7 +30,7 @@ final class TranslationView: UIView {
         label.textAlignment = NSTextAlignment.Center
         return label
     }()
-    
+
     private let senseLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +40,7 @@ final class TranslationView: UIView {
         label.textAlignment = NSTextAlignment.Center
         return label
     }()
-    
+
     private let bodyView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -50,23 +50,23 @@ final class TranslationView: UIView {
         stackView.layoutMarginsRelativeArrangement = true
         return stackView
     }()
-    
-    
+
+
     // MARK: - Init
-    
+
     override init(frame: CGRect = .zero) {
-        
+
         super.init(frame: frame)
-        
+
         backgroundColor = Color.background
         opaque = true
         layer.borderColor = Color.brand.CGColor
         layer.borderWidth = 1
-        
+
         bodyView.addArrangedSubview(wordLabel)
         bodyView.addArrangedSubview(senseLabel)
         addSubview(bodyView)
-        
+
         let margins = layoutMarginsGuide
         bodyView.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true
         bodyView.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true

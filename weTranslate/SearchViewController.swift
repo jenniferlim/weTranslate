@@ -20,8 +20,8 @@ final class SearchViewController: UIViewController {
     enum State {
         case Default
         case Loading
-        case Result(SearchViewModel)
-        case NoResult
+        case Result(TranslationViewModel)
+        case NoResult(NoResultViewModel)
         case Error
     }
 
@@ -32,22 +32,29 @@ final class SearchViewController: UIViewController {
         didSet {
             switch state {
             case .Default:
+                noResultView.hidden = true
+                tableView.hidden = false
                 viewModel = nil
             case .Loading:
-                break
-            case .Result(let searchViewModel):
-                viewModel = searchViewModel
-                break
-            case .NoResult:
-                break
+                noResultView.hidden = true
+                tableView.hidden = false
+            case .Result(let translationViewModel):
+                noResultView.hidden = true
+                tableView.hidden = false
+                viewModel = translationViewModel
+            case .NoResult(let noResultViewModel):
+                noResultView.hidden = false
+                tableView.hidden = true
+                noResultView.viewModel = noResultViewModel
             case .Error:
-                break
+                noResultView.hidden = false
+                tableView.hidden = true
             }
             tableView.reloadData()
         }
     }
 
-    private var viewModel: SearchViewModel?
+    private var viewModel: TranslationViewModel?
 
     private weak var delegate: SearchViewControllerDelegate?
 
@@ -69,6 +76,13 @@ final class SearchViewController: UIViewController {
         let translationView = TranslationView(frame: .zero)
         translationView.translatesAutoresizingMaskIntoConstraints = false
         return translationView
+    }()
+
+    private let noResultView: NoResultView = {
+        let view = NoResultView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.hidden = true
+        return view
     }()
 
     private let bodyView: UIStackView = {
@@ -113,13 +127,14 @@ final class SearchViewController: UIViewController {
         tableView.dataSource = self
 
         bodyView.addArrangedSubview(searchHeaderViewController.view)
+        bodyView.addArrangedSubview(noResultView)
         bodyView.addArrangedSubview(tableView)
         view.addSubview(bodyView)
 
         bodyView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
         bodyView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        bodyView.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
-        bodyView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+        bodyView.topAnchor.constraintEqualToAnchor(topLayoutGuide.topAnchor).active = true
+        bodyView.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor).active = true
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -136,15 +151,15 @@ final class SearchViewController: UIViewController {
 extension SearchViewController: UITableViewDataSource {
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        guard case .Result(let searchViewModel) = state else { return 1 }
+        guard case .Result(let translationViewModel) = state else { return 1 }
 
-        return searchViewModel.translation.meanings.count
+        return translationViewModel.translation.meanings.count
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard case .Result(let searchViewModel) = state else { return 1 }
+        guard case .Result(let translationViewModel) = state else { return 1 }
 
-        return searchViewModel.translation.meanings[section].translatedWords.count
+        return translationViewModel.translation.meanings[section].translatedWords.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -165,10 +180,10 @@ extension SearchViewController: UITableViewDataSource {
             break
         }
 
-        guard case .Result(let searchViewModel) = state else { return UITableViewCell() }
+        guard case .Result(let translationViewModel) = state else { return UITableViewCell() }
 
 
-        let wordViewModel = WordViewModel(word: searchViewModel.translation.meanings[indexPath.section].translatedWords[indexPath.row])
+        let wordViewModel = WordViewModel(word: translationViewModel.translation.meanings[indexPath.section].translatedWords[indexPath.row])
 
         if indexPath.row == 0  && indexPath.section == 0 {
             translationView.viewModel = wordViewModel
@@ -203,6 +218,7 @@ extension SearchViewController: UIScrollViewDelegate {
 extension SearchViewController: SearchHeaderViewControllerDelegate {
     func searchHeaderViewController(searchHeaderViewController: SearchHeaderViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language) {
         state = .Loading
+        delegate?.searchViewController(self, didSearchWord: word, fromLanguage: fromLanguage, toLanguage: toLanguage)
     }
 
     func searchHeaderViewControllerDidResetSearch(searchHeaderViewController: SearchHeaderViewController) {

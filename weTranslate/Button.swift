@@ -17,6 +17,7 @@ final class Button: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         setTitle(title, forState: .Normal)
         setTitleColor(color, forState: .Normal)
+        backgroundColor = Color.brand
     }
 
     required init?(coder aDecoder: NSCoder) {

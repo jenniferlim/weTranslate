@@ -121,4 +121,8 @@ final class Font {
         let fontWeight = weight?.fontWeight ?? style.defaultWeight.fontWeight
         return UIFont.systemFontOfSize(fontSize, weight: fontWeight)
     }
+
+    static func emojiFont() -> UIFont {
+        return UIFont.systemFontOfSize(120)
+    }
 }

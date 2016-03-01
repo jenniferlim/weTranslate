@@ -114,6 +114,7 @@ final class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        edgesForExtendedLayout = .None
         view.backgroundColor = Color.brand
 
         addChildViewController(searchHeaderViewController)

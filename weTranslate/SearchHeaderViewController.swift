@@ -49,9 +49,12 @@ final class SearchHeaderViewController: UIViewController {
         didSet {
             switch state {
             case .Default where oldValue == .Keyboard:
-                    searchHeaderView.searchTextField.resignFirstResponder()
+                searchHeaderView.searchTextField.resignFirstResponder()
+                search()
             case .Default where oldValue == .Picker:
-                    toggle(expanded: false)
+                toggle(expanded: false) { _ in
+                    self.search()
+                }
             case .Keyboard where oldValue == .Picker:
                 toggle(expanded: false)
             case .Picker where oldValue != .Picker:
@@ -103,7 +106,6 @@ final class SearchHeaderViewController: UIViewController {
 
     override func resignFirstResponder() -> Bool {
         state = .Default
-        search()
         return true
     }
 
@@ -117,17 +119,14 @@ final class SearchHeaderViewController: UIViewController {
 
     func selectLanguage(sender: UIButton?) {
         state = state == .Picker ? .Default : .Picker
-        if state == .Default {
-            search()
-        }
     }
 
 
     // MARK: - Private
 
-    private func toggle(expanded expanded: Bool) {
+    private func toggle(expanded expanded: Bool, completion: ((Bool) -> Void)? = nil) {
         self.searchHeaderView.languagesPickerView.alpha = expanded ? 1 : 0
-        animate {
+        animate(completion: completion) {
             self.searchHeaderView.languagesPickerView.hidden = !expanded
         }
     }
@@ -135,7 +134,6 @@ final class SearchHeaderViewController: UIViewController {
     private func search() {
         if let word = searchHeaderView.searchTextField.text where word != "" {
             delegate?.searchHeaderViewController(self, didSearchWord: word, fromLanguage: viewModel.fromLanguage, toLanguage: viewModel.toLanguage)
-            state = .Default
         }
     }
 }
@@ -144,7 +142,7 @@ final class SearchHeaderViewController: UIViewController {
 extension SearchHeaderViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        search()
+        state = .Default
         return true
     }
 

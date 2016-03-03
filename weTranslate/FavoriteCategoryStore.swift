@@ -30,4 +30,8 @@ struct FavoriteCategoryStore {
 
         favoriteCategoriesDatabase.set(favoriteCategories)
     }
+
+    func fetchAll() -> [FavoriteCategory] {
+        return favoriteCategoriesDatabase.get()
+    }
 }

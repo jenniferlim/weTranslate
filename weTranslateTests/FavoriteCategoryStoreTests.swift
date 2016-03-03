@@ -8,7 +8,6 @@
 
 import XCTest
 @testable import weTranslate
-import DVR
 
 class FavoriteCategoryStoreTests: XCTestCase {
 

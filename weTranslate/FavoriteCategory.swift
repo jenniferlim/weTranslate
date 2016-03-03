@@ -22,13 +22,12 @@ struct FavoriteCategory: DictionaryDeserializable, DictionarySerializable {
     init?(dictionary: JSONDictionary) {
         guard let languageRawValue = dictionary["language"] as? String,
             language = Language(rawValue: languageRawValue),
-            translationsDictionary = dictionary["translations"] as? JSONDictionary else { return nil }
+        translationDictionaries = dictionary["translations"] as? [JSONDictionary] else { return nil }
 
         self.language = language
-        self.translations = translationsDictionary.flatMap({
-            guard let dictionary = $0.1 as? JSONDictionary else { return nil }
+        self.translations = translationDictionaries.flatMap { dictionary in
             return Translation(dictionary: dictionary)
-        })
+        }
     }
 
     init(language: Language, translations: [Translation]) {

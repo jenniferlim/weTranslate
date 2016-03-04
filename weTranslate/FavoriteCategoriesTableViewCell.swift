@@ -41,6 +41,8 @@ final class FavoriteCategoriesTableViewCell: UITableViewCell {
         view.backgroundColor = .blackColor()
         view.layer.opacity = 0.6
         view.layoutMargins = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        view.layer.cornerRadius = 5
+        view.layer.masksToBounds = true
         return view
     }()
 

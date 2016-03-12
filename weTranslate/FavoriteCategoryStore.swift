@@ -25,6 +25,10 @@ struct FavoriteCategoryStore {
         return favoriteCategoriesDatabase.get()
     }
 
+    func reset() {
+        favoriteCategoriesDatabase.set([])
+    }
+
 
     // MARK: - Private
 

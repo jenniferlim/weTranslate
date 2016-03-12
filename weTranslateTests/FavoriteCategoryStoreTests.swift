@@ -12,6 +12,10 @@ import TranslateKit
 
 class FavoriteCategoryStoreTests: XCTestCase {
 
+    override func setUp() {
+        FavoriteCategoryStore().reset()
+    }
+
     func testFetchAll() {
 
         guard let dictionaries = loadJSON("favoriteCategoriesStore") as? [JSONDictionary],

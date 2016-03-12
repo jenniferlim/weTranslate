@@ -9,6 +9,10 @@
 import UIKit
 import TranslateKit
 
+protocol FavoriteCategoriesViewControllerDelegate: class {
+    func favoriteCategoriesViewControllerNeedsUpdate(favoriteCategoriesViewController: FavoriteCategoriesViewController)
+}
+
 final class FavoriteCategoriesViewController: UIViewController {
 
     // MARK: - Properties
@@ -20,6 +24,8 @@ final class FavoriteCategoriesViewController: UIViewController {
             }
         }
     }
+
+    private weak var delegate: FavoriteCategoriesViewControllerDelegate?
 
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -46,6 +52,16 @@ final class FavoriteCategoriesViewController: UIViewController {
         return stackView
     }()
 
+    // MARK: - Initializer
+
+    init(delegate: FavoriteCategoriesViewControllerDelegate) {
+        self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - UIViewController
 
@@ -66,6 +82,12 @@ final class FavoriteCategoriesViewController: UIViewController {
         bodyView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
         bodyView.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
         bodyView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        delegate?.favoriteCategoriesViewControllerNeedsUpdate(self)
     }
 }
 

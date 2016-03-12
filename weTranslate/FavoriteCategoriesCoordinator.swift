@@ -20,15 +20,21 @@ final class FavoriteCategoriesCoordinator: CoordinatorType {
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-
     }
 
     // MARK: - Start
 
     func start() {
         let favoriteCategories = FavoriteCategoryStore().fetchAll()
-        let favoriteCategoriesViewController = FavoriteCategoriesViewController()
+        let favoriteCategoriesViewController = FavoriteCategoriesViewController(delegate: self)
         favoriteCategoriesViewController.viewModel = favoriteCategories.map(FavoriteCategoryViewModel.init)
         navigationController.pushViewController(favoriteCategoriesViewController, animated: false)
+    }
+}
+
+extension FavoriteCategoriesCoordinator: FavoriteCategoriesViewControllerDelegate {
+    func favoriteCategoriesViewControllerNeedsUpdate(favoriteCategoriesViewController: FavoriteCategoriesViewController) {
+        let favoriteCategories = FavoriteCategoryStore().fetchAll()
+        favoriteCategoriesViewController.viewModel = favoriteCategories.map(FavoriteCategoryViewModel.init)
     }
 }

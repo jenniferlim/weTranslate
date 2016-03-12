@@ -13,25 +13,33 @@ struct FavoriteCategoryStore {
 
     private let favoriteCategoriesDatabase = Database<FavoriteCategory>(dbFileName: "favoriteCategoriesStore.json")!
 
-    func insert(translation translation: Translation, fromLanguage: Language, toLanguage: Language) -> () {
+    func insert(translation translation: Translation) -> () {
 
-        var favoriteCategories: [FavoriteCategory] = favoriteCategoriesDatabase.get()
+        let language = translation.fromLanguage == .English ? translation.fromLanguage : translation.toLanguage
 
-        let language = fromLanguage == .English ? fromLanguage : toLanguage
-
-        var newTranslations = [translation]
-        if let favoriteCategoryLg = favoriteCategories.filter ({ $0.language == language }).first {
-            newTranslations.appendContentsOf((favoriteCategoryLg.translations))
-        }
-
-        favoriteCategories = favoriteCategories.filter { $0.language != language }
-        let newFavoriteCategory = FavoriteCategory(language: language, translations: newTranslations)
-        favoriteCategories.append(newFavoriteCategory)
-
-        favoriteCategoriesDatabase.set(favoriteCategories)
+        let updatedFavoriteCategory = add(translation: translation, toLanguage: language)
+        set(category: updatedFavoriteCategory)
     }
 
     func fetchAll() -> [FavoriteCategory] {
         return favoriteCategoriesDatabase.get()
+    }
+
+
+    // MARK: - Private
+
+    private func set(category category: FavoriteCategory) {
+        var favoriteCategories: [FavoriteCategory] = favoriteCategoriesDatabase.get().filter { $0.language != category.language }
+        favoriteCategories.append(category)
+        favoriteCategoriesDatabase.set(favoriteCategories)
+    }
+
+    private func add(translation translation: Translation, toLanguage language: Language) -> FavoriteCategory {
+        let favoriteCategories: [FavoriteCategory] = favoriteCategoriesDatabase.get()
+        let favoriteCategory = favoriteCategories.filter ({ $0.language == language }).first
+
+        var translations = favoriteCategory?.translations.filter { $0 != translation } ?? []
+        translations.append(translation)
+        return FavoriteCategory(language: language, translations:translations)
     }
 }

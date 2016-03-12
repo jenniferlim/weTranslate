@@ -7,12 +7,28 @@
 //
 
 import XCTest
+import TranslateKit
 @testable import weTranslate
 
 class FavoriteCategoryStoreTests: XCTestCase {
 
-func testInsert() {
-    // FIX ME
-}
+    func testFetchAll() {
+
+        guard let dictionaries = loadJSON("favoriteCategoriesStore") as? [JSONDictionary],
+            favoriteCategory = FavoriteCategory(dictionary: dictionaries[0]),
+            translation = favoriteCategory.translations.first else {
+                XCTFail()
+                return
+        }
+
+
+        let favoriteCategoryStore = FavoriteCategoryStore()
+        favoriteCategoryStore.insert(translation: translation)
+        let favoriteCategories = favoriteCategoryStore.fetchAll()
+
+        XCTAssertEqual(favoriteCategories.count, 1)
+        XCTAssertEqual(favoriteCategories[0].translations.count, 1)
+        XCTAssertEqual(favoriteCategories[0].translations[0].meanings[0].translatedWords.count, 2)
+    }
 
 }

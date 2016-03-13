@@ -25,7 +25,6 @@ class FavoriteCategoryStoreTests: XCTestCase {
                 return
         }
 
-
         let favoriteCategoryStore = FavoriteCategoryStore()
         favoriteCategoryStore.insert(translation: translation)
         let favoriteCategories = favoriteCategoryStore.fetchAll()
@@ -34,5 +33,4 @@ class FavoriteCategoryStoreTests: XCTestCase {
         XCTAssertEqual(favoriteCategories[0].translations.count, 1)
         XCTAssertEqual(favoriteCategories[0].translations[0].meanings[0].translatedWords.count, 2)
     }
-
 }

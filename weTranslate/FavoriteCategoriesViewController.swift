@@ -19,9 +19,7 @@ final class FavoriteCategoriesViewController: UIViewController {
 
     var viewModel: [FavoriteCategoryViewModel]? {
         didSet {
-            dispatch_async(dispatch_get_main_queue()) { [weak self] () -> Void in
-                self?.tableView.reloadData()
-            }
+            dispatch_async(dispatch_get_main_queue()) { [weak self] in self?.tableView.reloadData() }
         }
     }
 

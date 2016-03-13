@@ -9,7 +9,7 @@
 import Foundation
 import TranslateKit
 
-struct FavoriteCategory: DictionaryDeserializable, DictionarySerializable {
+struct FavoriteCategory {
 
     // MARK: - Properties
 
@@ -19,20 +19,24 @@ struct FavoriteCategory: DictionaryDeserializable, DictionarySerializable {
 
     // MARK: - Initialization
 
+    init(language: Language, translations: [Translation]) {
+        self.language = language
+        self.translations = translations
+    }
+}
+
+
+extension FavoriteCategory: DictionaryDeserializable, DictionarySerializable {
+
     init?(dictionary: JSONDictionary) {
         guard let languageRawValue = dictionary["language"] as? String,
             language = Language(rawValue: languageRawValue),
-        translationDictionaries = dictionary["translations"] as? [JSONDictionary] else { return nil }
+            translationDictionaries = dictionary["translations"] as? [JSONDictionary] else { return nil }
 
         self.language = language
         self.translations = translationDictionaries.flatMap { dictionary in
             return Translation(dictionary: dictionary)
         }
-    }
-
-    init(language: Language, translations: [Translation]) {
-        self.language = language
-        self.translations = translations
     }
 
     var dictionary: JSONDictionary {

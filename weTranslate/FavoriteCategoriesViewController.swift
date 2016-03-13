@@ -67,8 +67,8 @@ final class FavoriteCategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = localize("FAVORITES_TITLE")
         view.backgroundColor = Color.brand
-        navigation()
 
         tableView.registerClass(FavoriteCategoriesTableViewCell.self, forCellReuseIdentifier: FavoriteCategoriesTableViewCell.cellIdentifier)
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellIdentifier)
@@ -88,13 +88,6 @@ final class FavoriteCategoriesViewController: UIViewController {
         super.viewWillAppear(animated)
 
         delegate?.favoriteCategoriesViewControllerNeedsUpdate(self)
-    }
-
-    func navigation() {
-        if let navigationController = navigationController {
-            navigationController.navigationBar.barTintColor = Color.brand
-            title = "Favorites"
-        }
     }
 }
 

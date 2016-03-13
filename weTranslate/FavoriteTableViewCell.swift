@@ -23,13 +23,11 @@ final class FavoriteTableViewCell: UITableViewCell {
 
     private let orignalWordLabel: Label = {
         let label = Label(textColor: Color.brand, font: Font.font())
-        label.numberOfLines = 0
         return label
     }()
 
     private let translatedWordLabel: Label = {
         let label = Label(textColor: Color.standardText, font: Font.font(style: .Caption1))
-        label.numberOfLines = 0
         return label
     }()
 
@@ -64,5 +62,4 @@ final class FavoriteTableViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }

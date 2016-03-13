@@ -16,22 +16,22 @@ final class AppCoordinator: CoordinatorType {
     let rootViewController: TabBarController
     var childCoordinators: [CoordinatorType] = []
 
-    private let searchNavigationController: UINavigationController = {
-        let searchNavigationController = UINavigationController()
+    private let searchNavigationController: NavigationController = {
+        let searchNavigationController = NavigationController()
         searchNavigationController.tabBarItem.image = UIImage(named: "search")
         searchNavigationController.tabBarItem.title = localize("SETTINGS")
         return searchNavigationController
     }()
 
-    private let favoriteNavigationController: UINavigationController = {
-        let favoriteNavigationController = UINavigationController()
+    private let favoriteNavigationController: NavigationController = {
+        let favoriteNavigationController = NavigationController()
         favoriteNavigationController.tabBarItem.image = UIImage(named: "star")
         favoriteNavigationController.tabBarItem.title = localize("FAVORITES")
         return favoriteNavigationController
     }()
 
-    private let settingsNavigationController: UINavigationController = {
-        let settingsNavigationController = UINavigationController()
+    private let settingsNavigationController: NavigationController = {
+        let settingsNavigationController = NavigationController()
         settingsNavigationController.tabBarItem.image = UIImage(named: "settings")
         settingsNavigationController.tabBarItem.title = localize("SETTINGS")
         return settingsNavigationController
@@ -69,19 +69,19 @@ final class AppCoordinator: CoordinatorType {
         rootViewController.selectedIndex = 0
     }
 
-    func startSearch(navigationController: UINavigationController) {
+    func startSearch(navigationController: NavigationController) {
         let searchCoordinator = SearchCoordinator(navigationController: navigationController, client: client)
         searchCoordinator.start()
         childCoordinators.append(searchCoordinator)
     }
 
-    func startFavorite(navigationController: UINavigationController) {
+    func startFavorite(navigationController: NavigationController) {
         let favoriteCategoryCoordinator = FavoriteCategoriesCoordinator(navigationController: navigationController)
         favoriteCategoryCoordinator.start()
         childCoordinators.append(favoriteCategoryCoordinator)
     }
 
-    func startSettings(navigationController: UINavigationController) {
+    func startSettings(navigationController: NavigationController) {
         // FIXME
     }
 }

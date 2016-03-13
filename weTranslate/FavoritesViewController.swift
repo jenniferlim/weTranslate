@@ -14,30 +14,20 @@ final class FavoritesViewController: UIViewController {
 
     var viewModels: [FavoriteViewModel]? {
         didSet {
-            dispatch_async(dispatch_get_main_queue()) { [weak self] () -> Void in
-                self?.tableView.reloadData()
-            }
+            tableView.reloadData()
         }
     }
 
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.estimatedRowHeight = 250
+        tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableViewAutomaticDimension
         return tableView
     }()
 
-    private let favoriteTableViewCell: FavoriteTableViewCell = {
-        let favoriteTableViewCell = FavoriteTableViewCell(frame: .zero)
-        favoriteTableViewCell.translatesAutoresizingMaskIntoConstraints = false
-        return favoriteTableViewCell
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = Color.brand
 
         tableView.registerClass(FavoriteTableViewCell.self, forCellReuseIdentifier: FavoriteTableViewCell.cellIdentifier)
         tableView.dataSource = self

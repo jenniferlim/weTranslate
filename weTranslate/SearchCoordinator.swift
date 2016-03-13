@@ -13,13 +13,13 @@ final class SearchCoordinator: CoordinatorType {
 
     // MARK: - Properties
 
-    let navigationController: UINavigationController
+    let navigationController: NavigationController
     let client: Client
     var childCoordinators: [CoordinatorType] = []
 
     // MARK: - Initialization
 
-    init(navigationController: UINavigationController, client: Client) {
+    init(navigationController: NavigationController, client: Client) {
         self.navigationController = navigationController
         self.client = client
     }

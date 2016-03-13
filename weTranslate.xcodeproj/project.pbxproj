@@ -13,6 +13,7 @@
 		3828F0751C7A6F9B0023E904 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828F0741C7A6F9B0023E904 /* TableViewCell.swift */; };
 		382BA5221C743101002CF118 /* TranslateKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382BA5211C743101002CF118 /* TranslateKit.framework */; };
 		3830557D1C951704005DC906 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830557C1C951704005DC906 /* StringExtensions.swift */; };
+		383055801C95DD28005DC906 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830557F1C95DD28005DC906 /* NavigationController.swift */; };
 		383F423B1C7A211C00B7C35A /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F423A1C7A211C00B7C35A /* TranslationView.swift */; };
 		3873D27C1C7D5FE100918AA7 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873D27B1C7D5FE100918AA7 /* Button.swift */; };
 		3873D27E1C7D633100918AA7 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873D27D1C7D633100918AA7 /* Label.swift */; };
@@ -83,6 +84,7 @@
 		3828F0741C7A6F9B0023E904 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		382BA5211C743101002CF118 /* TranslateKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TranslateKit.framework; path = Carthage/Build/iOS/TranslateKit.framework; sourceTree = "<group>"; };
 		3830557C1C951704005DC906 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		3830557F1C95DD28005DC906 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		383F423A1C7A211C00B7C35A /* TranslationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
 		3873D27B1C7D5FE100918AA7 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		3873D27D1C7D633100918AA7 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -188,6 +190,14 @@
 				D7652CAA1C72D30600D7E709 /* UITableViewCellExtensions.swift */,
 			);
 			name = Extensions;
+                        sourceTree = "<group>";
+                };
+		3830557E1C95DCFE005DC906 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3830557F1C95DD28005DC906 /* NavigationController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		389C3B351C837BFD00F2A26E /* Cells */ = {
@@ -339,6 +349,7 @@
 				3870AE651C9516CD008A48DF /* Extensions */,
 				3828F0721C7A6F730023E904 /* Styles */,
 				3828F0731C7A6F840023E904 /* Views */,
+				3830557E1C95DCFE005DC906 /* ViewControllers */,
 				D77C655F1C7A5BE400622275 /* Animation.swift */,
 				D7DFF5501C828545001BFAAC /* Localize.swift */,
 			);
@@ -561,6 +572,7 @@
 				3873D27C1C7D5FE100918AA7 /* Button.swift in Sources */,
 				D7AC76F51C7113A700AF540A /* SearchCoordinator.swift in Sources */,
 				D70A601D1C72AC1100A35A30 /* WordTableViewCell.swift in Sources */,
+				383055801C95DD28005DC906 /* NavigationController.swift in Sources */,
 				D7DFF5511C828545001BFAAC /* Localize.swift in Sources */,
 				D77C65581C79805600622275 /* Color.swift in Sources */,
 				D7AC76F71C71267A00AF540A /* CoordinatorType.swift in Sources */,

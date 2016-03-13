@@ -13,12 +13,12 @@ final class FavoriteCategoriesCoordinator: CoordinatorType {
 
     // MARK: - Properties
 
-    let navigationController: UINavigationController
+    let navigationController: NavigationController
     var childCoordinators: [CoordinatorType] = []
 
     // MARK: - Initialization
 
-    init(navigationController: UINavigationController) {
+    init(navigationController: NavigationController) {
         self.navigationController = navigationController
     }
 

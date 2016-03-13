@@ -11,6 +11,7 @@ import TranslateKit
 
 protocol FavoriteCategoriesViewControllerDelegate: class {
     func favoriteCategoriesViewControllerNeedsUpdate(favoriteCategoriesViewController: FavoriteCategoriesViewController)
+    func favoriteCategoriesViewController(favoriteCategoriesViewController: FavoriteCategoriesViewController, didSelectCategory category: FavoriteCategory)
 }
 
 final class FavoriteCategoriesViewController: UIViewController {
@@ -66,6 +67,7 @@ final class FavoriteCategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = localize("FAVORITES_TITLE")
         view.backgroundColor = Color.brand
 
         tableView.registerClass(FavoriteCategoriesTableViewCell.self, forCellReuseIdentifier: FavoriteCategoriesTableViewCell.cellIdentifier)
@@ -120,6 +122,9 @@ extension FavoriteCategoriesViewController: UITableViewDataSource {
 extension FavoriteCategoriesViewController: UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // FIXME: Push to detail
+        if let viewModel = viewModel {
+            let favoriteCategory = viewModel[indexPath.row].favoriteCategory
+            delegate?.favoriteCategoriesViewController(self, didSelectCategory: favoriteCategory)
+        }
     }
 }

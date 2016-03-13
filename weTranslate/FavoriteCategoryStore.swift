@@ -11,13 +11,20 @@ import TranslateKit
 
 struct FavoriteCategoryStore {
 
+    private enum Action {
+        case Add
+        case Delete
+    }
+
     private let favoriteCategoriesDatabase = Database<FavoriteCategory>(dbFileName: "favoriteCategoriesStore.json")!
 
     func insert(translation translation: Translation) -> () {
+        let updatedFavoriteCategory = perform(action: .Add, onTranslation: translation)
+        set(category: updatedFavoriteCategory)
+    }
 
-        let language = translation.fromLanguage == .English ? translation.fromLanguage : translation.toLanguage
-
-        let updatedFavoriteCategory = add(translation: translation, toLanguage: language)
+    func delete(translation translation: Translation) -> () {
+        let updatedFavoriteCategory = perform(action: .Delete, onTranslation: translation)
         set(category: updatedFavoriteCategory)
     }
 
@@ -38,12 +45,16 @@ struct FavoriteCategoryStore {
         favoriteCategoriesDatabase.set(favoriteCategories)
     }
 
-    private func add(translation translation: Translation, toLanguage language: Language) -> FavoriteCategory {
+    private func perform(action action: Action, onTranslation translation: Translation) -> FavoriteCategory {
+        let language = translation.fromLanguage == .English ? translation.fromLanguage : translation.toLanguage
         let favoriteCategories: [FavoriteCategory] = favoriteCategoriesDatabase.get()
         let favoriteCategory = favoriteCategories.filter ({ $0.language == language }).first
 
         var translations = favoriteCategory?.translations.filter { $0 != translation } ?? []
-        translations.append(translation)
+        if case .Add = action {
+            translations.append(translation)
+        }
+
         return FavoriteCategory(language: language, translations:translations)
     }
 }

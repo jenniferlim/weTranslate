@@ -11,6 +11,7 @@ import TranslateKit
 
 protocol FavoritesViewControllerDelegate: class {
     func favoritesViewController(favoritesViewController: FavoritesViewController, didSelectTranslation translation: Translation)
+    func favoritesViewController(favoritesViewController: FavoritesViewController, didDeleteTranslation translation: Translation)
 }
 
 final class FavoritesViewController: UIViewController {
@@ -93,10 +94,22 @@ extension FavoritesViewController: UITableViewDataSource {
 
 
 extension FavoritesViewController: UITableViewDelegate {
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         guard let favoriteViewModels = viewModels else { return }
 
         let translation = favoriteViewModels[indexPath.row].translation
         delegate?.favoritesViewController(self, didSelectTranslation: translation)
+    }
+
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        guard case .Delete = editingStyle, let favoriteViewModels = viewModels else { return }
+
+        let translation = favoriteViewModels[indexPath.row].translation
+        delegate?.favoritesViewController(self, didDeleteTranslation: translation)
     }
 }

@@ -14,15 +14,23 @@ final class NavigationController: UINavigationController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
+
+        initialize()
     }
 
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
 
-        navigationBar.barTintColor = Color.brand
+        initialize()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func initialize() {
+        navigationBar.tintColor = UIColor.whiteColor()
+        navigationBar.barTintColor = Color.brand
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
     }
 }

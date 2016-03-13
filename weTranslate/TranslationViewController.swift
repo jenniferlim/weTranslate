@@ -116,7 +116,7 @@ final class TranslationViewController: UIViewController {
 
         bodyView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
         bodyView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        bodyView.topAnchor.constraintEqualToAnchor(topLayoutGuide.topAnchor).active = true
+        bodyView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
         bodyView.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor).active = true
     }
 }

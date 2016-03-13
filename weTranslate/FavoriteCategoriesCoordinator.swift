@@ -32,6 +32,7 @@ final class FavoriteCategoriesCoordinator: CoordinatorType {
     }
 }
 
+
 extension FavoriteCategoriesCoordinator: FavoriteCategoriesViewControllerDelegate {
     func favoriteCategoriesViewControllerNeedsUpdate(favoriteCategoriesViewController: FavoriteCategoriesViewController) {
         let favoriteCategories = FavoriteCategoryStore().fetchAll()
@@ -39,8 +40,23 @@ extension FavoriteCategoriesCoordinator: FavoriteCategoriesViewControllerDelegat
     }
 
     func favoriteCategoriesViewController(favoriteCategoriesViewController: FavoriteCategoriesViewController, didSelectCategory category: FavoriteCategory) {
-        let favoritesViewController = FavoritesViewController()
+        let favoritesViewController = FavoritesViewController(delegate: self)
         favoritesViewController.viewModels = category.translations.map { FavoriteViewModel(translation: $0) }
         navigationController.pushViewController(favoritesViewController, animated: true)
     }
+}
+
+
+extension FavoriteCategoriesCoordinator: FavoritesViewControllerDelegate {
+    func favoritesViewController(favoritesViewController: FavoritesViewController, didSelectTranslation translation: Translation) {
+        let favoriteDetailViewController = FavoriteDetailViewController(delegate: self)
+        let translationViewModel = TranslationViewModel(translation: translation)
+        favoriteDetailViewController.state = .Result(translationViewModel)
+        navigationController.pushViewController(favoriteDetailViewController, animated: true)
+    }
+}
+
+
+extension FavoriteCategoriesCoordinator: FavoriteDetailViewControllerDelegate {
+
 }

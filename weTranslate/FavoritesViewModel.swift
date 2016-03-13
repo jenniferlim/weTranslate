@@ -10,7 +10,8 @@ import Foundation
 import TranslateKit
 
 struct FavoriteViewModel {
-    private let translation: Translation
+
+    let translation: Translation
 
     var searchText: String {
         return translation.searchText

@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import TranslateKit
+
+protocol FavoritesViewControllerDelegate: class {
+    func favoritesViewController(favoritesViewController: FavoritesViewController, didSelectTranslation translation: Translation)
+}
 
 final class FavoritesViewController: UIViewController {
 
@@ -18,6 +23,8 @@ final class FavoritesViewController: UIViewController {
         }
     }
 
+    private weak var delegate: FavoritesViewControllerDelegate?
+
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,11 +33,27 @@ final class FavoritesViewController: UIViewController {
         return tableView
     }()
 
+
+    // MARK: - Initializer
+
+    init(delegate: FavoritesViewControllerDelegate) {
+        self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+
+    // MARK: - UIViewController
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.registerClass(FavoriteTableViewCell.self, forCellReuseIdentifier: FavoriteTableViewCell.cellIdentifier)
         tableView.dataSource = self
+        tableView.delegate = self
 
         view.addSubview(tableView)
 
@@ -40,6 +63,7 @@ final class FavoritesViewController: UIViewController {
         tableView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
     }
 }
+
 
 extension FavoritesViewController: UITableViewDataSource {
 
@@ -64,5 +88,15 @@ extension FavoritesViewController: UITableViewDataSource {
         }
 
         return UITableViewCell()
+    }
+}
+
+
+extension FavoritesViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        guard let favoriteViewModels = viewModels else { return }
+
+        let translation = favoriteViewModels[indexPath.row].translation
+        delegate?.favoritesViewController(self, didSelectTranslation: translation)
     }
 }

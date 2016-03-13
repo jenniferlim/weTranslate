@@ -27,7 +27,7 @@ final class NoResultView: UIView {
     }()
 
     let emojiLabel: Label = {
-        let label = Label(font: Font.emojiFont())
+        let label = Label(font: Font.hugeEmojiFont())
         label.textAlignment = NSTextAlignment.Center
         return label
     }()

@@ -17,6 +17,4 @@ final class Color {
     static let background = UIColor.groupTableViewBackgroundColor()
 
     static let standardText = UIColor(red: 146/255, green: 146/255, blue: 146/255, alpha: 1)
-
-
 }

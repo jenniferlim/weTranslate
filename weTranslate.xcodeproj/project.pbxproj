@@ -12,6 +12,7 @@
 		380237DF1C827F1000D4956C /* FavoriteCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380237DE1C827F1000D4956C /* FavoriteCategoryViewModel.swift */; };
 		3828F0751C7A6F9B0023E904 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828F0741C7A6F9B0023E904 /* TableViewCell.swift */; };
 		382BA5221C743101002CF118 /* TranslateKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382BA5211C743101002CF118 /* TranslateKit.framework */; };
+		3830557D1C951704005DC906 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830557C1C951704005DC906 /* StringExtensions.swift */; };
 		383F423B1C7A211C00B7C35A /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F423A1C7A211C00B7C35A /* TranslationView.swift */; };
 		3873D27C1C7D5FE100918AA7 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873D27B1C7D5FE100918AA7 /* Button.swift */; };
 		3873D27E1C7D633100918AA7 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3873D27D1C7D633100918AA7 /* Label.swift */; };
@@ -77,6 +78,7 @@
 		380237DE1C827F1000D4956C /* FavoriteCategoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCategoryViewModel.swift; sourceTree = "<group>"; };
 		3828F0741C7A6F9B0023E904 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		382BA5211C743101002CF118 /* TranslateKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TranslateKit.framework; path = Carthage/Build/iOS/TranslateKit.framework; sourceTree = "<group>"; };
+		3830557C1C951704005DC906 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		383F423A1C7A211C00B7C35A /* TranslationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
 		3873D27B1C7D5FE100918AA7 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		3873D27D1C7D633100918AA7 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -203,6 +205,14 @@
 				389C82101C82BF150075AEB6 /* FavoriteCategoryStore.swift */,
 			);
 			name = Store;
+        sourceTree = "<group>";
+        };
+		3870AE651C9516CD008A48DF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3830557C1C951704005DC906 /* StringExtensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		D70A60171C726C7500A35A30 /* Frameworks */ = {
@@ -323,6 +333,7 @@
 		D77C65561C79803E00622275 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				3870AE651C9516CD008A48DF /* Extensions */,
 				3828F0721C7A6F730023E904 /* Styles */,
 				3828F0731C7A6F840023E904 /* Views */,
 				D77C655F1C7A5BE400622275 /* Animation.swift */,
@@ -564,6 +575,7 @@
 				D78780CB1C835BFB0038F177 /* LoadingTableViewCell.swift in Sources */,
 				D77C65601C7A5BE400622275 /* Animation.swift in Sources */,
 				389C3B341C8377E900F2A26E /* FavoriteCategoriesTableViewCell.swift in Sources */,
+				3830557D1C951704005DC906 /* StringExtensions.swift in Sources */,
 				3873D27E1C7D633100918AA7 /* Label.swift in Sources */,
 				D77C65551C79033500622275 /* SearchHeaderView.swift in Sources */,
 				D73E9F571C952C42005CF3F2 /* TranslationViewModel.swift in Sources */,

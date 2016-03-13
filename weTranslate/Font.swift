@@ -122,7 +122,7 @@ final class Font {
         return UIFont.systemFontOfSize(fontSize, weight: fontWeight)
     }
 
-    static func emojiFont() -> UIFont {
+    static func hugeEmojiFont() -> UIFont {
         return UIFont.systemFontOfSize(120)
     }
 }

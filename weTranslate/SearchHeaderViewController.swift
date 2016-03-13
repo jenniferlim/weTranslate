@@ -52,9 +52,7 @@ final class SearchHeaderViewController: UIViewController {
                 searchHeaderView.searchTextField.resignFirstResponder()
                 search()
             case .Default where oldValue == .Picker:
-                toggle(expanded: false) { _ in
-                    self.search()
-                }
+                toggle(expanded: false) { _ in self.search() }
             case .Keyboard where oldValue == .Picker:
                 toggle(expanded: false)
             case .Picker where oldValue != .Picker:
@@ -172,12 +170,12 @@ extension SearchHeaderViewController: UIPickerViewDataSource {
 extension SearchHeaderViewController: UIPickerViewDelegate {
 
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let attributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        let name = viewModel.languages[row].name()
         switch (component, viewModel.translateFromEnglish) {
         case (0, false), (1, true):
-            return NSAttributedString(string: viewModel.languages[row].name(), attributes: attributes)
+            return name.attributedString(withColor: UIColor.whiteColor())
         default:
-            return NSAttributedString(string: Language.English.name(), attributes: attributes)
+            return name.attributedString(withColor: UIColor.whiteColor())
         }
     }
 

@@ -32,6 +32,7 @@ final class SearchCoordinator: CoordinatorType {
 }
 
 extension SearchCoordinator: SearchViewControllerDelegate {
+
     func searchViewController(searchViewController: SearchViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language) {
 
         client.translate(word: word, from: fromLanguage, to: toLanguage) { result in
@@ -46,7 +47,7 @@ extension SearchCoordinator: SearchViewControllerDelegate {
                     let favoriteCategoryStore = FavoriteCategoryStore()
                     favoriteCategoryStore.insert(translation: translation)
                 } else {
-                    let noResultViewModel = NoResultViewModel(word: word, fromLanguage: fromLanguage, toLanguage: toLanguage)
+                    let noResultViewModel = NoResultViewModel(searchText: word, fromLanguage: fromLanguage, toLanguage: toLanguage)
                     searchViewController.state = .NoResult(noResultViewModel)
                 }
             case .Failure:

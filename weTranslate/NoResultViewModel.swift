@@ -11,18 +11,23 @@ import TranslateKit
 
 struct NoResultViewModel {
 
-    let word: String
+    // MARK: - Properties
+
+    let searchText: String
     let fromLanguage: Language
     let toLanguage: Language
 
-    init(word: String, fromLanguage: Language, toLanguage: Language) {
-        self.word = word
+
+    // MARK: - Initializer
+
+    init(searchText: String, fromLanguage: Language, toLanguage: Language) {
+        self.searchText = searchText
         self.fromLanguage = fromLanguage
         self.toLanguage = toLanguage
     }
 
     var message: String {
-        return localize("TRANSLATION_NOT_FOUND_FORMAT", word, toLanguage.name())
+        return localize("TRANSLATION_NOT_FOUND_FORMAT", searchText, toLanguage.name())
     }
 
     var emoji: String {

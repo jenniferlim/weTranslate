@@ -76,7 +76,9 @@ final class AppCoordinator: CoordinatorType {
     }
 
     func startFavorite(navigationController: UINavigationController) {
-        // FIXME
+        let favoriteCategoryCoordinator = FavoriteCategoriesCoordinator(navigationController: navigationController)
+        favoriteCategoryCoordinator.start()
+        childCoordinators.append(favoriteCategoryCoordinator)
     }
 
     func startSettings(navigationController: UINavigationController) {

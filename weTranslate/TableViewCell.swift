@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class TableViewCell: UITableViewCell {
+class TableViewCell: UITableViewCell {
 
     // MARK: - Init
 
@@ -27,6 +27,10 @@ final class TableViewCell: UITableViewCell {
         view.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
         view.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
         view.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
+    }
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
 
     required init?(coder aDecoder: NSCoder) {

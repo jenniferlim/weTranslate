@@ -30,7 +30,7 @@ struct SearchHeaderViewModel {
         return translateFromEnglish ? selectedLanguage : .English
     }
 
-    private var translateFromEnglish: Bool = true
+    var translateFromEnglish: Bool = true
 
 
     // MARK: - Methods

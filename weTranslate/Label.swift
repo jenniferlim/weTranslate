@@ -12,7 +12,7 @@ final class Label: UILabel {
 
     // MARK: - Init
 
-    init(textColor: UIColor, font: UIFont?) {
+    init(textColor: UIColor = Color.standardText, font: UIFont = Font.font()) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         self.textColor = textColor

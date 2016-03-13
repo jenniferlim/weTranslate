@@ -17,6 +17,9 @@
 // Search
 
 "SEARCH_TYPE_HERE" = "Type here...";
+"TRANSLATION_NOT_FOUND_FORMAT" = "Sorry, there is no translation found for «%@» in %@";
+"TRANSLATE_IT_FIRST" = "Be the first one to translate this word";
+"TRANSLATE_IT" = "Translate it!";
 
 // Languages
 

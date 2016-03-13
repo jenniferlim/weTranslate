@@ -1,5 +1,5 @@
 //
-//  SearchViewModel.swift
+//  TranslationViewModel.swift
 //  weTranslate
 //
 //  Created by Lionel on 2/15/16.
@@ -9,7 +9,7 @@
 import Foundation
 import TranslateKit
 
-struct SearchViewModel {
+struct TranslationViewModel {
 
     let translation: Translation
 

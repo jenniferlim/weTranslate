@@ -23,6 +23,7 @@ final class SearchHeaderView: UIView {
         textField.autocorrectionType = .No
         textField.spellCheckingType = .No
         textField.returnKeyType = .Search
+        textField.clearButtonMode = .WhileEditing
         return textField
     }()
 

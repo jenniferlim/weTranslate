@@ -12,4 +12,5 @@ Carthage
 Carthage/Manifest.resolved
 .carthage_cache.yml
 *.xcbkptlist
+fastlane/report.xml
 

@@ -76,6 +76,20 @@
 			remoteGlobalIDString = D70D72B91C6FD7FA005A722E;
 			remoteInfo = weTranslate;
 		};
+		D77E508B1D18EC990077404E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D77E50861D18EC990077404E /* TranslateKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D7C964231C53D7E0007B7BB7;
+			remoteInfo = TranslateKit;
+		};
+		D77E508D1D18EC990077404E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D77E50861D18EC990077404E /* TranslateKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D7C9642D1C53D7E1007B7BB7;
+			remoteInfo = TranslateKitTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +140,7 @@
 		D77C655B1C7A118400622275 /* SearchHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHeaderViewController.swift; sourceTree = "<group>"; };
 		D77C655D1C7A576000622275 /* SearchHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHeaderViewModel.swift; sourceTree = "<group>"; };
 		D77C655F1C7A5BE400622275 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		D77E50861D18EC990077404E /* TranslateKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TranslateKit.xcodeproj; path = TranslateKit/TranslateKit.xcodeproj; sourceTree = "<group>"; };
 		D787213B1C83CBD200F7D5DB /* NoResultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoResultViewModel.swift; sourceTree = "<group>"; };
 		D78780CA1C835BFB0038F177 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		D78780CC1C8362700038F177 /* NoResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoResultView.swift; sourceTree = "<group>"; };
@@ -275,6 +290,7 @@
 		D70D72B11C6FD7FA005A722E = {
 			isa = PBXGroup;
 			children = (
+				D77E50861D18EC990077404E /* TranslateKit.xcodeproj */,
 				D70D72BC1C6FD7FA005A722E /* weTranslate */,
 				D70D72D11C6FD7FA005A722E /* weTranslateTests */,
 				D70D72DC1C6FD7FA005A722E /* weTranslateUITests */,
@@ -355,6 +371,15 @@
 				D7DFF5501C828545001BFAAC /* Localize.swift */,
 			);
 			name = Shared;
+			sourceTree = "<group>";
+		};
+		D77E50871D18EC990077404E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D77E508C1D18EC990077404E /* TranslateKit.framework */,
+				D77E508E1D18EC990077404E /* TranslateKitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		D7AC76EB1C6FF0B500AF540A /* Coordinators */ = {
@@ -488,6 +513,12 @@
 			mainGroup = D70D72B11C6FD7FA005A722E;
 			productRefGroup = D70D72BB1C6FD7FA005A722E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D77E50871D18EC990077404E /* Products */;
+					ProjectRef = D77E50861D18EC990077404E /* TranslateKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D70D72B91C6FD7FA005A722E /* weTranslate */,
@@ -496,6 +527,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D77E508C1D18EC990077404E /* TranslateKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TranslateKit.framework;
+			remoteRef = D77E508B1D18EC990077404E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D77E508E1D18EC990077404E /* TranslateKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TranslateKitTests.xctest;
+			remoteRef = D77E508D1D18EC990077404E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D70D72B81C6FD7FA005A722E /* Resources */ = {

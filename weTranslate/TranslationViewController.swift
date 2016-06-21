@@ -125,29 +125,26 @@ final class TranslationViewController: UIViewController {
 extension TranslationViewController: UITableViewDataSource {
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        guard case .Result(let translationViewModel) = state else { return 1 }
-
-        return translationViewModel.translation.meanings.count
+        return 1
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard case .Result(let translationViewModel) = state else { return 1 }
 
-        return translationViewModel.translation.meanings[section].translatedWords.count
+        return translationViewModel.translation.meanings.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        if case .Loading = state {
-            if let cell = tableView.dequeueReusableCellWithIdentifier(LoadingTableViewCell.cellIdentifier, forIndexPath: indexPath) as? LoadingTableViewCell {
-                cell.activityIndicator.startAnimating()
-                return cell
-            }
+        if case .Loading = state,
+            let cell = tableView.dequeueReusableCellWithIdentifier(LoadingTableViewCell.cellIdentifier, forIndexPath: indexPath) as? LoadingTableViewCell {
+            cell.activityIndicator.startAnimating()
+            return cell
         }
 
         guard case .Result(let translationViewModel) = state else { return UITableViewCell() }
 
-        let wordViewModel = WordViewModel(word: translationViewModel.translation.meanings[indexPath.section].translatedWords[indexPath.row])
+        let wordViewModel = WordViewModel(word: translationViewModel.translation.meanings[indexPath.row].translatedWords[0])
 
         if indexPath.row == 0  && indexPath.section == 0 {
             translationView.viewModel = wordViewModel

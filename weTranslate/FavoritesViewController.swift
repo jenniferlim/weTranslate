@@ -28,8 +28,10 @@ final class FavoritesViewController: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.estimatedRowHeight = 60
+        tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        tableView.separatorStyle = .None
         return tableView
     }()
 
@@ -51,7 +53,8 @@ final class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.registerClass(FavoriteTableViewCell.self, forCellReuseIdentifier: FavoriteTableViewCell.cellIdentifier)
+        tableView.registerNib(UINib.init(nibName: "FavoriteTableViewCell", bundle: nil), forCellReuseIdentifier: FavoriteTableViewCell.cellIdentifier)
+
         tableView.dataSource = self
         tableView.delegate = self
 

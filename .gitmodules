@@ -1,0 +1,3 @@
+[submodule "TranslateKit"]
+	path = TranslateKit
+	url = https://github.com/lionel-alves/TranslateKit.git

@@ -11,7 +11,6 @@
 		380237DD1C827E8800D4956C /* FavoriteCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380237DC1C827E8800D4956C /* FavoriteCategoriesViewController.swift */; };
 		380237DF1C827F1000D4956C /* FavoriteCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380237DE1C827F1000D4956C /* FavoriteCategoryViewModel.swift */; };
 		3828F0751C7A6F9B0023E904 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828F0741C7A6F9B0023E904 /* TableViewCell.swift */; };
-		382BA5221C743101002CF118 /* TranslateKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382BA5211C743101002CF118 /* TranslateKit.framework */; };
 		3830557D1C951704005DC906 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830557C1C951704005DC906 /* StringExtensions.swift */; };
 		383055801C95DD28005DC906 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830557F1C95DD28005DC906 /* NavigationController.swift */; };
 		383F423B1C7A211C00B7C35A /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F423A1C7A211C00B7C35A /* TranslationView.swift */; };
@@ -33,7 +32,6 @@
 		D70A601F1C72B0F000A35A30 /* WordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70A601E1C72B0F000A35A30 /* WordViewModel.swift */; };
 		D70D72BE1C6FD7FA005A722E /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D72BD1C6FD7FA005A722E /* WindowController.swift */; };
 		D70D72D31C6FD7FA005A722E /* weTranslateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D72D21C6FD7FA005A722E /* weTranslateTests.swift */; };
-		D70D72DE1C6FD7FA005A722E /* weTranslateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D72DD1C6FD7FA005A722E /* weTranslateUITests.swift */; };
 		D73E9F571C952C42005CF3F2 /* TranslationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E9F561C952C42005CF3F2 /* TranslationViewModel.swift */; };
 		D73E9F591C95C4AA005CF3F2 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E9F581C95C4AA005CF3F2 /* TranslationViewController.swift */; };
 		D73E9F5B1C961157005CF3F2 /* FavoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E9F5A1C961157005CF3F2 /* FavoriteDetailViewController.swift */; };
@@ -48,6 +46,7 @@
 		D77C655C1C7A118400622275 /* SearchHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C655B1C7A118400622275 /* SearchHeaderViewController.swift */; };
 		D77C655E1C7A576000622275 /* SearchHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C655D1C7A576000622275 /* SearchHeaderViewModel.swift */; };
 		D77C65601C7A5BE400622275 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C655F1C7A5BE400622275 /* Animation.swift */; };
+		D77E50941D4D5DC50077404E /* TranslateKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E508C1D18EC990077404E /* TranslateKit.framework */; };
 		D787213C1C83CBD200F7D5DB /* NoResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D787213B1C83CBD200F7D5DB /* NoResultViewModel.swift */; };
 		D78780CB1C835BFB0038F177 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78780CA1C835BFB0038F177 /* LoadingTableViewCell.swift */; };
 		D78780CD1C8362700038F177 /* NoResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78780CC1C8362700038F177 /* NoResultView.swift */; };
@@ -69,12 +68,19 @@
 			remoteGlobalIDString = D70D72B91C6FD7FA005A722E;
 			remoteInfo = weTranslate;
 		};
-		D70D72DA1C6FD7FA005A722E /* PBXContainerItemProxy */ = {
+		D77E508B1D18EC990077404E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D70D72B21C6FD7FA005A722E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D70D72B91C6FD7FA005A722E;
-			remoteInfo = weTranslate;
+			containerPortal = D77E50861D18EC990077404E /* TranslateKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D7C964231C53D7E0007B7BB7;
+			remoteInfo = TranslateKit;
+		};
+		D77E508D1D18EC990077404E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D77E50861D18EC990077404E /* TranslateKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D7C9642D1C53D7E1007B7BB7;
+			remoteInfo = TranslateKitTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -108,9 +114,6 @@
 		D70D72CE1C6FD7FA005A722E /* weTranslateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weTranslateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70D72D21C6FD7FA005A722E /* weTranslateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weTranslateTests.swift; sourceTree = "<group>"; };
 		D70D72D41C6FD7FA005A722E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D70D72D91C6FD7FA005A722E /* weTranslateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weTranslateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D70D72DD1C6FD7FA005A722E /* weTranslateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weTranslateUITests.swift; sourceTree = "<group>"; };
-		D70D72DF1C6FD7FA005A722E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D73E9F561C952C42005CF3F2 /* TranslationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationViewModel.swift; sourceTree = "<group>"; };
 		D73E9F581C95C4AA005CF3F2 /* TranslationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		D73E9F5A1C961157005CF3F2 /* FavoriteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteDetailViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 		D77C655B1C7A118400622275 /* SearchHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHeaderViewController.swift; sourceTree = "<group>"; };
 		D77C655D1C7A576000622275 /* SearchHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHeaderViewModel.swift; sourceTree = "<group>"; };
 		D77C655F1C7A5BE400622275 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		D77E50861D18EC990077404E /* TranslateKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TranslateKit.xcodeproj; path = TranslateKit/TranslateKit.xcodeproj; sourceTree = "<group>"; };
 		D787213B1C83CBD200F7D5DB /* NoResultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoResultViewModel.swift; sourceTree = "<group>"; };
 		D78780CA1C835BFB0038F177 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		D78780CC1C8362700038F177 /* NoResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoResultView.swift; sourceTree = "<group>"; };
@@ -144,19 +148,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D77E50941D4D5DC50077404E /* TranslateKit.framework in Frameworks */,
 				D70A60161C72668B00A35A30 /* CloudKit.framework in Frameworks */,
-				382BA5221C743101002CF118 /* TranslateKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D70D72CB1C6FD7FA005A722E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D70D72D61C6FD7FA005A722E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -275,9 +272,9 @@
 		D70D72B11C6FD7FA005A722E = {
 			isa = PBXGroup;
 			children = (
+				D77E50861D18EC990077404E /* TranslateKit.xcodeproj */,
 				D70D72BC1C6FD7FA005A722E /* weTranslate */,
 				D70D72D11C6FD7FA005A722E /* weTranslateTests */,
-				D70D72DC1C6FD7FA005A722E /* weTranslateUITests */,
 				D70A60171C726C7500A35A30 /* Frameworks */,
 				D70D72BB1C6FD7FA005A722E /* Products */,
 			);
@@ -288,7 +285,6 @@
 			children = (
 				D70D72BA1C6FD7FA005A722E /* weTranslate.app */,
 				D70D72CE1C6FD7FA005A722E /* weTranslateTests.xctest */,
-				D70D72D91C6FD7FA005A722E /* weTranslateUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -322,15 +318,6 @@
 			path = weTranslateTests;
 			sourceTree = "<group>";
 		};
-		D70D72DC1C6FD7FA005A722E /* weTranslateUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D70D72DD1C6FD7FA005A722E /* weTranslateUITests.swift */,
-				D70D72DF1C6FD7FA005A722E /* Info.plist */,
-			);
-			path = weTranslateUITests;
-			sourceTree = "<group>";
-		};
 		D753A3DB1C81835C0077ED64 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +342,15 @@
 				D7DFF5501C828545001BFAAC /* Localize.swift */,
 			);
 			name = Shared;
+			sourceTree = "<group>";
+		};
+		D77E50871D18EC990077404E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D77E508C1D18EC990077404E /* TranslateKit.framework */,
+				D77E508E1D18EC990077404E /* TranslateKitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		D7AC76EB1C6FF0B500AF540A /* Coordinators */ = {
@@ -400,7 +396,6 @@
 				D70D72B61C6FD7FA005A722E /* Sources */,
 				D70D72B71C6FD7FA005A722E /* Frameworks */,
 				D70D72B81C6FD7FA005A722E /* Resources */,
-				382BA5241C74322D002CF118 /* Embedded Carthage Framework */,
 				D753A3D81C8182420077ED64 /* SwiftLint */,
 			);
 			buildRules = (
@@ -430,24 +425,6 @@
 			productReference = D70D72CE1C6FD7FA005A722E /* weTranslateTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D70D72D81C6FD7FA005A722E /* weTranslateUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D70D72E81C6FD7FA005A722E /* Build configuration list for PBXNativeTarget "weTranslateUITests" */;
-			buildPhases = (
-				D70D72D51C6FD7FA005A722E /* Sources */,
-				D70D72D61C6FD7FA005A722E /* Frameworks */,
-				D70D72D71C6FD7FA005A722E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D70D72DB1C6FD7FA005A722E /* PBXTargetDependency */,
-			);
-			name = weTranslateUITests;
-			productName = weTranslateUITests;
-			productReference = D70D72D91C6FD7FA005A722E /* weTranslateUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -471,10 +448,6 @@
 						CreatedOnToolsVersion = 7.1.1;
 						TestTargetID = D70D72B91C6FD7FA005A722E;
 					};
-					D70D72D81C6FD7FA005A722E = {
-						CreatedOnToolsVersion = 7.1.1;
-						TestTargetID = D70D72B91C6FD7FA005A722E;
-					};
 				};
 			};
 			buildConfigurationList = D70D72B51C6FD7FA005A722E /* Build configuration list for PBXProject "weTranslate" */;
@@ -488,14 +461,36 @@
 			mainGroup = D70D72B11C6FD7FA005A722E;
 			productRefGroup = D70D72BB1C6FD7FA005A722E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D77E50871D18EC990077404E /* Products */;
+					ProjectRef = D77E50861D18EC990077404E /* TranslateKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D70D72B91C6FD7FA005A722E /* weTranslate */,
 				D70D72CD1C6FD7FA005A722E /* weTranslateTests */,
-				D70D72D81C6FD7FA005A722E /* weTranslateUITests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D77E508C1D18EC990077404E /* TranslateKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TranslateKit.framework;
+			remoteRef = D77E508B1D18EC990077404E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D77E508E1D18EC990077404E /* TranslateKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TranslateKitTests.xctest;
+			remoteRef = D77E508D1D18EC990077404E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D70D72B81C6FD7FA005A722E /* Resources */ = {
@@ -519,31 +514,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D70D72D71C6FD7FA005A722E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		382BA5241C74322D002CF118 /* Embedded Carthage Framework */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/TranslateKit.framework",
-			);
-			name = "Embedded Carthage Framework";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
 		D753A3D81C8182420077ED64 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -617,14 +590,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D70D72D51C6FD7FA005A722E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D70D72DE1C6FD7FA005A722E /* weTranslateUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -632,11 +597,6 @@
 			isa = PBXTargetDependency;
 			target = D70D72B91C6FD7FA005A722E /* weTranslate */;
 			targetProxy = D70D72CF1C6FD7FA005A722E /* PBXContainerItemProxy */;
-		};
-		D70D72DB1C6FD7FA005A722E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D70D72B91C6FD7FA005A722E /* weTranslate */;
-			targetProxy = D70D72DA1C6FD7FA005A722E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -805,30 +765,6 @@
 			};
 			name = Release;
 		};
-		D70D72E91C6FD7FA005A722E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = weTranslateUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wetranslate.weTranslateUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = weTranslate;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		D70D72EA1C6FD7FA005A722E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = weTranslateUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wetranslate.weTranslateUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = weTranslate;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -855,15 +791,6 @@
 			buildConfigurations = (
 				D70D72E61C6FD7FA005A722E /* Debug */,
 				D70D72E71C6FD7FA005A722E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D70D72E81C6FD7FA005A722E /* Build configuration list for PBXNativeTarget "weTranslateUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D70D72E91C6FD7FA005A722E /* Debug */,
-				D70D72EA1C6FD7FA005A722E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

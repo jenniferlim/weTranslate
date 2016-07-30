@@ -1,16 +1,6 @@
 language: objective-c
-osx_image: xcode7.2
-
-before_install:
-  - brew update
-  - brew upgrade xctool
-  - brew unlink carthage
-  - brew install carthage
-  - carthage bootstrap --platform iOS --verbose
-
-xcode_project: weTranslate.xcodeproj
-xcode_scheme: weTranslate
-xcode_sdk: iphonesimulator9.2
+osx_image: xcode7.3
+script: set -o pipefail && xcodebuild test -project weTranslate.xcodeproj -scheme weTranslate -sdk iphonesimulator9.3 | xcpretty
 
 notifications:
   slack: wetranslateteam:FaCCuM3G8pNFJzfCsGOLcvBy#ios-annonce

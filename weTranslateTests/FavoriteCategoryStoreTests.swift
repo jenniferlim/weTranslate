@@ -31,6 +31,6 @@ class FavoriteCategoryStoreTests: XCTestCase {
 
         XCTAssertEqual(favoriteCategories.count, 1)
         XCTAssertEqual(favoriteCategories[0].translations.count, 1)
-        XCTAssertEqual(favoriteCategories[0].translations[0].meanings[0].translatedWords.count, 2)
+        XCTAssertEqual(favoriteCategories[0].translations[0].meanings[0].translatedWords.count, 4)
     }
 }

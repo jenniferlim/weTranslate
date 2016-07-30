@@ -425,7 +425,6 @@
 				D70D72B61C6FD7FA005A722E /* Sources */,
 				D70D72B71C6FD7FA005A722E /* Frameworks */,
 				D70D72B81C6FD7FA005A722E /* Resources */,
-				382BA5241C74322D002CF118 /* Embedded Carthage Framework */,
 				D753A3D81C8182420077ED64 /* SwiftLint */,
 			);
 			buildRules = (
@@ -577,21 +576,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		382BA5241C74322D002CF118 /* Embedded Carthage Framework */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/TranslateKit.framework",
-			);
-			name = "Embedded Carthage Framework";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
 		D753A3D81C8182420077ED64 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

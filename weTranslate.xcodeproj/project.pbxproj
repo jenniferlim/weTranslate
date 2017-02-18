@@ -24,6 +24,8 @@
 		38CFF1101C912631000990AC /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CFF10F1C912631000990AC /* FavoritesViewModel.swift */; };
 		38CFF1121C9280C7000990AC /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CFF1111C9280C7000990AC /* FavoritesViewController.swift */; };
 		38D0A1711C7D849B00AFEC33 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D0A1701C7D849B00AFEC33 /* Database.swift */; };
+		7EC9F47C1E1AAAEE00B0C82F /* TranslateKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC9F4791E1AAAA200B0C82F /* TranslateKit.framework */; };
+		7EC9F47D1E1AAAEE00B0C82F /* TranslateKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC9F4791E1AAAA200B0C82F /* TranslateKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D703C4021C92F8FF002B1535 /* CassetteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D703C4011C92F8FF002B1535 /* CassetteLoader.swift */; };
 		D703C4071C930B20002B1535 /* favoriteCategoriesStore.json in Resources */ = {isa = PBXBuildFile; fileRef = D703C4051C930B20002B1535 /* favoriteCategoriesStore.json */; };
 		D703C4081C930B20002B1535 /* translation.json in Resources */ = {isa = PBXBuildFile; fileRef = D703C4061C930B20002B1535 /* translation.json */; };
@@ -46,7 +48,6 @@
 		D77C655C1C7A118400622275 /* SearchHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C655B1C7A118400622275 /* SearchHeaderViewController.swift */; };
 		D77C655E1C7A576000622275 /* SearchHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C655D1C7A576000622275 /* SearchHeaderViewModel.swift */; };
 		D77C65601C7A5BE400622275 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C655F1C7A5BE400622275 /* Animation.swift */; };
-		D77E50941D4D5DC50077404E /* TranslateKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E508C1D18EC990077404E /* TranslateKit.framework */; };
 		D77E50971D4D66110077404E /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D77E50961D4D66110077404E /* FavoriteTableViewCell.xib */; };
 		D787213C1C83CBD200F7D5DB /* NoResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D787213B1C83CBD200F7D5DB /* NoResultViewModel.swift */; };
 		D78780CB1C835BFB0038F177 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78780CA1C835BFB0038F177 /* LoadingTableViewCell.swift */; };
@@ -62,6 +63,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7EC9F4781E1AAAA200B0C82F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7EC9F4731E1AAAA200B0C82F /* TranslateKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D7C964231C53D7E0007B7BB7;
+			remoteInfo = TranslateKit;
+		};
+		7EC9F47A1E1AAAA200B0C82F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7EC9F4731E1AAAA200B0C82F /* TranslateKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D7C9642D1C53D7E1007B7BB7;
+			remoteInfo = TranslateKitTests;
+		};
+		7EC9F47E1E1AAAEE00B0C82F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7EC9F4731E1AAAA200B0C82F /* TranslateKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D7C964221C53D7E0007B7BB7;
+			remoteInfo = TranslateKit;
+		};
 		D70D72CF1C6FD7FA005A722E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D70D72B21C6FD7FA005A722E /* Project object */;
@@ -69,21 +91,21 @@
 			remoteGlobalIDString = D70D72B91C6FD7FA005A722E;
 			remoteInfo = weTranslate;
 		};
-		D77E508B1D18EC990077404E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D77E50861D18EC990077404E /* TranslateKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D7C964231C53D7E0007B7BB7;
-			remoteInfo = TranslateKit;
-		};
-		D77E508D1D18EC990077404E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D77E50861D18EC990077404E /* TranslateKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D7C9642D1C53D7E1007B7BB7;
-			remoteInfo = TranslateKitTests;
-		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7EC9F4801E1AAAEE00B0C82F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7EC9F47D1E1AAAEE00B0C82F /* TranslateKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		380237DA1C827DF300D4956C /* FavoriteCategoriesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCategoriesCoordinator.swift; sourceTree = "<group>"; };
@@ -104,6 +126,7 @@
 		38CFF10F1C912631000990AC /* FavoritesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		38CFF1111C9280C7000990AC /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		38D0A1701C7D849B00AFEC33 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		7EC9F4731E1AAAA200B0C82F /* TranslateKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TranslateKit.xcodeproj; path = Carthage/Checkouts/TranslateKit/TranslateKit.xcodeproj; sourceTree = "<group>"; };
 		D703C4011C92F8FF002B1535 /* CassetteLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CassetteLoader.swift; sourceTree = "<group>"; };
 		D703C4051C930B20002B1535 /* favoriteCategoriesStore.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = favoriteCategoriesStore.json; sourceTree = "<group>"; };
 		D703C4061C930B20002B1535 /* translation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = translation.json; sourceTree = "<group>"; };
@@ -130,7 +153,6 @@
 		D77C655B1C7A118400622275 /* SearchHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHeaderViewController.swift; sourceTree = "<group>"; };
 		D77C655D1C7A576000622275 /* SearchHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHeaderViewModel.swift; sourceTree = "<group>"; };
 		D77C655F1C7A5BE400622275 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
-		D77E50861D18EC990077404E /* TranslateKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TranslateKit.xcodeproj; path = TranslateKit/TranslateKit.xcodeproj; sourceTree = "<group>"; };
 		D77E50961D4D66110077404E /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
 		D787213B1C83CBD200F7D5DB /* NoResultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoResultViewModel.swift; sourceTree = "<group>"; };
 		D78780CA1C835BFB0038F177 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
@@ -150,7 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D77E50941D4D5DC50077404E /* TranslateKit.framework in Frameworks */,
+				7EC9F47C1E1AAAEE00B0C82F /* TranslateKit.framework in Frameworks */,
 				D70A60161C72668B00A35A30 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,9 +259,19 @@
 			name = Store;
 			sourceTree = "<group>";
 		};
+		7EC9F4741E1AAAA200B0C82F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7EC9F4791E1AAAA200B0C82F /* TranslateKit.framework */,
+				7EC9F47B1E1AAAA200B0C82F /* TranslateKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D70A60171C726C7500A35A30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7EC9F4731E1AAAA200B0C82F /* TranslateKit.xcodeproj */,
 				D70A60151C72668B00A35A30 /* CloudKit.framework */,
 				382BA5211C743101002CF118 /* TranslateKit.framework */,
 			);
@@ -275,7 +307,6 @@
 		D70D72B11C6FD7FA005A722E = {
 			isa = PBXGroup;
 			children = (
-				D77E50861D18EC990077404E /* TranslateKit.xcodeproj */,
 				D70D72BC1C6FD7FA005A722E /* weTranslate */,
 				D70D72D11C6FD7FA005A722E /* weTranslateTests */,
 				D70A60171C726C7500A35A30 /* Frameworks */,
@@ -347,15 +378,6 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
-		D77E50871D18EC990077404E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D77E508C1D18EC990077404E /* TranslateKit.framework */,
-				D77E508E1D18EC990077404E /* TranslateKitTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		D7AC76EB1C6FF0B500AF540A /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,10 +422,12 @@
 				D70D72B71C6FD7FA005A722E /* Frameworks */,
 				D70D72B81C6FD7FA005A722E /* Resources */,
 				D753A3D81C8182420077ED64 /* SwiftLint */,
+				7EC9F4801E1AAAEE00B0C82F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7EC9F47F1E1AAAEE00B0C82F /* PBXTargetDependency */,
 			);
 			name = weTranslate;
 			productName = weTranslate;
@@ -466,8 +490,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = D77E50871D18EC990077404E /* Products */;
-					ProjectRef = D77E50861D18EC990077404E /* TranslateKit.xcodeproj */;
+					ProductGroup = 7EC9F4741E1AAAA200B0C82F /* Products */;
+					ProjectRef = 7EC9F4731E1AAAA200B0C82F /* TranslateKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -479,18 +503,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		D77E508C1D18EC990077404E /* TranslateKit.framework */ = {
+		7EC9F4791E1AAAA200B0C82F /* TranslateKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = TranslateKit.framework;
-			remoteRef = D77E508B1D18EC990077404E /* PBXContainerItemProxy */;
+			remoteRef = 7EC9F4781E1AAAA200B0C82F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D77E508E1D18EC990077404E /* TranslateKitTests.xctest */ = {
+		7EC9F47B1E1AAAA200B0C82F /* TranslateKitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = TranslateKitTests.xctest;
-			remoteRef = D77E508D1D18EC990077404E /* PBXContainerItemProxy */;
+			remoteRef = 7EC9F47A1E1AAAA200B0C82F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -597,6 +621,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7EC9F47F1E1AAAEE00B0C82F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TranslateKit;
+			targetProxy = 7EC9F47E1E1AAAEE00B0C82F /* PBXContainerItemProxy */;
+		};
 		D70D72D01C6FD7FA005A722E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D70D72B91C6FD7FA005A722E /* weTranslate */;
@@ -700,6 +729,7 @@
 		D70D72E31C6FD7FA005A722E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = weTranslate/Resources/weTranslate.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -714,12 +744,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fluen.fluenapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
 		D70D72E41C6FD7FA005A722E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = weTranslate/Resources/weTranslate.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -734,6 +766,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fluen.fluenapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

@@ -1,3 +1,6 @@
-[submodule "TranslateKit"]
-	path = TranslateKit
+[submodule "Carthage/Checkouts/DVR"]
+	url = https://github.com/venmo/DVR.git
+	path = Carthage/Checkouts/DVR
+[submodule "Carthage/Checkouts/TranslateKit"]
 	url = https://github.com/lionel-alves/TranslateKit.git
+	path = Carthage/Checkouts/TranslateKit

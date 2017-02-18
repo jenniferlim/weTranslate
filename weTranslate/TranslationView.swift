@@ -17,20 +17,20 @@ final class TranslationView: UIView {
             if let viewModel = viewModel {
                 wordLabel.text = viewModel.word.capitalized
                 senseLabel.text = viewModel.sense
-                senseLabel.hidden = viewModel.isSenseHidden
+                senseLabel.isHidden = viewModel.isSenseHidden
             }
         }
     }
 
     fileprivate let wordLabel: Label = {
-        let label = Label(textColor: Color.brand, font: Font.font(style: .title1))
+        let label = Label(textColor: Color.brand, font: Font.font(.title1))
         label.numberOfLines = 0
         label.textAlignment = NSTextAlignment.center
         return label
     }()
 
     fileprivate let senseLabel: Label = {
-        let label = Label(textColor: Color.brand, font: Font.font(style: .caption2))
+        let label = Label(textColor: Color.brand, font: Font.font(.caption2))
         label.numberOfLines = 0
         label.textAlignment = NSTextAlignment.center
         return label

@@ -13,12 +13,12 @@ struct FavoriteCategoryStore {
 
     fileprivate let favoriteCategoriesDatabase = Database<FavoriteCategory>(dbFileName: "favoriteCategoriesStore.json")!
 
-    func insert(translation: Translation) -> () {
+    func insert(_ translation: Translation) -> () {
 
         let language = translation.fromLanguage == .English ? translation.fromLanguage : translation.toLanguage
 
-        let updatedFavoriteCategory = add(translation: translation, toLanguage: language)
-        set(category: updatedFavoriteCategory)
+        let updatedFavoriteCategory = add(translation, toLanguage: language)
+        set(updatedFavoriteCategory)
     }
 
     func fetchAll() -> [FavoriteCategory] {
@@ -32,13 +32,13 @@ struct FavoriteCategoryStore {
 
     // MARK: - Private
 
-    fileprivate func set(category: FavoriteCategory) {
+    fileprivate func set(_ category: FavoriteCategory) {
         var favoriteCategories: [FavoriteCategory] = favoriteCategoriesDatabase.get().filter { $0.language != category.language }
         favoriteCategories.append(category)
         favoriteCategoriesDatabase.set(favoriteCategories)
     }
 
-    fileprivate func add(translation: Translation, toLanguage language: Language) -> FavoriteCategory {
+    fileprivate func add(_ translation: Translation, toLanguage language: Language) -> FavoriteCategory {
         let favoriteCategories: [FavoriteCategory] = favoriteCategoriesDatabase.get()
         let favoriteCategory = favoriteCategories.filter ({ $0.language == language }).first
 

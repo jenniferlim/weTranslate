@@ -17,9 +17,9 @@ final class WordTableViewCell: UITableViewCell {
             if let viewModel = viewModel {
                 wordLabel.text = viewModel.word.capitalized
                 senseLabel.text = viewModel.sense
-                senseLabel.hidden = viewModel.isSenseHidden
+                senseLabel.isHidden = viewModel.isSenseHidden
                 originalSenseLabel.text = viewModel.originalSense
-                originalSenseLabel.hidden = viewModel.isOriginalSenseHidden
+                originalSenseLabel.isHidden = viewModel.isOriginalSenseHidden
             }
         }
     }
@@ -31,13 +31,13 @@ final class WordTableViewCell: UITableViewCell {
     }()
 
     fileprivate let senseLabel: Label = {
-        let label = Label(textColor: Color.standardText, font: Font.font(style: .caption1))
+        let label = Label(textColor: Color.standardText, font: Font.font(.caption1))
         label.numberOfLines = 0
         return label
     }()
 
     fileprivate let originalSenseLabel: Label = {
-        let label = Label(textColor: Color.standardText, font: Font.font(style: .Caption1))
+        let label = Label(textColor: Color.standardText, font: Font.font(.caption1))
         label.numberOfLines = 0
         return label
     }()

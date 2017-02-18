@@ -20,7 +20,7 @@ final class NoResultView: UIView {
     }
 
     let noResultLabel: Label = {
-        let label = Label(font: Font.font(style: .title3))
+        let label = Label(font: Font.font(.title3))
         label.numberOfLines = 0
         label.textAlignment = NSTextAlignment.center
         return label
@@ -33,7 +33,7 @@ final class NoResultView: UIView {
     }()
 
     let translateItLabel: Label = {
-        let label = Label(textColor: Color.standardText, font: Font.font(style: .body))
+        let label = Label(textColor: Color.standardText, font: Font.font(.body))
         label.numberOfLines = 0
         label.textAlignment = NSTextAlignment.center
         label.text = localize("TRANSLATE_IT_FIRST")

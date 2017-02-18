@@ -33,7 +33,7 @@ final class SearchCoordinator: CoordinatorType {
 
 extension SearchCoordinator: SearchViewControllerDelegate {
 
-    func searchViewController(searchViewController: SearchViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language) {
+    func searchViewController(_ searchViewController: SearchViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language) {
 
         client.translate(word: word, from: fromLanguage, to: toLanguage) { result in
             switch result {

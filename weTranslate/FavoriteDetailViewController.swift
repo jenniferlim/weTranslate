@@ -22,11 +22,11 @@ final class FavoriteDetailViewController: UIViewController {
         set { translationViewController.state = newValue }
     }
 
-    private var viewModel: TranslationViewModel?
+    fileprivate var viewModel: TranslationViewModel?
 
-    private weak var delegate: FavoriteDetailViewControllerDelegate?
+    fileprivate weak var delegate: FavoriteDetailViewControllerDelegate?
 
-    private let translationViewController: TranslationViewController = {
+    fileprivate let translationViewController: TranslationViewController = {
         let viewController = TranslationViewController()
         return viewController
     }()
@@ -50,14 +50,14 @@ final class FavoriteDetailViewController: UIViewController {
         super.viewDidLoad()
 
         addChildViewController(translationViewController)
-        translationViewController.didMoveToParentViewController(self)
+        translationViewController.didMove(toParentViewController: self)
 
         view.addSubview(translationViewController.view)
 
-        translationViewController.view.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        translationViewController.view.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        translationViewController.view.topAnchor.constraintEqualToAnchor(topLayoutGuide.topAnchor).active = true
-        translationViewController.view.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor).active = true
+        translationViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        translationViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        translationViewController.view.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor).isActive = true
+        translationViewController.view.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
     }
 }
 

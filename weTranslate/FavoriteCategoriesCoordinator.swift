@@ -34,12 +34,12 @@ final class FavoriteCategoriesCoordinator: CoordinatorType {
 
 
 extension FavoriteCategoriesCoordinator: FavoriteCategoriesViewControllerDelegate {
-    func favoriteCategoriesViewControllerNeedsUpdate(favoriteCategoriesViewController: FavoriteCategoriesViewController) {
+    func favoriteCategoriesViewControllerNeedsUpdate(_ favoriteCategoriesViewController: FavoriteCategoriesViewController) {
         let favoriteCategories = FavoriteCategoryStore().fetchAll()
         favoriteCategoriesViewController.viewModel = favoriteCategories.map(FavoriteCategoryViewModel.init)
     }
 
-    func favoriteCategoriesViewController(favoriteCategoriesViewController: FavoriteCategoriesViewController, didSelectCategory category: FavoriteCategory) {
+    func favoriteCategoriesViewController(_ favoriteCategoriesViewController: FavoriteCategoriesViewController, didSelectCategory category: FavoriteCategory) {
         let favoritesViewController = FavoritesViewController(delegate: self)
         favoritesViewController.viewModels = category.translations.map { FavoriteViewModel(translation: $0) }
         navigationController.pushViewController(favoritesViewController, animated: true)
@@ -48,7 +48,7 @@ extension FavoriteCategoriesCoordinator: FavoriteCategoriesViewControllerDelegat
 
 
 extension FavoriteCategoriesCoordinator: FavoritesViewControllerDelegate {
-    func favoritesViewController(favoritesViewController: FavoritesViewController, didSelectTranslation translation: Translation) {
+    func favoritesViewController(_ favoritesViewController: FavoritesViewController, didSelectTranslation translation: Translation) {
         let favoriteDetailViewController = FavoriteDetailViewController(delegate: self)
         let translationViewModel = TranslationViewModel(translation: translation)
         favoriteDetailViewController.state = .Result(translationViewModel)

@@ -10,7 +10,7 @@ import UIKit
 import TranslateKit
 
 protocol FavoritesViewControllerDelegate: class {
-    func favoritesViewController(favoritesViewController: FavoritesViewController, didSelectTranslation translation: Translation)
+    func favoritesViewController(_ favoritesViewController: FavoritesViewController, didSelectTranslation translation: Translation)
 }
 
 final class FavoritesViewController: UIViewController {
@@ -23,15 +23,15 @@ final class FavoritesViewController: UIViewController {
         }
     }
 
-    private weak var delegate: FavoritesViewControllerDelegate?
+    fileprivate weak var delegate: FavoritesViewControllerDelegate?
 
-    private let tableView: UITableView = {
+    fileprivate let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.backgroundColor = UIColor.groupTableViewBackgroundColor()
-        tableView.separatorStyle = .None
+        tableView.backgroundColor = UIColor.groupTableViewBackground
+        tableView.separatorStyle = .none
         return tableView
     }()
 
@@ -53,39 +53,39 @@ final class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.registerNib(UINib.init(nibName: "FavoriteTableViewCell", bundle: nil), forCellReuseIdentifier: FavoriteTableViewCell.cellIdentifier)
+        tableView.register(UINib.init(nibName: "FavoriteTableViewCell", bundle: nil), forCellReuseIdentifier: FavoriteTableViewCell.cellIdentifier)
 
         tableView.dataSource = self
         tableView.delegate = self
 
         view.addSubview(tableView)
 
-        tableView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        tableView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        tableView.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
-        tableView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 }
 
 
 extension FavoritesViewController: UITableViewDataSource {
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         guard let _ = viewModels else { return 0 }
 
         return 1
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let favoriteViewModels = viewModels else { return 0 }
 
         return favoriteViewModels.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let favoriteViewModels = viewModels else { return UITableViewCell() }
 
-        if let cell = tableView.dequeueReusableCellWithIdentifier(FavoriteTableViewCell.cellIdentifier, forIndexPath: indexPath) as? FavoriteTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.cellIdentifier, for: indexPath) as? FavoriteTableViewCell {
             cell.viewModel = favoriteViewModels[indexPath.row]
             return cell
         }
@@ -96,7 +96,7 @@ extension FavoritesViewController: UITableViewDataSource {
 
 
 extension FavoritesViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let favoriteViewModels = viewModels else { return }
 
         let translation = favoriteViewModels[indexPath.row].translation

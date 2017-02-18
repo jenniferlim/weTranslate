@@ -20,22 +20,22 @@ final class NoResultView: UIView {
     }
 
     let noResultLabel: Label = {
-        let label = Label(font: Font.font(style: .Title3))
+        let label = Label(font: Font.font(style: .title3))
         label.numberOfLines = 0
-        label.textAlignment = NSTextAlignment.Center
+        label.textAlignment = NSTextAlignment.center
         return label
     }()
 
     let emojiLabel: Label = {
         let label = Label(font: Font.hugeEmojiFont())
-        label.textAlignment = NSTextAlignment.Center
+        label.textAlignment = NSTextAlignment.center
         return label
     }()
 
     let translateItLabel: Label = {
-        let label = Label(textColor: Color.standardText, font: Font.font(style: .Body))
+        let label = Label(textColor: Color.standardText, font: Font.font(style: .body))
         label.numberOfLines = 0
-        label.textAlignment = NSTextAlignment.Center
+        label.textAlignment = NSTextAlignment.center
         label.text = localize("TRANSLATE_IT_FIRST")
         return label
     }()
@@ -45,13 +45,13 @@ final class NoResultView: UIView {
         return button
     }()
 
-    private let bodyView: UIStackView = {
+    fileprivate let bodyView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.spacing = 25
         stackView.layoutMargins = UIEdgeInsets(top: 30, left: 40, bottom: 30, right: 40)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
@@ -62,7 +62,7 @@ final class NoResultView: UIView {
         super.init(frame: .zero)
 
         backgroundColor = Color.background
-        opaque = true
+        isOpaque = true
 
         bodyView.addArrangedSubview(noResultLabel)
         bodyView.addArrangedSubview(emojiLabel)
@@ -71,16 +71,16 @@ final class NoResultView: UIView {
         addSubview(bodyView)
 
         let margins = layoutMarginsGuide
-        bodyView.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true
-        bodyView.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
-        bodyView.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
-        let bottomConstraint = bodyView.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor)
+        bodyView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        bodyView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        bodyView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+        let bottomConstraint = bodyView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
         bottomConstraint.priority = 250
-        bottomConstraint.active = true
+        bottomConstraint.isActive = true
 
-        let heightConstraint = translateItButton.heightAnchor.constraintEqualToConstant(50.0)
+        let heightConstraint = translateItButton.heightAnchor.constraint(equalToConstant: 50.0)
         heightConstraint.priority = 999
-        heightConstraint.active = true
+        heightConstraint.isActive = true
     }
 
     required init?(coder aDecoder: NSCoder) {

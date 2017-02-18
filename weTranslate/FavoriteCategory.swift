@@ -30,8 +30,8 @@ extension FavoriteCategory: DictionaryDeserializable, DictionarySerializable {
 
     init?(dictionary: JSONDictionary) {
         guard let languageRawValue = dictionary["language"] as? String,
-            language = Language(rawValue: languageRawValue),
-            translationDictionaries = dictionary["translations"] as? [JSONDictionary] else { return nil }
+            let language = Language(rawValue: languageRawValue),
+            let translationDictionaries = dictionary["translations"] as? [JSONDictionary] else { return nil }
 
         self.language = language
         self.translations = translationDictionaries.flatMap { dictionary in
@@ -44,8 +44,8 @@ extension FavoriteCategory: DictionaryDeserializable, DictionarySerializable {
         let translationsDictionary = translations.map { $0.dictionary }
 
         return [
-            "language": language.name(),
-            "translations" : translationsDictionary
+            "language": language.name() as AnyObject,
+            "translations" : translationsDictionary as AnyObject
         ]
     }
 }

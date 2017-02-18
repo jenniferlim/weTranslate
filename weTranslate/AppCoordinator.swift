@@ -16,21 +16,21 @@ final class AppCoordinator: CoordinatorType {
     let rootViewController: TabBarController
     var childCoordinators: [CoordinatorType] = []
 
-    private let searchNavigationController: NavigationController = {
+    fileprivate let searchNavigationController: NavigationController = {
         let searchNavigationController = NavigationController()
         searchNavigationController.tabBarItem.image = UIImage(named: "search")
         searchNavigationController.tabBarItem.title = localize("SETTINGS")
         return searchNavigationController
     }()
 
-    private let favoriteNavigationController: NavigationController = {
+    fileprivate let favoriteNavigationController: NavigationController = {
         let favoriteNavigationController = NavigationController()
         favoriteNavigationController.tabBarItem.image = UIImage(named: "star")
         favoriteNavigationController.tabBarItem.title = localize("FAVORITES")
         return favoriteNavigationController
     }()
 
-    private let settingsNavigationController: NavigationController = {
+    fileprivate let settingsNavigationController: NavigationController = {
         let settingsNavigationController = NavigationController()
         settingsNavigationController.tabBarItem.image = UIImage(named: "settings")
         settingsNavigationController.tabBarItem.title = localize("SETTINGS")
@@ -38,11 +38,11 @@ final class AppCoordinator: CoordinatorType {
     }()
 
     static let configuration: NSDictionary = {
-        let path = NSBundle.mainBundle().pathForResource("Configuration", ofType: "plist")!
+        let path = Bundle.main.path(forResource: "Configuration", ofType: "plist")!
         return NSDictionary(contentsOfFile: path)!
     }()
 
-    private lazy var client: Client = {
+    fileprivate lazy var client: Client = {
         let APIKey = AppCoordinator.configuration["API_KEY"] as? String ?? "API_KEY"
         return Client(wordReferenceApiKey: APIKey)
     }()
@@ -69,19 +69,19 @@ final class AppCoordinator: CoordinatorType {
         rootViewController.selectedIndex = 0
     }
 
-    func startSearch(navigationController: NavigationController) {
+    func startSearch(_ navigationController: NavigationController) {
         let searchCoordinator = SearchCoordinator(navigationController: navigationController, client: client)
         searchCoordinator.start()
         childCoordinators.append(searchCoordinator)
     }
 
-    func startFavorite(navigationController: NavigationController) {
+    func startFavorite(_ navigationController: NavigationController) {
         let favoriteCategoryCoordinator = FavoriteCategoriesCoordinator(navigationController: navigationController)
         favoriteCategoryCoordinator.start()
         childCoordinators.append(favoriteCategoryCoordinator)
     }
 
-    func startSettings(navigationController: NavigationController) {
+    func startSettings(_ navigationController: NavigationController) {
         // FIXME
     }
 }

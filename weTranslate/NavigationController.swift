@@ -28,9 +28,9 @@ final class NavigationController: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func initialize() {
-        navigationBar.tintColor = UIColor.whiteColor()
+    fileprivate func initialize() {
+        navigationBar.tintColor = UIColor.white
         navigationBar.barTintColor = Color.brand
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
 }

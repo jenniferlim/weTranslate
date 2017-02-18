@@ -19,7 +19,7 @@ struct SearchHeaderViewModel {
 
     var selectedRow: Int {
         let language = fromLanguage == .English ? toLanguage : fromLanguage
-        return languages.indexOf(language) ?? 0
+        return languages.index(of: language) ?? 0
     }
 
     var fromLanguage: Language {

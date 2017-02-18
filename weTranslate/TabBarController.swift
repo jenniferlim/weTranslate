@@ -15,7 +15,7 @@ final class TabBarController: UITabBarController {
     required init() {
         super.init(nibName: nil, bundle: nil)
 
-        tabBar.translucent = false
+        tabBar.isTranslucent = false
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -11,9 +11,9 @@ import TranslateKit
 
 struct FavoriteCategoryStore {
 
-    private let favoriteCategoriesDatabase = Database<FavoriteCategory>(dbFileName: "favoriteCategoriesStore.json")!
+    fileprivate let favoriteCategoriesDatabase = Database<FavoriteCategory>(dbFileName: "favoriteCategoriesStore.json")!
 
-    func insert(translation translation: Translation) -> () {
+    func insert(translation: Translation) -> () {
 
         let language = translation.fromLanguage == .English ? translation.fromLanguage : translation.toLanguage
 
@@ -32,13 +32,13 @@ struct FavoriteCategoryStore {
 
     // MARK: - Private
 
-    private func set(category category: FavoriteCategory) {
+    fileprivate func set(category: FavoriteCategory) {
         var favoriteCategories: [FavoriteCategory] = favoriteCategoriesDatabase.get().filter { $0.language != category.language }
         favoriteCategories.append(category)
         favoriteCategoriesDatabase.set(favoriteCategories)
     }
 
-    private func add(translation translation: Translation, toLanguage language: Language) -> FavoriteCategory {
+    fileprivate func add(translation: Translation, toLanguage language: Language) -> FavoriteCategory {
         let favoriteCategories: [FavoriteCategory] = favoriteCategoriesDatabase.get()
         let favoriteCategory = favoriteCategories.filter ({ $0.language == language }).first
 

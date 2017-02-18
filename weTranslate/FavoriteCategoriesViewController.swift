@@ -10,8 +10,8 @@ import UIKit
 import TranslateKit
 
 protocol FavoriteCategoriesViewControllerDelegate: class {
-    func favoriteCategoriesViewControllerNeedsUpdate(favoriteCategoriesViewController: FavoriteCategoriesViewController)
-    func favoriteCategoriesViewController(favoriteCategoriesViewController: FavoriteCategoriesViewController, didSelectCategory category: FavoriteCategory)
+    func favoriteCategoriesViewControllerNeedsUpdate(_ favoriteCategoriesViewController: FavoriteCategoriesViewController)
+    func favoriteCategoriesViewController(_ favoriteCategoriesViewController: FavoriteCategoriesViewController, didSelectCategory category: FavoriteCategory)
 }
 
 final class FavoriteCategoriesViewController: UIViewController {
@@ -20,13 +20,13 @@ final class FavoriteCategoriesViewController: UIViewController {
 
     var viewModel: [FavoriteCategoryViewModel]? {
         didSet {
-            dispatch_async(dispatch_get_main_queue()) { [weak self] in self?.tableView.reloadData() }
+            DispatchQueue.main.async { [weak self] in self?.tableView.reloadData() }
         }
     }
 
-    private weak var delegate: FavoriteCategoriesViewControllerDelegate?
+    fileprivate weak var delegate: FavoriteCategoriesViewControllerDelegate?
 
-    private let tableView: UITableView = {
+    fileprivate let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.estimatedRowHeight = 250
@@ -34,20 +34,20 @@ final class FavoriteCategoriesViewController: UIViewController {
         return tableView
     }()
 
-    private let favoriteCategoriesTableViewCell: FavoriteCategoriesTableViewCell = {
+    fileprivate let favoriteCategoriesTableViewCell: FavoriteCategoriesTableViewCell = {
         let favoriteCategoriesTableViewCell = FavoriteCategoriesTableViewCell(frame: .zero)
         favoriteCategoriesTableViewCell.translatesAutoresizingMaskIntoConstraints = false
         return favoriteCategoriesTableViewCell
     }()
 
-    private let bodyView: UIStackView = {
+    fileprivate let bodyView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.spacing = 5
-        stackView.opaque = true
+        stackView.isOpaque = true
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
@@ -70,21 +70,21 @@ final class FavoriteCategoriesViewController: UIViewController {
         title = localize("FAVORITES_TITLE")
         view.backgroundColor = Color.brand
 
-        tableView.registerClass(FavoriteCategoriesTableViewCell.self, forCellReuseIdentifier: FavoriteCategoriesTableViewCell.cellIdentifier)
-        tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellIdentifier)
+        tableView.register(FavoriteCategoriesTableViewCell.self, forCellReuseIdentifier: FavoriteCategoriesTableViewCell.cellIdentifier)
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
 
         bodyView.addArrangedSubview(tableView)
         view.addSubview(bodyView)
 
-        bodyView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        bodyView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        bodyView.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
-        bodyView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+        bodyView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        bodyView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        bodyView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        bodyView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         delegate?.favoriteCategoriesViewControllerNeedsUpdate(self)
@@ -93,27 +93,27 @@ final class FavoriteCategoriesViewController: UIViewController {
 
 extension FavoriteCategoriesViewController: UITableViewDataSource {
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         guard let favoriteCategoriesViewModel = self.viewModel else { return 0 }
 
         return favoriteCategoriesViewModel.count
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let favoriteCategoriesViewModel = self.viewModel,
-            cell = tableView.dequeueReusableCellWithIdentifier(FavoriteCategoriesTableViewCell.cellIdentifier, forIndexPath: indexPath) as? FavoriteCategoriesTableViewCell else { return UITableViewCell() }
+            let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteCategoriesTableViewCell.cellIdentifier, for: indexPath) as? FavoriteCategoriesTableViewCell else { return UITableViewCell() }
 
         cell.viewModel = favoriteCategoriesViewModel[indexPath.row]
 
         return cell
     }
 
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 250
     }
 }
@@ -121,7 +121,7 @@ extension FavoriteCategoriesViewController: UITableViewDataSource {
 
 extension FavoriteCategoriesViewController: UITableViewDelegate {
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let viewModel = viewModel {
             let favoriteCategory = viewModel[indexPath.row].favoriteCategory
             delegate?.favoriteCategoriesViewController(self, didSelectCategory: favoriteCategory)

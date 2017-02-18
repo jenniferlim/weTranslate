@@ -9,31 +9,31 @@
 import Foundation
 import TranslateKit
 
-struct Database<T where T:DictionaryDeserializable, T:DictionarySerializable> {
+struct Database<T> where T:DictionaryDeserializable, T:DictionarySerializable {
 
-    private let dbFilePath: String
-    private let queue = dispatch_queue_create("com.fluen.fluenapp.Database", DISPATCH_QUEUE_CONCURRENT)
+    fileprivate let dbFilePath: String
+    fileprivate let queue = DispatchQueue(label: "com.fluen.fluenapp.Database", attributes: DispatchQueue.Attributes.concurrent)
     init?(dbFileName: String) {
-        guard let documentsDirectory = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)).first else { return nil }
-        dbFilePath = (documentsDirectory as NSString).stringByAppendingPathComponent(dbFileName)
+        guard let documentsDirectory = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)).first else { return nil }
+        dbFilePath = (documentsDirectory as NSString).appendingPathComponent(dbFileName)
     }
 
     func get() -> [T] {
         var items = [T]()
-        dispatch_sync(queue) {
-            guard let data = NSData(contentsOfFile: self.dbFilePath),
-                objects = try? NSJSONSerialization.JSONObjectWithData(data, options: []),
-                dictionaries = objects as? [JSONDictionary] else { return }
+        queue.sync {
+            guard let data = try? Data(contentsOf: URL(fileURLWithPath: self.dbFilePath)),
+                let objects = try? JSONSerialization.jsonObject(with: data, options: []),
+                let dictionaries = objects as? [JSONDictionary] else { return }
             items = dictionaries.flatMap { T(dictionary: $0) }
         }
         return items
     }
 
-    func set(items: [T]) {
-        dispatch_barrier_async(queue) {
+    func set(_ items: [T]) {
+        queue.async(flags: .barrier, execute: {
             let dictionaries = items.map { $0.dictionary }
-            guard let data = try? NSJSONSerialization.dataWithJSONObject(dictionaries, options: []) else { return }
+            guard let data = try? JSONSerialization.data(withJSONObject: dictionaries, options: []) else { return }
             data.writeToFile(self.dbFilePath, atomically: true)
-        }
+        }) 
     }
 }

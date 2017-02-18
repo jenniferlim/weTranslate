@@ -115,7 +115,7 @@ final class Font {
 
     // MARK: - Methods
 
-    static func font(style: Style = .body, weight: Weight? = nil) -> UIFont {
+    static func font(_ style: Style = .body, weight: Weight? = nil) -> UIFont {
         let preferredFont = UIFont.preferredFont(forTextStyle: UIFontTextStyle(rawValue: style.textStyle))
         let fontSize: CGFloat = preferredFont.pointSize + fontSizeAjustment
         let fontWeight = weight?.fontWeight ?? style.defaultWeight.fontWeight

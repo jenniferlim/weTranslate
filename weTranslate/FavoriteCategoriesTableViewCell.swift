@@ -47,13 +47,13 @@ final class FavoriteCategoriesTableViewCell: UITableViewCell {
     }()
 
     fileprivate let wordsCountLabel: Label = {
-        let label = Label(textColor: .white, font: Font.font(style: .subheadline))
+        let label = Label(textColor: .white, font: Font.font(.subheadline))
         label.numberOfLines = 0
         return label
     }()
 
     fileprivate let languageLabel: Label = {
-        let label = Label(textColor: .white, font: Font.font(style: .title1, weight: .medium))
+        let label = Label(textColor: .white, font: Font.font(.title1, weight: .medium))
         label.numberOfLines = 0
         return label
     }()

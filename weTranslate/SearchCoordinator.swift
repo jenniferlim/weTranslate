@@ -45,7 +45,7 @@ extension SearchCoordinator: SearchViewControllerDelegate {
                     // FIX ME: Get rid of it
                     // Display translation only if in favorite or last 20 researches
                     let favoriteCategoryStore = FavoriteCategoryStore()
-                    favoriteCategoryStore.insert(translation: translation)
+                    favoriteCategoryStore.insert(translation)
                 } else {
                     let noResultViewModel = NoResultViewModel(searchText: word, fromLanguage: fromLanguage, toLanguage: toLanguage)
                     searchViewController.state = .noResult(noResultViewModel)

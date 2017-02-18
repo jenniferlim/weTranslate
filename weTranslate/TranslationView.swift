@@ -16,7 +16,8 @@ final class TranslationView: UIView {
         didSet {
             if let viewModel = viewModel {
                 wordLabel.text = viewModel.word.capitalized
-                senseLabel.text = "(\(viewModel.sense))"
+                senseLabel.text = viewModel.sense
+                senseLabel.hidden = viewModel.isSenseHidden
             }
         }
     }

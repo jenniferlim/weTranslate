@@ -144,7 +144,9 @@ extension TranslationViewController: UITableViewDataSource {
 
         guard case .result(let translationViewModel) = state else { return UITableViewCell() }
 
-        let wordViewModel = WordViewModel(word: translationViewModel.translation.meanings[indexPath.row].translatedWords[0])
+        let meaning = translationViewModel.translation.meanings[indexPath.row]
+        let word = meaning.translatedWords[0]
+        let wordViewModel = WordViewModel(word: word, originalWord: meaning.originalWord)
 
         if indexPath.row == 0  && indexPath.section == 0 {
             translationView.viewModel = wordViewModel

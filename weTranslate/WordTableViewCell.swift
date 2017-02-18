@@ -16,7 +16,10 @@ final class WordTableViewCell: UITableViewCell {
         didSet {
             if let viewModel = viewModel {
                 wordLabel.text = viewModel.word.capitalized
-                senseLabel.text = "(\(viewModel.sense))"
+                senseLabel.text = viewModel.sense
+                senseLabel.hidden = viewModel.isSenseHidden
+                originalSenseLabel.text = viewModel.originalSense
+                originalSenseLabel.hidden = viewModel.isOriginalSenseHidden
             }
         }
     }
@@ -29,6 +32,12 @@ final class WordTableViewCell: UITableViewCell {
 
     fileprivate let senseLabel: Label = {
         let label = Label(textColor: Color.standardText, font: Font.font(style: .caption1))
+        label.numberOfLines = 0
+        return label
+    }()
+
+    fileprivate let originalSenseLabel: Label = {
+        let label = Label(textColor: Color.standardText, font: Font.font(style: .Caption1))
         label.numberOfLines = 0
         return label
     }()
@@ -61,6 +70,7 @@ final class WordTableViewCell: UITableViewCell {
 
         bodyView.addArrangedSubview(wordLabel)
         bodyView.addArrangedSubview(senseLabel)
+        bodyView.addArrangedSubview(originalSenseLabel)
         columnView.addArrangedSubview(bodyView)
         contentView.addSubview(columnView)
 

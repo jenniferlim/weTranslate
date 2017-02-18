@@ -32,8 +32,8 @@ struct Database<T> where T:DictionaryDeserializable, T:DictionarySerializable {
     func set(_ items: [T]) {
         queue.async(flags: .barrier, execute: {
             let dictionaries = items.map { $0.dictionary }
-            guard let data = try? JSONSerialization.data(withJSONObject: dictionaries, options: []) else { return }
-            data.writeToFile(self.dbFilePath, atomically: true)
+            guard let data = try? JSONSerialization.data(withJSONObject: dictionaries, options: []) as NSData else { return }
+            data.write(toFile: self.dbFilePath, atomically: true)
         }) 
     }
 }

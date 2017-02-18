@@ -51,7 +51,7 @@ extension FavoriteCategoriesCoordinator: FavoritesViewControllerDelegate {
     func favoritesViewController(_ favoritesViewController: FavoritesViewController, didSelectTranslation translation: Translation) {
         let favoriteDetailViewController = FavoriteDetailViewController(delegate: self)
         let translationViewModel = TranslationViewModel(translation: translation)
-        favoriteDetailViewController.state = .Result(translationViewModel)
+        favoriteDetailViewController.state = .result(translationViewModel)
         navigationController.pushViewController(favoriteDetailViewController, animated: true)
     }
 }

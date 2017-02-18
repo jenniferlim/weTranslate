@@ -37,10 +37,10 @@ extension SearchCoordinator: SearchViewControllerDelegate {
 
         client.translate(word: word, from: fromLanguage, to: toLanguage) { result in
             switch result {
-            case .Success(let translation):
+            case .success(let translation):
                 if let translation = translation {
                     let translationViewModel = TranslationViewModel(translation: translation)
-                    searchViewController.state = .Result(translationViewModel)
+                    searchViewController.state = .result(translationViewModel)
 
                     // FIX ME: Get rid of it
                     // Display translation only if in favorite or last 20 researches
@@ -48,10 +48,10 @@ extension SearchCoordinator: SearchViewControllerDelegate {
                     favoriteCategoryStore.insert(translation: translation)
                 } else {
                     let noResultViewModel = NoResultViewModel(searchText: word, fromLanguage: fromLanguage, toLanguage: toLanguage)
-                    searchViewController.state = .NoResult(noResultViewModel)
+                    searchViewController.state = .noResult(noResultViewModel)
                 }
-            case .Failure:
-                searchViewController.state = .Error
+            case .failure:
+                searchViewController.state = .error
             }
         }
     }

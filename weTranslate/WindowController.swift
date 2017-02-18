@@ -11,9 +11,8 @@ import UIKit
 @UIApplicationMain
 final class WindowController: UIResponder {
 
-    lazy var window: UIWindow? = {
+    var window: UIWindow? = {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = self.rootViewController
         return window
     }()
 
@@ -23,6 +22,7 @@ final class WindowController: UIResponder {
     override init() {
         appCoordinator = AppCoordinator(rootViewController: self.rootViewController)
         super.init()
+        window?.rootViewController = self.rootViewController
     }
 }
 

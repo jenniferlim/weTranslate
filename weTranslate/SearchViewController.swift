@@ -10,7 +10,7 @@ import UIKit
 import TranslateKit
 
 protocol SearchViewControllerDelegate: class {
-    func searchViewController(searchViewController: SearchViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language)
+    func searchViewController(_ searchViewController: SearchViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language)
 }
 
 final class SearchViewController: UIViewController {
@@ -22,27 +22,27 @@ final class SearchViewController: UIViewController {
         set { translationViewController.state = newValue }
     }
 
-    private var viewModel: TranslationViewModel?
+    fileprivate var viewModel: TranslationViewModel?
 
-    private weak var delegate: SearchViewControllerDelegate?
+    fileprivate weak var delegate: SearchViewControllerDelegate?
 
-    private let searchHeaderViewController: SearchHeaderViewController = {
+    fileprivate let searchHeaderViewController: SearchHeaderViewController = {
         let viewController = SearchHeaderViewController()
         return viewController
     }()
 
-    private let translationViewController: TranslationViewController = {
+    fileprivate let translationViewController: TranslationViewController = {
         let viewController = TranslationViewController()
         return viewController
     }()
 
-    private let bodyView: UIStackView = {
+    fileprivate let bodyView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Vertical
-        stackView.opaque = true
+        stackView.axis = .vertical
+        stackView.isOpaque = true
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
@@ -64,53 +64,53 @@ final class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        edgesForExtendedLayout = .None
+        edgesForExtendedLayout = UIRectEdge()
         view.backgroundColor = Color.brand
 
         addChildViewController(searchHeaderViewController)
-        searchHeaderViewController.didMoveToParentViewController(self)
+        searchHeaderViewController.didMove(toParentViewController: self)
         searchHeaderViewController.delegate = self
 
         addChildViewController(translationViewController)
-        translationViewController.didMoveToParentViewController(self)
+        translationViewController.didMove(toParentViewController: self)
         translationViewController.delegate = self
 
         bodyView.addArrangedSubview(searchHeaderViewController.view)
         bodyView.addArrangedSubview(translationViewController.view)
         view.addSubview(bodyView)
 
-        bodyView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        bodyView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        bodyView.topAnchor.constraintEqualToAnchor(topLayoutGuide.topAnchor).active = true
-        bodyView.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor).active = true
+        bodyView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        bodyView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        bodyView.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor).isActive = true
+        bodyView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
     }
 }
 
 
 extension SearchViewController: SearchHeaderViewControllerDelegate {
-    func searchHeaderViewController(searchHeaderViewController: SearchHeaderViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language) {
-        state = .Loading
+    func searchHeaderViewController(_ searchHeaderViewController: SearchHeaderViewController, didSearchWord word: String, fromLanguage: Language, toLanguage: Language) {
+        state = .loading
         delegate?.searchViewController(self, didSearchWord: word, fromLanguage: fromLanguage, toLanguage: toLanguage)
     }
 
-    func searchHeaderViewControllerDidResetSearch(searchHeaderViewController: SearchHeaderViewController) {
-        state = .Default
+    func searchHeaderViewControllerDidResetSearch(_ searchHeaderViewController: SearchHeaderViewController) {
+        state = .default
     }
 }
 
 
 extension SearchViewController: TranslationViewControllerDelegate {
-    func translationViewControllerBecomeFirstResponder(translationViewController: TranslationViewController) {
+    func translationViewControllerBecomeFirstResponder(_ translationViewController: TranslationViewController) {
         searchHeaderViewController.resignFirstResponder()
     }
 }

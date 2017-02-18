@@ -12,21 +12,21 @@ class TableViewCell: UITableViewCell {
 
     // MARK: - Init
 
-    init(style: UITableViewCellStyle = .Default, reuseIdentifier: String?, view: UIView) {
+    init(style: UITableViewCellStyle = .default, reuseIdentifier: String?, view: UIView) {
 
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        contentView.opaque = true
-        backgroundColor = .whiteColor()
-        opaque = true
+        contentView.isOpaque = true
+        backgroundColor = .white
+        isOpaque = true
 
         contentView.addSubview(view)
 
         let margins = contentView.layoutMarginsGuide
-        view.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true
-        view.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
-        view.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
-        view.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
+        view.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        view.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
     }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

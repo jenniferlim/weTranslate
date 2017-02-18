@@ -22,23 +22,23 @@ final class FavoriteCategoriesTableViewCell: UITableViewCell {
         }
     }
 
-    private let overlayView: UIView = {
+    fileprivate let overlayView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .blackColor()
+        view.backgroundColor = .black
         view.layer.opacity = 0.2
         return view
     }()
 
-    private let backgroundImageView: UIImageView = {
+    fileprivate let backgroundImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         return imageView
     }()
 
-    private let wordsCountOverlayView: UIView = {
+    fileprivate let wordsCountOverlayView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .blackColor()
+        view.backgroundColor = .black
         view.layer.opacity = 0.6
         view.layoutMargins = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         view.layer.cornerRadius = 5
@@ -46,31 +46,31 @@ final class FavoriteCategoriesTableViewCell: UITableViewCell {
         return view
     }()
 
-    private let wordsCountLabel: Label = {
-        let label = Label(textColor: .whiteColor(), font: Font.font(style: .Subheadline))
+    fileprivate let wordsCountLabel: Label = {
+        let label = Label(textColor: .white, font: Font.font(style: .subheadline))
         label.numberOfLines = 0
         return label
     }()
 
-    private let languageLabel: Label = {
-        let label = Label(textColor: .whiteColor(), font: Font.font(style: .Title1, weight: .Medium))
+    fileprivate let languageLabel: Label = {
+        let label = Label(textColor: .white, font: Font.font(style: .title1, weight: .medium))
         label.numberOfLines = 0
         return label
     }()
 
-    private let columnView: UIStackView = {
+    fileprivate let columnView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.alignment = .Center
+        stackView.alignment = .center
         stackView.spacing = 10
         return stackView
     }()
 
-    private let bodyView: UIStackView = {
+    fileprivate let bodyView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Vertical
-        stackView.alignment = .Center
+        stackView.axis = .vertical
+        stackView.alignment = .center
         stackView.spacing = 5
         return stackView
     }()
@@ -81,9 +81,9 @@ final class FavoriteCategoriesTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        contentView.opaque = true
+        contentView.isOpaque = true
         backgroundColor = Color.background
-        opaque = true
+        isOpaque = true
 
         wordsCountOverlayView.addSubview(wordsCountLabel)
 
@@ -96,22 +96,22 @@ final class FavoriteCategoriesTableViewCell: UITableViewCell {
         backgroundView = backgroundImageView
 
         let margins = contentView.layoutMarginsGuide
-        columnView.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true
-        columnView.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
-        columnView.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
-        columnView.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
+        columnView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        columnView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        columnView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+        columnView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
 
-        overlayView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor).active = true
-        overlayView.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor).active = true
-        overlayView.topAnchor.constraintEqualToAnchor(contentView.topAnchor).active = true
-        overlayView.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor).active = true
+        overlayView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        overlayView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        overlayView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        overlayView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
 
-        wordsCountLabel.leadingAnchor.constraintEqualToAnchor(wordsCountOverlayView.layoutMarginsGuide.leadingAnchor).active = true
-        wordsCountLabel.trailingAnchor.constraintEqualToAnchor(wordsCountOverlayView.layoutMarginsGuide.trailingAnchor).active = true
-        wordsCountLabel.topAnchor.constraintEqualToAnchor(wordsCountOverlayView.layoutMarginsGuide.topAnchor).active = true
-        wordsCountLabel.bottomAnchor.constraintEqualToAnchor(wordsCountOverlayView.layoutMarginsGuide.bottomAnchor).active = true
+        wordsCountLabel.leadingAnchor.constraint(equalTo: wordsCountOverlayView.layoutMarginsGuide.leadingAnchor).isActive = true
+        wordsCountLabel.trailingAnchor.constraint(equalTo: wordsCountOverlayView.layoutMarginsGuide.trailingAnchor).isActive = true
+        wordsCountLabel.topAnchor.constraint(equalTo: wordsCountOverlayView.layoutMarginsGuide.topAnchor).isActive = true
+        wordsCountLabel.bottomAnchor.constraint(equalTo: wordsCountOverlayView.layoutMarginsGuide.bottomAnchor).isActive = true
 
-        languageLabel.heightAnchor.constraintEqualToConstant(50).active = true
+        languageLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 
     required init?(coder aDecoder: NSCoder) {

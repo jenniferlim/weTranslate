@@ -19,8 +19,8 @@ class FavoriteCategoryStoreTests: XCTestCase {
     func testFetchAll() {
 
         guard let dictionaries = loadJSON("favoriteCategoriesStore") as? [JSONDictionary],
-            favoriteCategory = FavoriteCategory(dictionary: dictionaries[0]),
-            translation = favoriteCategory.translations.first else {
+            let favoriteCategory = FavoriteCategory(dictionary: dictionaries[0]),
+            let translation = favoriteCategory.translations.first else {
                 XCTFail()
                 return
         }

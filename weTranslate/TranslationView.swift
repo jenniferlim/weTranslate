@@ -15,33 +15,33 @@ final class TranslationView: UIView {
     var viewModel: WordViewModel? {
         didSet {
             if let viewModel = viewModel {
-                wordLabel.text = viewModel.word.capitalizedString
+                wordLabel.text = viewModel.word.capitalized
                 senseLabel.text = "(\(viewModel.sense))"
             }
         }
     }
 
-    private let wordLabel: Label = {
-        let label = Label(textColor: Color.brand, font: Font.font(style: .Title1))
+    fileprivate let wordLabel: Label = {
+        let label = Label(textColor: Color.brand, font: Font.font(style: .title1))
         label.numberOfLines = 0
-        label.textAlignment = NSTextAlignment.Center
+        label.textAlignment = NSTextAlignment.center
         return label
     }()
 
-    private let senseLabel: Label = {
-        let label = Label(textColor: Color.brand, font: Font.font(style: .Caption2))
+    fileprivate let senseLabel: Label = {
+        let label = Label(textColor: Color.brand, font: Font.font(style: .caption2))
         label.numberOfLines = 0
-        label.textAlignment = NSTextAlignment.Center
+        label.textAlignment = NSTextAlignment.center
         return label
     }()
 
-    private let bodyView: UIStackView = {
+    fileprivate let bodyView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.spacing = 10
         stackView.layoutMargins = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
@@ -53,8 +53,8 @@ final class TranslationView: UIView {
         super.init(frame: frame)
 
         backgroundColor = Color.background
-        opaque = true
-        layer.borderColor = Color.brand.CGColor
+        isOpaque = true
+        layer.borderColor = Color.brand.cgColor
         layer.borderWidth = 1
 
         bodyView.addArrangedSubview(wordLabel)
@@ -62,10 +62,10 @@ final class TranslationView: UIView {
         addSubview(bodyView)
 
         let margins = layoutMarginsGuide
-        bodyView.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true
-        bodyView.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
-        bodyView.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
-        bodyView.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
+        bodyView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        bodyView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        bodyView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+        bodyView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
     }
 
     required init?(coder aDecoder: NSCoder) {

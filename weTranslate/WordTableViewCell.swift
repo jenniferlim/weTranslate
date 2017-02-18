@@ -15,36 +15,36 @@ final class WordTableViewCell: UITableViewCell {
     var viewModel: WordViewModel? {
         didSet {
             if let viewModel = viewModel {
-                wordLabel.text = viewModel.word.capitalizedString
+                wordLabel.text = viewModel.word.capitalized
                 senseLabel.text = "(\(viewModel.sense))"
             }
         }
     }
 
-    private let wordLabel: Label = {
+    fileprivate let wordLabel: Label = {
         let label = Label(textColor: Color.brand, font: Font.font())
         label.numberOfLines = 0
         return label
     }()
 
-    private let senseLabel: Label = {
-        let label = Label(textColor: Color.standardText, font: Font.font(style: .Caption1))
+    fileprivate let senseLabel: Label = {
+        let label = Label(textColor: Color.standardText, font: Font.font(style: .caption1))
         label.numberOfLines = 0
         return label
     }()
 
-    private let columnView: UIStackView = {
+    fileprivate let columnView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.alignment = .Top
+        stackView.alignment = .top
         stackView.spacing = 10
         return stackView
     }()
 
-    private let bodyView: UIStackView = {
+    fileprivate let bodyView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.spacing = 5
         return stackView
     }()
@@ -55,9 +55,9 @@ final class WordTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        contentView.opaque = true
-        backgroundColor = .whiteColor()
-        opaque = true
+        contentView.isOpaque = true
+        backgroundColor = .white
+        isOpaque = true
 
         bodyView.addArrangedSubview(wordLabel)
         bodyView.addArrangedSubview(senseLabel)
@@ -65,10 +65,10 @@ final class WordTableViewCell: UITableViewCell {
         contentView.addSubview(columnView)
 
         let margins = contentView.layoutMarginsGuide
-        columnView.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true
-        columnView.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
-        columnView.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
-        columnView.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
+        columnView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        columnView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        columnView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+        columnView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
     }
 
     required init?(coder aDecoder: NSCoder) {

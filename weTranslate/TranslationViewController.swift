@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TranslationViewControllerDelegate: class {
-    func translationViewControllerBecomeFirstResponder(translationViewController: TranslationViewController)
+    func translationViewControllerBecomeFirstResponder(_ translationViewController: TranslationViewController)
 }
 
 final class TranslationViewController: UIViewController {
@@ -17,37 +17,37 @@ final class TranslationViewController: UIViewController {
     // MARK: - Type
 
     enum State {
-        case Default
-        case Loading
-        case Result(TranslationViewModel)
-        case NoResult(NoResultViewModel)
-        case Error
+        case `default`
+        case loading
+        case result(TranslationViewModel)
+        case noResult(NoResultViewModel)
+        case error
     }
 
 
     // MARK: - Properties
 
-    var state: State = .Default {
+    var state: State = .default {
         didSet {
             switch state {
-            case .Default:
-                noResultView.hidden = true
-                tableView.hidden = false
+            case .default:
+                noResultView.isHidden = true
+                tableView.isHidden = false
                 viewModel = nil
-            case .Loading:
-                noResultView.hidden = true
-                tableView.hidden = false
-            case .Result(let translationViewModel):
-                noResultView.hidden = true
-                tableView.hidden = false
+            case .loading:
+                noResultView.isHidden = true
+                tableView.isHidden = false
+            case .result(let translationViewModel):
+                noResultView.isHidden = true
+                tableView.isHidden = false
                 viewModel = translationViewModel
-            case .NoResult(let noResultViewModel):
-                noResultView.hidden = false
-                tableView.hidden = true
+            case .noResult(let noResultViewModel):
+                noResultView.isHidden = false
+                tableView.isHidden = true
                 noResultView.viewModel = noResultViewModel
-            case .Error:
-                noResultView.hidden = false
-                tableView.hidden = true
+            case .error:
+                noResultView.isHidden = false
+                tableView.isHidden = true
             }
             tableView.reloadData()
         }
@@ -55,35 +55,35 @@ final class TranslationViewController: UIViewController {
 
     weak var delegate: TranslationViewControllerDelegate?
 
-    private var viewModel: TranslationViewModel?
+    fileprivate var viewModel: TranslationViewModel?
 
-    private let tableView: UITableView = {
+    fileprivate let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.separatorStyle = .None
+        tableView.separatorStyle = .none
         return tableView
     }()
 
-    private let translationView: TranslationView = {
+    fileprivate let translationView: TranslationView = {
         let translationView = TranslationView(frame: .zero)
         translationView.translatesAutoresizingMaskIntoConstraints = false
         return translationView
     }()
 
-    private let noResultView: NoResultView = {
+    fileprivate let noResultView: NoResultView = {
         let view = NoResultView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.hidden = true
+        view.isHidden = true
         return view
     }()
 
-    private let bodyView: UIStackView = {
+    fileprivate let bodyView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Vertical
-        stackView.opaque = true
+        stackView.axis = .vertical
+        stackView.isOpaque = true
         return stackView
     }()
 
@@ -104,9 +104,9 @@ final class TranslationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.registerClass(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.cellIdentifier)
-        tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellIdentifier)
-        tableView.registerClass(LoadingTableViewCell.self, forCellReuseIdentifier: LoadingTableViewCell.cellIdentifier)
+        tableView.register(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.cellIdentifier)
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellIdentifier)
+        tableView.register(LoadingTableViewCell.self, forCellReuseIdentifier: LoadingTableViewCell.cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
 
@@ -114,35 +114,35 @@ final class TranslationViewController: UIViewController {
         bodyView.addArrangedSubview(tableView)
         view.addSubview(bodyView)
 
-        bodyView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        bodyView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
-        bodyView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
-        bodyView.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor).active = true
+        bodyView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        bodyView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        bodyView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        bodyView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
     }
 }
 
 
 extension TranslationViewController: UITableViewDataSource {
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard case .Result(let translationViewModel) = state else { return 1 }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard case .result(let translationViewModel) = state else { return 1 }
 
         return translationViewModel.translation.meanings.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        if case .Loading = state,
-            let cell = tableView.dequeueReusableCellWithIdentifier(LoadingTableViewCell.cellIdentifier, forIndexPath: indexPath) as? LoadingTableViewCell {
+        if case .loading = state,
+            let cell = tableView.dequeueReusableCell(withIdentifier: LoadingTableViewCell.cellIdentifier, for: indexPath) as? LoadingTableViewCell {
             cell.activityIndicator.startAnimating()
             return cell
         }
 
-        guard case .Result(let translationViewModel) = state else { return UITableViewCell() }
+        guard case .result(let translationViewModel) = state else { return UITableViewCell() }
 
         let wordViewModel = WordViewModel(word: translationViewModel.translation.meanings[indexPath.row].translatedWords[0])
 
@@ -150,7 +150,7 @@ extension TranslationViewController: UITableViewDataSource {
             translationView.viewModel = wordViewModel
             return TableViewCell(reuseIdentifier: "TranslationTableViewCell", view: translationView)
 
-        } else if let cell = tableView.dequeueReusableCellWithIdentifier(WordTableViewCell.cellIdentifier, forIndexPath: indexPath) as? WordTableViewCell {
+        } else if let cell = tableView.dequeueReusableCell(withIdentifier: WordTableViewCell.cellIdentifier, for: indexPath) as? WordTableViewCell {
             cell.viewModel = wordViewModel
             return cell
         }
@@ -161,14 +161,14 @@ extension TranslationViewController: UITableViewDataSource {
 
 
 extension TranslationViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // FIXME: Push to detail
     }
 }
 
 
 extension TranslationViewController: UIScrollViewDelegate {
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         delegate?.translationViewControllerBecomeFirstResponder(self)
     }
 }

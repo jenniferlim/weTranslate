@@ -8,6 +8,6 @@
 
 import UIKit
 
-func animate(duration: NSTimeInterval = 0.3, completion: ((Bool) -> Void)? = nil, animations: () -> Void) {
-    UIView.animateWithDuration(duration, animations: animations, completion: completion)
+func animate(_ duration: TimeInterval = 0.3, completion: ((Bool) -> Void)? = nil, animations: @escaping () -> Void) {
+    UIView.animate(withDuration: duration, animations: animations, completion: completion)
 }

@@ -1,9 +1,9 @@
 import Foundation
 
-func localize(string: String) -> String {
+func localize(_ string: String) -> String {
     return NSLocalizedString(string, comment: "")
 }
 
-func localize(string: String, _ args: CVarArgType...) -> String {
+func localize(_ string: String, _ args: CVarArg...) -> String {
     return String(format: localize(string), arguments: args)
 }

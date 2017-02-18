@@ -16,57 +16,57 @@ final class SearchHeaderView: UIView {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = localize("SEARCH_TYPE_HERE")
-        textField.textAlignment = .Center
-        textField.backgroundColor = .whiteColor()
-        textField.borderStyle = UITextBorderStyle.RoundedRect
+        textField.textAlignment = .center
+        textField.backgroundColor = .white
+        textField.borderStyle = UITextBorderStyle.roundedRect
         textField.enablesReturnKeyAutomatically = true
-        textField.autocorrectionType = .No
-        textField.spellCheckingType = .No
-        textField.returnKeyType = .Search
-        textField.clearButtonMode = .WhileEditing
+        textField.autocorrectionType = .no
+        textField.spellCheckingType = .no
+        textField.returnKeyType = .search
+        textField.clearButtonMode = .whileEditing
         return textField
     }()
 
     let fromLanguageButton: Button = {
-        let button = Button(title: "English", color: .whiteColor())
+        let button = Button(title: "English", color: .white)
         return button
     }()
 
     let toLanguageButton: Button = {
-        let button = Button(title: "French", color: .whiteColor())
+        let button = Button(title: "French", color: .white)
         return button
     }()
 
     let swapButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "Swap"), forState: .Normal)
+        button.setImage(UIImage(named: "Swap"), for: UIControlState())
         return button
     }()
 
     let languagesPickerView: UIPickerView = {
         let pickerView = UIPickerView()
         pickerView.translatesAutoresizingMaskIntoConstraints = false
-        pickerView.hidden = true
+        pickerView.isHidden = true
         pickerView.alpha = 0
         return pickerView
     }()
 
-    private let languageView: UIStackView = {
+    fileprivate let languageView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Horizontal
+        stackView.axis = .horizontal
         stackView.spacing = 10
         return stackView
     }()
 
-    private let bodyView: UIStackView = {
+    fileprivate let bodyView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         stackView.spacing = 25
         stackView.layoutMargins = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
-        stackView.layoutMarginsRelativeArrangement = true
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
@@ -86,14 +86,14 @@ final class SearchHeaderView: UIView {
         addSubview(bodyView)
 
         let margins = layoutMarginsGuide
-        bodyView.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true
-        bodyView.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
-        bodyView.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
-        bodyView.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
+        bodyView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        bodyView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        bodyView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+        bodyView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
 
-        searchTextField.heightAnchor.constraintEqualToConstant(44).active = true
-        fromLanguageButton.heightAnchor.constraintEqualToConstant(25).active = true
-        fromLanguageButton.widthAnchor.constraintEqualToAnchor(toLanguageButton.widthAnchor, multiplier: 1.0).active = true
+        searchTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        fromLanguageButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        fromLanguageButton.widthAnchor.constraint(equalTo: toLanguageButton.widthAnchor, multiplier: 1.0).isActive = true
     }
 
     required init(coder aDecoder: NSCoder) {

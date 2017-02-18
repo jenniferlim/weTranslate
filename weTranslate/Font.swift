@@ -13,35 +13,35 @@ final class Font {
     // MARK: Types
 
     enum Weight {
-        case UltraLight
-        case Thin
-        case Light
-        case Regular
-        case Medium
-        case Semibold
-        case Bold
-        case Heavy
-        case Black
+        case ultraLight
+        case thin
+        case light
+        case regular
+        case medium
+        case semibold
+        case bold
+        case heavy
+        case black
 
-        private var fontWeight: CGFloat {
+        fileprivate var fontWeight: CGFloat {
             switch self {
-            case .UltraLight:
+            case .ultraLight:
                 return UIFontWeightUltraLight
-            case .Thin:
+            case .thin:
                 return UIFontWeightThin
-            case .Light:
+            case .light:
                 return UIFontWeightLight
-            case .Regular:
+            case .regular:
                 return UIFontWeightRegular
-            case .Medium:
+            case .medium:
                 return UIFontWeightMedium
-            case .Semibold:
+            case .semibold:
                 return UIFontWeightSemibold
-            case .Bold:
+            case .bold:
                 return UIFontWeightBold
-            case .Heavy:
+            case .heavy:
                 return UIFontWeightHeavy
-            case .Black:
+            case .black:
                 return UIFontWeightBlack
             }
         }
@@ -61,48 +61,48 @@ final class Font {
     //  Caption2: .SFUIText-Regular       @ 11.0
 
     enum Style {
-        case Title1
-        case Title2
-        case Title3
-        case Headline
-        case Subheadline
-        case Body
-        case Callout
-        case Footnote
-        case Caption1
-        case Caption2
+        case title1
+        case title2
+        case title3
+        case headline
+        case subheadline
+        case body
+        case callout
+        case footnote
+        case caption1
+        case caption2
 
-        private var textStyle: String {
+        fileprivate var textStyle: String {
             switch self {
-            case .Title1:
-                return UIFontTextStyleTitle1
-            case .Title2:
-                return UIFontTextStyleTitle2
-            case .Title3:
-                return UIFontTextStyleTitle3
-            case .Headline:
-                return UIFontTextStyleHeadline
-            case .Subheadline:
-                return UIFontTextStyleSubheadline
-            case .Body:
-                return UIFontTextStyleBody
-            case .Callout:
-                return UIFontTextStyleCallout
-            case .Footnote:
-                return UIFontTextStyleFootnote
-            case .Caption1:
-                return UIFontTextStyleCaption1
-            case .Caption2:
-                return UIFontTextStyleCaption2
+            case .title1:
+                return UIFontTextStyle.title1.rawValue
+            case .title2:
+                return UIFontTextStyle.title2.rawValue
+            case .title3:
+                return UIFontTextStyle.title3.rawValue
+            case .headline:
+                return UIFontTextStyle.headline.rawValue
+            case .subheadline:
+                return UIFontTextStyle.subheadline.rawValue
+            case .body:
+                return UIFontTextStyle.body.rawValue
+            case .callout:
+                return UIFontTextStyle.callout.rawValue
+            case .footnote:
+                return UIFontTextStyle.footnote.rawValue
+            case .caption1:
+                return UIFontTextStyle.caption1.rawValue
+            case .caption2:
+                return UIFontTextStyle.caption2.rawValue
             }
         }
 
-        private var defaultWeight: Weight {
+        fileprivate var defaultWeight: Weight {
             switch self {
-            case .Title1:
-                return .Light
+            case .title1:
+                return .light
             default:
-                return .Regular
+                return .regular
             }
         }
     }
@@ -110,19 +110,19 @@ final class Font {
 
     // MARK: - Properties
 
-    private static let fontSizeAjustment: CGFloat = 1.0
+    fileprivate static let fontSizeAjustment: CGFloat = 1.0
 
 
     // MARK: - Methods
 
-    static func font(style style: Style = .Body, weight: Weight? = nil) -> UIFont {
-        let preferredFont = UIFont.preferredFontForTextStyle(style.textStyle)
+    static func font(style: Style = .body, weight: Weight? = nil) -> UIFont {
+        let preferredFont = UIFont.preferredFont(forTextStyle: UIFontTextStyle(rawValue: style.textStyle))
         let fontSize: CGFloat = preferredFont.pointSize + fontSizeAjustment
         let fontWeight = weight?.fontWeight ?? style.defaultWeight.fontWeight
-        return UIFont.systemFontOfSize(fontSize, weight: fontWeight)
+        return UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
     }
 
     static func hugeEmojiFont() -> UIFont {
-        return UIFont.systemFontOfSize(120)
+        return UIFont.systemFont(ofSize: 120)
     }
 }

@@ -8,11 +8,11 @@
 
 import Foundation
 
-func loadJSON(file: String) -> AnyObject? {
-    guard let URL = NSBundle(forClass: SentinelBundle.self).URLForResource(file, withExtension: "json"),
-        data = NSData(contentsOfURL: URL) else { return nil }
+func loadJSON(_ file: String) -> AnyObject? {
+    guard let URL = Bundle(for: SentinelBundle.self).url(forResource: file, withExtension: "json"),
+        let data = try? Data(contentsOf: URL) else { return nil }
 
-    return try? NSJSONSerialization.JSONObjectWithData(data, options: [])
+    return try! JSONSerialization.jsonObject(with: data, options: []) as AnyObject?
 }
 
-private class SentinelBundle: NSBundle {}
+private class SentinelBundle: Bundle {}
